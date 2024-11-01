@@ -23,35 +23,38 @@
             <div class="navigation__title">Dev-folio</div>
 
             <ul class="navigation__list">
-                <li> <a href="#home"> Home</a> </li>
-                <li> <a href="#skills"> Skills </a></li>
-                <li> <a href="#experience"> Experience</a> </li>
-                <li> <a href="#projects"> Projects</a></li>
-                <li> <a href="#education"> Education</a></li>
-                <li> <a href="#contact"> Contact</a></li>
+                <li class="navigation__list__item"> <a href="#home"> Home</a> </li>
+                <li class="navigation__list__item"> <a href="#skills"> Skills </a></li>
+                <li class="navigation__list__item"> <a href="#experience"> Experience</a> </li>
+                <li class="navigation__list__item"> <a href="#projects"> Projects</a></li>
+                <li class="navigation__list__item"> <a href="#education"> Education</a></li>
+                <li class="navigation__list__item"> <a href="#contact"> Contact</a></li>
             </ul>
 
+            <img src="images/menu-icon.png" class="navigation__icon navigation__menu__icon" alt="hamburger-menu">
+            <img src="images/close-icon.png" class="navigation__icon navigation__close__icon" alt="close">
             <ul class="navigation__list--mobile">
-                <li> <a href="#">Home</a> </li>
-                <li> <a href="#"> Skills</a></li>
-                <li> <a href="#"> Experience</a> </li>
-                <li> <a href="#"> projects</a></li>
-                <li> <a href="#"> Contact</a></li>
+                <li class="navigation__list__item"> <a href="#home">Home</a> </li>
+                <li class="navigation__list__item"> <a href="#skills"> Skills</a></li>
+                <li class="navigation__list__item"> <a href="#experience"> Experience</a> </li>
+                <li class="navigation__list__item"> <a href="#projects"> Projects</a></li>
+                <li class="navigation__list__item"> <a href="#education"> Education</a></li>
+                <li class="navigation__list__item"> <a href="#contact"> Contact</a></li>
             </ul>
         </nav>
-
     </header>
 
 
-    <main class="wrapper">
-        <section id="home" class="container">
-            <div class="home_wrapper">
+    <main class="page__content">
+        <section id="home" class="section section--home">
+            <div class="section__container section__container--intro ">
 
-                <article class="co">
-                    <h1 class="greeting">HI,</h1>
-                    <h1 class="name">I'M GANESHA MOORTHY</h1>
-                    <h2 class="role">I'M A <span class="role-text"></span> </h2>
-                    <p class="description">
+                <article class="section__content">
+
+                    <h1 class="intro__greeting">HI,</h1>
+                    <h1 class="intro__name">I'M GANESHA MOORTHY</h1>
+                    <h2 class="intro__role">I'M A <span class="intro__role__text"></span> </h2>
+                    <p class="intro__description">
                         As a passionate full-stack developer with a strong focus on front-end, I excel in crafting
                         engaging
                         user experiences
@@ -64,93 +67,95 @@
                         skills can elevate your
                         next project!
                     </p>
-                    <button class="btn"> CHECK RESUME </button>
+                    <button class="button intro--button"> CHECK RESUME </button>
+
                 </article>
             </div>
-
-            <div class="mouse"></div>
-
-
+            <div class="scroll__indicator"></div>
         </section>
 
-        <section id="skills" class="container">
+        <section id="skills" class="section section--skills">
 
-            <div class="skills__wrapper">
-                <h2 class="title">SKILLS</h2>
-                <h3 class="title__description">A brief overview of my key technologies and tools.</h3>
-                <article class="skills__content">
-                    <div class="skills__box">
-                        <h3 class="skills__box__title">FRONT-END</h3>
-                        <div class="skills__box__content">
-                            <div class="skills__box__content__item">
-                                <img class="skills__box__content__item__image" src="./images/html.png" alt="html-logo">
-                                <span class="skills__box__content__item__text">HTML</span>
+            <div class="section__container">
+
+                <h2 class="section__title">SKILLS</h2>
+                <h3 class="section__title__description">A brief overview of my key technologies and tools.</h3>
+
+                <article class="section__content section__content--skills">
+
+                    <div class="skills__card">
+                        <h3 class="skills__card__title">FRONT-END</h3>
+                        <div class="skills__card__content">
+                            <div class="skills__card__content__item">
+                                <img class="skills__card__content__item__image" src="./images/html.png" alt="html-logo">
+                                <span class="skills__card__content__item__text">HTML</span>
                             </div>
-                            <div class="skills__box__content__item">
-                                <img class="skills__box__content__item__image" src="./images/css.png" alt="css-logo">
-                                <span class="skills__box__content__item__text">CSS</span>
+                            <div class="skills__card__content__item">
+                                <img class="skills__card__content__item__image" src="./images/css.png" alt="css-logo">
+                                <span class="skills__card__content__item__text">CSS</span>
                             </div>
-                            <div class="skills__box__content__item">
-                                <img class="skills__box__content__item__image" src="./images/js.png" alt="css-logo">
-                                <span class="skills__box__content__item__text">JAVASCRIPT</span>
+                            <div class="skills__card__content__item">
+                                <img class="skills__card__content__item__image" src="./images/js.png" alt="css-logo">
+                                <span class="skills__card__content__item__text">JAVASCRIPT</span>
                             </div>
-                            <div class="skills__box__content__item">
-                                <img class="skills__box__content__item__image" src="./images/sass.png" alt="css-logo">
-                                <span class="skills__box__content__item__text">SASS</span>
+                            <div class="skills__card__content__item">
+                                <img class="skills__card__content__item__image" src="./images/sass.png" alt="css-logo">
+                                <span class="skills__card__content__item__text">SASS</span>
                             </div>
-                            <div class="skills__box__content__item">
-                                <img class="skills__box__content__item__image" src="./images/typescript.png"
+                            <div class="skills__card__content__item">
+                                <img class="skills__card__content__item__image" src="./images/typescript.png"
                                     alt="css-logo">
-                                <span class="skills__box__content__item__text">TYPESCRIPT</span>
+                                <span class="skills__card__content__item__text">TYPESCRIPT</span>
                             </div>
-                            <div class="skills__box__content__item">
-                                <img class="skills__box__content__item__image" src="./images/angular.png"
+                            <div class="skills__card__content__item">
+                                <img class="skills__card__content__item__image" src="./images/angular.png"
                                     alt="css-logo">
-                                <span class="skills__box__content__item__text">ANGULAR</span>
+                                <span class="skills__card__content__item__text">ANGULAR</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="skills__box">
-                        <h3 class="skills__box__title">BACK-END</h3>
-                        <div class="skills__box__content">
-                            <div class="skills__box__content__item">
-                                <img class="skills__box__content__item__image" src="./images/java.png" alt="html-logo">
-                                <span class="skills__box__content__item__text">JAVA</span>
+                    <div class="skills__card">
+                        <h3 class="skills__card__title">BACK-END</h3>
+                        <div class="skills__card__content">
+                            <div class="skills__card__content__item">
+                                <img class="skills__card__content__item__image" src="./images/java.png" alt="html-logo">
+                                <span class="skills__card__content__item__text">JAVA</span>
                             </div>
-                            <div class="skills__box__content__item">
-                                <img class="skills__box__content__item__image" src="./images/spring.png"
+                            <div class="skills__card__content__item">
+                                <img class="skills__card__content__item__image" src="./images/spring.png"
                                     alt="html-logo">
-                                <span class="skills__box__content__item__text">SPRING</span>
+                                <span class="skills__card__content__item__text">SPRING</span>
                             </div>
-                            <div class="skills__box__content__item">
-                                <img class="skills__box__content__item__image" src="./images/postrgressql.png"
+                            <div class="skills__card__content__item">
+                                <img class="skills__card__content__item__image" src="./images/postrgressql.png"
                                     alt="html-logo">
-                                <span class="skills__box__content__item__text">POSTGRESQL</span>
+                                <span class="skills__card__content__item__text">POSTGRESQL</span>
                             </div>
-                            <div class="skills__box__content__item">
-                                <img class="skills__box__content__item__image" src="./images/mongo-db.png"
+                            <div class="skills__card__content__item">
+                                <img class="skills__card__content__item__image" src="./images/mongo-db.png"
                                     alt="html-logo">
-                                <span class="skills__box__content__item__text">MONGO</span>
+                                <span class="skills__card__content__item__text">MONGO</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="skills__box">
-                        <h3 class="skills__box__title">OTHER TOOLS</h3>
-                        <div class="skills__box__content">
-                            <div class="skills__box__content__item">
-                                <img class="skills__box__content__item__image" src="./images/git.png" alt="html-logo">
-                                <span class="skills__box__content__item__text">GIT</span>
+                    <div class="skills__card">
+                        <h3 class="skills__card__title">OTHER TOOLS</h3>
+                        <div class="skills__card__content">
+                            <div class="skills__card__content__item">
+                                <img class="skills__card__content__item__image" src="./images/git.png" alt="html-logo">
+                                <span class="skills__card__content__item__text">GIT</span>
                             </div>
-                            <div class="skills__box__content__item">
-                                <img class="skills__box__content__item__image" src="./images/docker.png"
+                            <div class="skills__card__content__item">
+                                <img class="skills__card__content__item__image" src="./images/docker.png"
                                     alt="html-logo">
-                                <span class="skills__box__content__item__text">DOCKER</span>
+                                <span class="skills__card__content__item__text">DOCKER</span>
                             </div>
-                            <div class="skills__box__content__item">
-                                <img class="skills__box__content__item__image" src="./images/azure.png" alt="html-logo">
-                                <span class="skills__box__content__item__text">AZURE</span>
+                            <div class="skills__card__content__item">
+                                <img class="skills__card__content__item__image" src="./images/azure.png"
+                                    alt="html-logo">
+                                <span class="skills__card__content__item__text">AZURE</span>
                             </div>
                         </div>
                     </div>
@@ -160,17 +165,19 @@
 
         </section>
 
-        <section id="experience" class="container">
+        <section id="experience" class="section section--experience">
 
-            <div class="experience__wrapper">
-                <h2 class="title">EXPERIENCE</h2>
-                <h3 class="title__description">An overview of my work experience and the impact I've made.</h3>
-                <article class="experience__content">
-                    <div class="experience__content__item">
-                        <span class="company__name"> COMMVAULT <span class="company__period"> APRIL2024 - Present
-                            </span> </span>
-                        <div class="company__role">ENGINEER</div>
-                        <div class="experience__description">
+            <div class="section__container">
+                <h2 class="section__title">EXPERIENCE</h2>
+                <h3 class="section__title__description">An overview of my work experience and the impact I've made.</h3>
+
+                <article class="section__content">
+
+                    <div class="experience__card">
+                        <span class="experience__card__company--name"> COMMVAULT
+                            <span class="experience__card__company--duration"> APRIL2024 - Present </span> </span>
+                        <div class="experience__card__company--role">ENGINEER</div>
+                        <div class="experience__card__description">
                             <p>Collaborated with UX designers to transform prototypes into functional user interface
                                 components, enhancing overall user
                                 experience.</p>
@@ -181,11 +188,11 @@
                                 code coverage by 30%.</p>
                         </div>
                     </div>
-                    <div class="experience__content__item">
-                        <span class="company__name"> COMMVAULT <span class="company__period"> APRIL2024 - Present
-                            </span> </span>
-                        <div class="company__role">ENGINEER</div>
-                        <div class="experience__description">
+                    <div class="experience__card">
+                        <span class="experience__card__company--name"> COMMVAULT
+                            <span class="experience__card__company--duration"> APRIL2024 - Present </span> </span>
+                        <div class="experience__card__company--role">ENGINEER</div>
+                        <div class="experience__card__description">
                             <p>Collaborated with UX designers to transform prototypes into functional user interface
                                 components, enhancing overall user
                                 experience.</p>
@@ -196,11 +203,11 @@
                                 code coverage by 30%.</p>
                         </div>
                     </div>
-                    <div class="experience__content__item">
-                        <span class="company__name"> APPRANIX <span class="company__period"> SEP 2023 - APRIL2024
-                            </span> </span>
-                        <div class="company__role">PROGRAMMER ANALYST</div>
-                        <div class="experience__description">
+                    <div class="experience__card">
+                        <span class="experience__card__company--name"> COMMVAULT
+                            <span class="experience__card__company--duration"> APRIL2024 - Present </span> </span>
+                        <div class="experience__card__company--role">ENGINEER</div>
+                        <div class="experience__card__description">
                             <p>Collaborated with UX designers to transform prototypes into functional user interface
                                 components, enhancing overall user
                                 experience.</p>
@@ -211,103 +218,103 @@
                                 code coverage by 30%.</p>
                         </div>
                     </div>
+
                 </article>
             </div>
         </section>
-        <section id="projects" class="container">
+        <section id="projects" class="section section--projects">
 
-            <div class="projects__wrapper ">
-                <h2 class="title">PROJECTS</h2>
-                <h3 class="title__description">A glimpse of my featured projects and achievements.</h3>
-                <div class="projects__content">
+            <div class="section__container ">
+                <h2 class="section__title">PROJECTS</h2>
+                <h3 class="section__title__description">A glimpse of my featured projects and achievements.</h3>
 
-                    <div class="projects__content__card">
+                <article class="section__content section__content--projects">
 
-                        <img class="projects__content__card__image" src="images/amazone-clone.png"
-                            alt="amazon-e-commerce clone">
+                    <div class="project__card">
 
-                        <div class="projects__content__card__title">
-                            AMAZON E-COMMERCE CLONE
-                        </div>
+                        <img class="project__card__image" src="images/amazone-clone.png" alt="amazon-e-commerce clone">
 
-                        <div class="projects__content__card__description">
-                            <div class="projects__content_card_description__skill">
+                        <div class="project__card__title">AMAZON E-COMMERCE CLONE</div>
+
+                        <div class="project__card__description">
+
+                            <div class="project__card__skills">
                                 <div class="chip">HTML</div>
                                 <div class="chip">CSS</div>
                                 <div class="chip">JAVASCRIPT</div>
                             </div>
+
                             Developed a clone of the Amazon e-commerce landing page as a practice exercise to enhance my
                             HTML and CSS skills. The
                             project involved recreating the layout, styling, and core visual elements of the original
                             site, including product
-                            listings, navigation menus, and a search bar.This project allowed me to deepen my
-                            understanding of web development fundamentals and improve my attention to detail.
+                            listings, navigation menus, and a search bar.
                         </div>
 
-                        <button class="projects__content__card__btn btn">
+                        <button class="button projects__button">
                             <a href="#"> CHECK LIVE </a>
                         </button>
 
                     </div>
-                    <div class="projects__content__card">
 
-                        <img class="projects__content__card__image" src="images/unify.png"
-                            alt="amazon-e-commerce clone">
+                    <div class="project__card">
 
-                        <div class="projects__content__card__title">
-                            UNIFY
-                        </div>
+                        <img class="project__card__image" src="images/unify.png" alt="amazon-e-commerce clone">
 
-                        <div class="projects__content__card__description">
-                            <div class="projects__content_card_description__skill">
+                        <div class="project__card__title">UNIFY</div>
+
+                        <div class="project__card__description">
+
+                            <div class="project__card__skills">
                                 <div class="chip">HTML</div>
                                 <div class="chip">CSS</div>
                                 <div class="chip">RESPONSIVE WEB</div>
                             </div>
+
                             Developed a clone of the Amazon e-commerce landing page as a practice exercise to enhance my
                             HTML and CSS skills. The
                             project involved recreating the layout, styling, and core visual elements of the original
                             site, including product
-                            listings, navigation menus, and a search bar.This project allowed me to deepen my
-                            understanding of web development fundamentals and improve my attention to detail.
+                            listings, navigation menus, and a search bar.
                         </div>
 
-                        <button class="projects__content__card__btn btn">
+                        <button class="button projects__button">
                             <a href="#"> CHECK LIVE </a>
                         </button>
 
                     </div>
 
-                </div>
+                </article>
 
             </div>
 
         </section>
 
 
-        <section id="education" class="container">
+        <section id="education" class="section section--education">
 
-            <div class="education__wrapper">
-                <h2 class="title">EDUCATION</h2>
-                <h3 class="title__description">Highlights of my educational background.</h3>
+            <div class="section__container">
+                <h2 class="section__title">EDUCATION</h2>
+                <h3 class="section__title__description">Highlights of my educational background.</h3>
 
-                <div class="education__content">
-                    <div class="education__content__item">
-                        <div class="college-name">
+                <article class="section__content">
+
+                    <div class="education__card">
+                        <div class="education__card__college">
                             E.G.S PILLAY ENGINEERING COLLEGE
                         </div>
-                        <div class="course">
+                        <div class="education__card__course">
                             B.E ELECTRONICS AND COMMUNICATION ENGINEERING
                         </div>
-                        <div class="graduation-year">
+                        <div class="education__card__year">
                             Year: 2019-2023
                         </div>
 
-                        <div class="marks">
+                        <div class="education__card__marks">
                             CGPA: 8.85
                         </div>
 
-                        <div class="education__content__item__description">
+                        <div class="education__card__description">
                             My background in Electronics and Communication Engineering has equipped me with a strong
                             foundation in analytical
                             problem-solving and logical structuring, which I now apply in UI development. Through ECE, I
@@ -319,48 +326,50 @@
                             understanding of technical requirements.
                         </div>
                     </div>
-                </div>
+
+                </article>
             </div>
 
         </section>
 
-        <section id="contact" class="container">
+        <section id="contact" class="section section--contact">
 
-            <div class="contact__wrapper">
-                <h2 class="title">CONTACT</h2>
-                <h3 class="title__description">Feel free to reach out for collaborations or just to say hello! I'm
-                    always open to new opportunities and
-                    connections.</h3>
-                <div class="contact__content">
+            <div class="section__container">
+                <h2 class="section__title">CONTACT</h2>
+                <h3 class="section__title__description"> Feel free to reach out for collaborations or just to say hello!
+                    I'm always open to new opportunities and connections.</h3>
+                <article class="section__content">
 
-                    <form class="contact-form">
+                    <form class="contact__form ">
                         <input type="text" name="name" autocomplete="off" placeholder="Your Name" required>
                         <input type="email" name="email" autocomplete="off" placeholder="Email" required>
                         <textarea name="message" id="" autocomplete="off" placeholder="Message" required></textarea>
-                        <button class="btn"> SUBMIT</button>
+                        <button class="button contact-form--button"> SUBMIT</button>
                     </form>
 
-                </div>
+                </article>
             </div>
         </section>
+
     </main>
 
     <footer id="footer">
 
-        <div class="footer_wrapper">
-            <div class="contact-modes">
-                <div class="contact-item">
-                    <img src="images/linkedin.png" class="icon" alt="">
-                    <a href="https://www.linkedin.com/in/ganesha-moorthy/" target="_blank">Linkedin</a>
+        <div class="section__container">
+            <article class="footer__content">
+                <div class="contact__information">
+                    <div class="contact__medium">
+                        <img src="images/linkedin.png" class="icon" alt="">
+                        <a href="https://www.linkedin.com/in/ganesha-moorthy/" target="_blank">Linkedin</a>
+                    </div>
+                    <div class="contact__medium">
+                        <img src="images/mail.png" class="icon" alt="">
+                        <a href="mailto:ganeshamoorthy8681@gmail.com">Mail</a>
+                    </div>
                 </div>
-                <div class="contact-item">
-                    <img src="images/mail.png" class="icon" alt="">
-                    <a href="mailto:ganeshamoorthy8681@gmail.com">Mail</a>
-                </div>
-            </div>
-            <div class="motto">Always push boundaries, explore new things, and implement them.</div>
+                <div class="goal">Always push boundaries, explore new things</div>
+            </article>
         </div>
-
     </footer>
 
 </body>
