@@ -44,6 +44,10 @@ ul {
     list-style: none;
 }
 
+h3 {
+    margin: 1rem 0px;
+}
+
 
 
 #header {
@@ -407,18 +411,11 @@ ul {
 }
 
 
-.section--education {
-    /* background-color: #10002b; */
-    /* background: linear-gradient(135deg, #10002b, #10002b, #10002b, #240046, #3b0058); */
-
-}
-
 .education__card {
     padding: 1rem;
     box-shadow:
         0 2px 5px rgba(134, 83, 190, 0.2),
         0 4px 15px rgba(167, 124, 211, 0.15);
-    /* border: 1px solid #E6BBFF; */
     opacity: 0;
     transform: translateY(30px);
     transition: all 1s;
@@ -451,9 +448,7 @@ ul {
 }
 
 .section--contact {
-    /* background-color: #240046; */
     background: linear-gradient(135deg, #10002b, #10002b, #10002b, #240046, #3b0058);
-
 }
 
 
