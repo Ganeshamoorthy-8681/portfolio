@@ -572,6 +572,30 @@ h3 {
     align-self: center;
 }
 
+.section__content--certifications {
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 32px;
+}
+
+.section__content--certifications:hover .section__content--certifications--slides {
+    animation-play-state: paused;
+}
+
+.section__content--certifications--slides {
+    display: inline-block;
+    animation: 25s horizontal-slide infinite linear
+}
+
+
+.certification__image {
+    max-width: 320px;
+    height: 200px;
+    aspect-ratio: 16/1;
+    margin: 0 0.5rem;
+    border-radius: 8px;
+}
+
 
 #footer {
     background: var(--primary-bg-color);
@@ -875,5 +899,15 @@ h3 {
     to {
         transform: translateX(0);
         opacity: 1;
+    }
+}
+
+@keyframes horizontal-slide {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
     }
 }
