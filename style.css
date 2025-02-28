@@ -635,7 +635,7 @@ h3 {
 }
 
 .menu-open~.navigation__list--mobile {
-    height: 320px;
+    height: 360px;
     opacity: 1;
     pointer-events: all;
 }
