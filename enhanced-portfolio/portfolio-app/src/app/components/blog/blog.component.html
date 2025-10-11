@@ -1,0 +1,168 @@
+<section class="blog-section">
+  <div class="blog-container">
+    <!-- Header -->
+    <div class="blog-header">
+      <h1 class="blog-title">My Blog</h1>
+      <p class="blog-subtitle">Insights, tutorials, and thoughts on web development</p>
+    </div>
+
+    <!-- Debug Info -->
+    <div *ngIf="!featuredPost" style="padding: 1rem; background: #f0f0f0; margin: 1rem 0; border-radius: 8px;">
+      <p>Debug: No featured post found</p>
+      <p>All posts count: {{ allPosts.length }}</p>
+      <p>Filtered posts count: {{ filteredPosts.length }}</p>
+    </div>
+
+    <!-- Featured Post -->
+    <div class="featured-post" *ngIf="featuredPost" data-aos="fade-up">
+      <mat-card class="featured-card">
+        <div class="featured-content">
+          <div class="featured-image">
+            <img [src]="featuredPost.featuredImage" [alt]="featuredPost.title" (error)="handleImageError($event)">
+            <div class="featured-badge">
+              <mat-icon>star</mat-icon>
+              <span>Featured</span>
+            </div>
+          </div>
+          <div class="featured-details">
+            <div class="post-meta">
+              <span class="post-date">{{ formatDate(featuredPost.publishDate) }}</span>
+              <span class="post-read-time">{{ getReadTimeText(featuredPost.readTime) }}</span>
+              <span class="post-category">{{ featuredPost.category }}</span>
+            </div>
+            <h2 class="featured-title">{{ featuredPost.title }}</h2>
+            <p class="featured-excerpt">{{ featuredPost.excerpt }}</p>
+            <div class="featured-tags">
+              <mat-chip *ngFor="let tag of featuredPost.tags" class="tag-chip">{{ tag }}</mat-chip>
+            </div>
+            <div class="featured-actions">
+              <button mat-raised-button color="primary" [routerLink]="['/blog', featuredPost.slug]">
+                <mat-icon>read_more</mat-icon>
+                Read Full Article
+              </button>
+              <div class="post-stats">
+                <span class="stat-item">
+                  <mat-icon>visibility</mat-icon>
+                  {{ featuredPost.views }}
+                </span>
+                <span class="stat-item">
+                  <mat-icon>favorite</mat-icon>
+                  {{ featuredPost.likes }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <!-- Filters -->
+    <div class="blog-filters" data-aos="fade-up" data-aos-delay="200">
+      <div class="filter-row">
+        <div class="search-container">
+          <mat-form-field appearance="outline" class="search-field">
+            <mat-label>Search articles...</mat-label>
+            <input matInput [(ngModel)]="searchTerm" (input)="onSearchChange()" placeholder="Search by title, content, or tags...">
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+        </div>
+        
+        <div class="filter-selects">
+          <mat-form-field appearance="outline" class="category-select">
+            <mat-label>Category</mat-label>
+            <mat-select [(value)]="selectedCategory" (selectionChange)="onCategoryChange()">
+              <mat-option *ngFor="let category of categories" [value]="category.value">
+                {{ category.label }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="tag-select" *ngIf="allTags.length > 0">
+            <mat-label>Tags</mat-label>
+            <mat-select [(value)]="selectedTag" (selectionChange)="onTagChange()">
+              <mat-option value="all">All Tags</mat-option>
+              <mat-option *ngFor="let tag of allTags" [value]="tag">{{ tag }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <button mat-stroked-button (click)="resetFilters()" class="reset-btn">
+            <mat-icon>refresh</mat-icon>
+            Reset
+          </button>
+        </div>
+      </div>
+      
+      <div class="results-count" *ngIf="filteredPosts.length > 0">
+        <span>Showing {{ filteredPosts.length }} of {{ allPosts.length }} articles</span>
+      </div>
+    </div>
+
+    <!-- Blog Posts Grid -->
+    <div class="blog-posts-grid" data-aos="fade-up" data-aos-delay="400">
+      <div class="post-card-wrapper" *ngFor="let post of filteredPosts; let i = index" 
+           [attr.data-aos]="'fade-up'" 
+           [attr.data-aos-delay]="i * 100">
+        <mat-card class="post-card" [routerLink]="['/blog', post.slug]">
+          <div class="post-image">
+            <img [src]="post.featuredImage" [alt]="post.title" (error)="handleImageError($event)">
+            <div class="post-overlay">
+              <mat-icon class="read-icon">read_more</mat-icon>
+            </div>
+          </div>
+          
+          <mat-card-content class="post-content">
+            <div class="post-meta">
+              <span class="post-date">{{ formatDate(post.publishDate) }}</span>
+              <span class="post-read-time">{{ getReadTimeText(post.readTime) }}</span>
+            </div>
+            
+            <h3 class="post-title">{{ post.title }}</h3>
+            <p class="post-excerpt">{{ post.excerpt }}</p>
+            
+            <div class="post-tags">
+              <mat-chip *ngFor="let tag of post.tags.slice(0, 3)" class="tag-chip">{{ tag }}</mat-chip>
+              <span *ngIf="post.tags.length > 3" class="more-tags">+{{ post.tags.length - 3 }} more</span>
+            </div>
+          </mat-card-content>
+          
+          <mat-card-actions class="post-actions">
+            <div class="post-stats">
+              <span class="stat-item">
+                <mat-icon>visibility</mat-icon>
+                {{ post.views }}
+              </span>
+              <span class="stat-item">
+                <mat-icon>favorite</mat-icon>
+                {{ post.likes }}
+              </span>
+            </div>
+            <div class="post-category">
+              <mat-chip class="category-chip">{{ post.category }}</mat-chip>
+            </div>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+
+    <!-- No Results -->
+    <div class="no-results" *ngIf="filteredPosts.length === 0" data-aos="fade-up">
+      <mat-icon class="no-results-icon">search_off</mat-icon>
+      <h3 class="no-results-title">No Articles Found</h3>
+      <p class="no-results-message">
+        Try adjusting your search criteria or browse different categories
+      </p>
+      <button mat-stroked-button color="primary" (click)="resetFilters()" class="reset-button">
+        <mat-icon>refresh</mat-icon>
+        Reset Filters
+      </button>
+    </div>
+
+    <!-- Load More (for future pagination) -->
+    <div class="load-more-section" *ngIf="filteredPosts.length > 6" data-aos="fade-up">
+      <button mat-raised-button color="accent" class="load-more-btn">
+        <mat-icon>expand_more</mat-icon>
+        Load More Articles
+      </button>
+    </div>
+  </div>
+</section>

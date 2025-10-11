@@ -1,0 +1,134 @@
+<section class="blog-detail-section">
+  <div class="blog-detail-container">
+    
+    <!-- Loading State -->
+    <div class="loading-container" *ngIf="loading">
+      <mat-card class="loading-card">
+        <div class="loading-content">
+          <mat-icon class="loading-icon">hourglass_empty</mat-icon>
+          <h3>Loading article...</h3>
+        </div>
+      </mat-card>
+    </div>
+
+    <!-- Error State -->
+    <div class="error-container" *ngIf="error && !loading">
+      <mat-card class="error-card">
+        <div class="error-content">
+          <mat-icon class="error-icon">error_outline</mat-icon>
+          <h3>{{ error }}</h3>
+          <p>The article you're looking for might have been moved or doesn't exist.</p>
+          <button mat-raised-button color="primary" (click)="goBack()">
+            <mat-icon>arrow_back</mat-icon>
+            Back to Blog
+          </button>
+        </div>
+      </mat-card>
+    </div>
+
+    <!-- Blog Post Content -->
+    <article class="blog-article" *ngIf="blogPost && !loading && !error">
+      
+      <!-- Navigation Bar -->
+      <div class="blog-nav">
+        <button mat-stroked-button (click)="goBack()" class="back-btn">
+          <mat-icon>arrow_back</mat-icon>
+          Back to Blog
+        </button>
+        
+        <div class="article-actions">
+          <button mat-icon-button (click)="shareBlogPost()" matTooltip="Share Article">
+            <mat-icon>share</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <!-- Article Header -->
+      <header class="article-header" data-aos="fade-up">
+        <div class="article-meta">
+          <span class="article-date">{{ formatDate(blogPost.publishDate) }}</span>
+          <span class="article-read-time">{{ getReadTimeText(blogPost.readTime) }}</span>
+          <span class="article-category">{{ blogPost.category }}</span>
+        </div>
+        
+        <h1 class="article-title">{{ blogPost.title }}</h1>
+        
+        <p class="article-excerpt">{{ blogPost.excerpt }}</p>
+        
+        <div class="article-tags">
+          <mat-chip *ngFor="let tag of blogPost.tags" class="tag-chip">
+            {{ tag }}
+          </mat-chip>
+        </div>
+
+        <div class="article-stats">
+          <div class="stat-group">
+            <div class="stat-item">
+              <mat-icon>visibility</mat-icon>
+              <span>{{ blogPost.views || 0 }} views</span>
+            </div>
+            <div class="stat-item">
+              <mat-icon>favorite</mat-icon>
+              <span>{{ blogPost.likes || 0 }} likes</span>
+            </div>
+          </div>
+          
+          <div class="author-info">
+            <span class="author-name">By {{ blogPost.author }}</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Featured Image -->
+      <div class="featured-image-container" data-aos="fade-up" data-aos-delay="200">
+        <img 
+          [src]="blogPost.featuredImage" 
+          [alt]="blogPost.title" 
+          class="featured-image"
+          >
+      </div>
+
+      <mat-divider class="content-divider"></mat-divider>
+
+      <!-- Article Content -->
+      <div class="article-content" data-aos="fade-up" data-aos-delay="400">
+        <div class="content-wrapper" [innerHTML]="blogPost.content"></div>
+      </div>
+
+      <mat-divider class="content-divider"></mat-divider>
+
+      <!-- Article Footer -->
+      <footer class="article-footer" data-aos="fade-up" data-aos-delay="600">
+        <div class="footer-tags">
+          <h4>Tags:</h4>
+          <div class="tags-list">
+            <mat-chip *ngFor="let tag of blogPost.tags" class="footer-tag-chip">
+              {{ tag }}
+            </mat-chip>
+          </div>
+        </div>
+
+        <div class="footer-actions">
+          <button mat-raised-button color="primary" (click)="shareBlogPost()" class="share-btn">
+            <mat-icon>share</mat-icon>
+            Share Article
+          </button>
+          
+          <button mat-stroked-button (click)="goBack()" class="back-to-blog-btn">
+            <mat-icon>arrow_back</mat-icon>
+            More Articles
+          </button>
+        </div>
+      </footer>
+
+      <!-- Table of Contents (could be added later) -->
+      <!-- <aside class="table-of-contents" data-aos="fade-left" data-aos-delay="800">
+        <h4>Table of Contents</h4>
+        <nav class="toc-nav">
+          Add TOC implementation here
+        </nav>
+      </aside> -->
+
+    </article>
+  </div>
+</section>

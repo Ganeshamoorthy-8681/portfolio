@@ -1,0 +1,84 @@
+<div
+class="header-toolbar h-16 fixed inset-0 z-50 bg-white/95 dark:bg-slate-900/95 border-gray-200 dark:border-slate-700 transition-all duration-300 shadow-lg"
+  [class.scrolled]="isScrolled">
+  <div class="container mx-auto h-full flex items-center justify-between px-4 py-3">
+    <!-- Logo/Brand -->
+    <div class="brand flex items-center cursor-pointer hover:scale-105" (click)="navigateHome()">
+      <div
+        class="logo-container flex items-center justify-center shadow-lg w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl">
+        <span class="logo-text text-white font-bold text-lg">GM</span>
+      </div>
+      <!-- <div class="brand-text ml-3">
+        <span class="brand-name text-gray-900 dark:text-white font-bold text-base leading-tight">Ganesha Moorthy</span>
+        <span class="brand-subtitle text-gray-600 dark:text-gray-300 text-xs font-medium block">Full Stack Developer</span>
+      </div> -->
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:flex items-center space-x-2">
+      @for (item of navigationItems; track $index) {
+      <a (click)="handleNavigation(item)"
+        class="nav-link cursor-pointer px-2.5 py-1 rounded-xl flex items-center gap-2
+         text-gray-700 dark:text-gray-200 font-small"
+        [class.hover:text-purple-600]="!isActiveSection(item.section)"
+        [class.dark:hover:text-purple-600]="!isActiveSection(item.section)"
+        [class.hover:bg-purple-500/10]="!isActiveSection(item.section)"
+        [class.dark:hover:bg-purple-500/10]="!isActiveSection(item.section)"
+        [class.bg-gradient-to-r]="isActiveSection(item.section)"
+        [class.from-purple-400]="isActiveSection(item.section)"
+        [class.to-purple-500]="isActiveSection(item.section)"
+        [class.text-white]="isActiveSection(item.section)" [class.shadow-lg]="isActiveSection(item.section)">
+        <mat-icon class="nav-icon text-lg">{{ item.icon }}</mat-icon>
+        <span class="nav-text text-sm">{{ item.label }}</span>
+      </a>
+
+      }
+    </nav>
+    <!-- Theme Toggle & Mobile Menu -->
+    <div class="flex items-center space-x-3">
+      <!-- Theme Toggle -->
+      <button (click)="toggleTheme()"
+        class="flex justify-center items-center py-1.5 w-10 h-10 rounded-xl dark:bg-slate-800 dark:text-gray-200 hover:bg-orange-500 hover:text-white  hover:scale-110 hover:shadow-lg"
+        [attr.aria-label]="(isDarkTheme$ | async) ? 'Switch to light theme' : 'Switch to dark theme'">
+        <mat-icon class="text-xl">{{ (isDarkTheme$ | async) ? 'light_mode' : 'dark_mode' }}</mat-icon>
+      </button>
+
+      <!-- Mobile Menu Button -->
+      <button class="flex lg:hidden py-1.5 w-10 h-10 
+         justify-center items-center rounded-xl
+          dark:bg-slate-800 text-gray-700
+           dark:text-gray-200 hover:bg-gradient-to-br
+            hover:from-indigo-500 hover:to-purple-600
+             hover:text-white hover:shadow-lg" (click)="toggleMobileMenu()"
+        [attr.aria-label]="isMenuOpen ? 'Close menu' : 'Open menu'">
+        <mat-icon class="text-xl">{{ isMenuOpen ? 'close' : 'menu' }}</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <div
+    class="lg:hidden scale-y-0 opacity-0 absolute top-full left-0 w-full bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl border-t border-gray-200 dark:border-slate-700 shadow-2xl transform origin-top duration-300 ease-out"
+    [class.!scale-y-100]="isMenuOpen" [class.!opacity-100]="isMenuOpen">
+    <nav class="flex flex-col py-4">
+      @for (item of navigationItems; track $index) {
+      <a (click)="handleNavigation(item)"
+        class="px-6 py-4 text-sm font-medium cursor-pointer flex items-center gap-3 text-gray-700 dark:text-gray-200 border-l-4"
+        [class.hover:text-purple-600]="!isActiveSection(item.section)"
+        [class.dark:hover:text-purple-600]="!isActiveSection(item.section)"
+        [class.hover:bg-purple-500/10]="!isActiveSection(item.section)"
+        [class.dark:hover:bg-purple-500/10]="!isActiveSection(item.section)"
+        [class.hover:border-purple-500]="!isActiveSection(item.section)"
+        [class.active]="isActiveSection(item.section)" 
+        [class.bg-gradient-to-r]="isActiveSection(item.section)"
+        [class.from-purple-400]="isActiveSection(item.section)"
+        [class.to-purple-500]="isActiveSection(item.section)"
+        [class.text-white]="isActiveSection(item.section)"
+        [class.border-purple-500]="isActiveSection(item.section)">
+        <mat-icon class="text-xl">{{ item.icon }}</mat-icon>
+        <span>{{ item.label }}</span>
+      </a>
+    }
+    </nav>
+  </div>
+</div>
