@@ -1,0 +1,24 @@
+<section id="education" class="education-section">
+  <div class="education-container">
+    <!-- Header -->
+    <div class="education-header">
+      <h2 class="education-title">Education</h2>
+    </div>
+
+    <!-- Simple Education List -->
+    <div class="education-list" *ngIf="education.length > 0">
+      <div class="education-item" *ngFor="let edu of education">
+        <div class="education-content">
+          <h3 class="degree">{{ edu.degree }} in {{ edu.field }}</h3>
+          <p class="institution">{{ edu.institution }}</p>
+          <span class="duration">{{ edu.duration }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="education.length === 0">
+      <p>Education information will be displayed here.</p>
+    </div>
+  </div>
+</section>

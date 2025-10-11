@@ -1,0 +1,107 @@
+<section id="skills" class="skills-section">
+  <div class="container mx-auto px-4">
+    <!-- Section Header -->
+    <div class="section-header">
+      <div class="section-header-content">
+        <h2 class="section-title">
+          <span class="title-main">SKILLS</span>
+          <span class="title-accent">& EXPERTISE</span>
+        </h2>
+        <p class="section-description">
+          Technologies and tools I use to bring ideas to life
+        </p>
+        <div class="title-underline"></div>
+      </div>
+    </div>
+
+    <!-- Skills Categories -->
+    <div class="skills-container">
+      <div class="skills-grid">
+        <div 
+          *ngFor="let category of skillCategories; let i = index" 
+          class="skill-category-card"
+          [class]="'category-' + i"
+        >
+          <!-- Category Header -->
+          <div class="category-header">
+            <div class="category-icon-wrapper">
+              <mat-icon class="category-icon">{{ category.icon }}</mat-icon>
+            </div>
+            <div class="category-info">
+              <h3 class="category-title">{{ category.title }}</h3>
+              <p class="category-subtitle">{{ category.subtitle }}</p>
+            </div>
+          </div>
+
+          <!-- Skills Grid -->
+          <div class="skills-list">
+            <div 
+              *ngFor="let skill of category.skills; let skillIndex = index" 
+              class="skill-item"
+              (mouseenter)="onSkillHover(skill, true)"
+              (mouseleave)="onSkillHover(skill, false)"
+              [style.animation-delay.ms]="skillIndex * 100"
+            >
+              <div class="skill-content">
+                <div class="skill-icon-wrapper">
+                  <img 
+                    [src]="skill.image" 
+                    [alt]="skill.name + ' logo'" 
+                    class="skill-icon"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="skill-info">
+                  <span class="skill-name">{{ skill.name }}</span>
+                  <div class="skill-hover-effect">
+                    <div class="skill-dots">
+                      <span class="dot" *ngFor="let dot of [1,2,3,4,5]"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="skill-bg-glow"></div>
+            </div>
+          </div>
+
+          <!-- Category Footer -->
+          <div class="category-footer">
+            <div class="skill-count">
+              {{ category.skills.length }} {{ category.skills.length === 1 ? 'Technology' : 'Technologies' }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills Summary -->
+    <div class="skills-summary">
+      <div class="summary-stats">
+        <div class="stat-item">
+          <div class="stat-number">{{ frontendSkills.length + backendSkills.length + toolsSkills.length }}</div>
+          <div class="stat-label">Technologies</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Categories</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">2+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background Decorations -->
+  <div class="skills-bg-decoration">
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    <div class="floating-shape shape-3"></div>
+    <div class="code-pattern">
+      <div class="code-line"></div>
+      <div class="code-line"></div>
+      <div class="code-line"></div>
+    </div>
+  </div>
+</section>

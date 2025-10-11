@@ -1,0 +1,169 @@
+<section id="certifications" class="certifications-section">
+  <div class="certifications-container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <h2 class="section-title">Professional Certifications</h2>
+      <p class="section-subtitle">Certified skills and proven expertise across various technologies</p>
+    </div>
+
+    <!-- Filter Controls -->
+    <div class="filter-controls" data-aos="fade-up" data-aos-delay="200">
+      <!-- Provider Filter -->
+      <div class="provider-filter">
+        <mat-form-field appearance="outline" class="provider-select">
+          <mat-label>Filter by Provider</mat-label>
+          <mat-select [(value)]="selectedProvider" (selectionChange)="onProviderChange()">
+            <mat-option *ngFor="let provider of providers" [value]="provider.value">
+              <mat-icon class="provider-icon">{{ provider.icon }}</mat-icon>
+              <span class="provider-label">{{ provider.label }}</span>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-container">
+        <mat-form-field class="search-field" appearance="outline">
+          <mat-label>Search certifications...</mat-label>
+          <input 
+            matInput 
+            [(ngModel)]="searchTerm" 
+            (input)="onSearchChange()"
+            placeholder="Search by name, issuer, or credential ID..."
+          >
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Certifications Count -->
+    <div class="certifications-count" *ngIf="filteredCertifications.length > 0" data-aos="fade-up" data-aos-delay="300">
+      <span class="count-text">
+        Showing {{ filteredCertifications.length }} of {{ allCertifications.length }} certifications
+      </span>
+    </div>
+
+    <!-- Certifications Grid -->
+    <div class="certifications-grid" data-aos="fade-up" data-aos-delay="400">
+      <div 
+        class="certification-card-wrapper" 
+        *ngFor="let certification of filteredCertifications; let i = index"
+        [attr.data-aos]="'flip-left'"
+        [attr.data-aos-delay]="i * 100">
+        
+        <mat-card class="certification-card" [class]="getCertificationProvider(certification)">
+          <!-- Certification Image -->
+          <div class="certification-image-container" (click)="openCertificationModal(certification)">
+            <img 
+              [src]="certification.image" 
+              [alt]="certification.name + ' certificate'"
+              class="certification-image"
+            >
+            <div class="image-overlay">
+              <div class="overlay-content">
+                <mat-icon class="zoom-icon">zoom_in</mat-icon>
+                <span class="overlay-text">Click to enlarge</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Certification Header -->
+          <mat-card-header class="certification-header">
+            <div class="header-content">
+              <div class="certification-title-section">
+                <mat-icon class="certification-icon">{{ getCertificationIcon(certification) }}</mat-icon>
+                <div class="title-info">
+                  <h3 class="certification-title">{{ certification.name }}</h3>
+                  <p class="certification-issuer" *ngIf="certification.issuer">{{ certification.issuer }}</p>
+                </div>
+              </div>
+              <div class="certification-badge">
+                <mat-chip class="verified-chip">
+                  <mat-icon>verified</mat-icon>
+                  Verified
+                </mat-chip>
+              </div>
+            </div>
+          </mat-card-header>
+
+          <!-- Certification Content -->
+          <mat-card-content class="certification-content">
+            <div class="certification-details">
+              <div class="detail-item" *ngIf="certification.date">
+                <mat-icon class="detail-icon">event</mat-icon>
+                <span class="detail-label">Issued:</span>
+                <span class="detail-value">{{ formatDate(certification.date) }}</span>
+              </div>
+              <div class="detail-item" *ngIf="certification.credentialId">
+                <mat-icon class="detail-icon">badge</mat-icon>
+                <span class="detail-label">Credential ID:</span>
+                <span class="detail-value credential-id">{{ certification.credentialId }}</span>
+                <button 
+                  mat-icon-button 
+                  class="copy-btn"
+                  (click)="copyCertificationLink(certification)"
+                  matTooltip="Copy Credential ID">
+                  <mat-icon>content_copy</mat-icon>
+                </button>
+              </div>
+            </div>
+          </mat-card-content>
+
+          <!-- Certification Actions -->
+          <mat-card-actions class="certification-actions">
+            <button 
+              mat-stroked-button 
+              color="primary"
+              (click)="openCertificationModal(certification)"
+              class="action-button view-btn">
+              <mat-icon>visibility</mat-icon>
+              View Certificate
+            </button>
+            <button 
+              mat-stroked-button
+              (click)="downloadCertificate(certification)"
+              class="action-button download-btn">
+              <mat-icon>download</mat-icon>
+              Download
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+
+    <!-- No Results -->
+    <div class="no-results" *ngIf="filteredCertifications.length === 0" data-aos="fade-up">
+      <mat-icon class="no-results-icon">search_off</mat-icon>
+      <h3 class="no-results-title">No Certifications Found</h3>
+      <p class="no-results-message">
+        Try adjusting your search criteria or browse different providers
+      </p>
+      <button 
+        mat-stroked-button 
+        color="primary" 
+        (click)="resetFilters()"
+        class="reset-button">
+        <mat-icon>refresh</mat-icon>
+        Reset Filters
+      </button>
+    </div>
+
+    <!-- Statistics Section -->
+    <div class="certifications-stats" data-aos="fade-up" data-aos-delay="600">
+      <div class="stats-container">
+        <div class="stat-item">
+          <div class="stat-number">{{ allCertifications.length }}+</div>
+          <div class="stat-label">Certifications</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">5+</div>
+          <div class="stat-label">Technology Areas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Verified</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

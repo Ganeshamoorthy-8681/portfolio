@@ -1,0 +1,84 @@
+<section id="experience" class="experience-section">
+  <div class="experience-container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <h2 class="section-title">Professional Experience</h2>
+      <p class="section-subtitle">My journey through various roles and the impact I've made</p>
+    </div>
+
+    <!-- Experience Timeline -->
+    <div class="timeline-container">
+      <div class="timeline-line"></div>
+      
+      <div class="experience-item" 
+           *ngFor="let experience of experiences; let i = index" 
+           [class.current]="isCurrentRole(experience)"
+           [attr.data-aos]="'fade-up'"
+           [attr.data-aos-delay]="i * 200">
+        
+        <!-- Timeline Node -->
+        <div class="timeline-node">
+          <div class="node-icon">
+            <mat-icon>{{ getExperienceIcon(experience.company) }}</mat-icon>
+          </div>
+        </div>
+
+        <!-- Experience Card -->
+        <mat-card class="experience-card">
+          <mat-card-header class="experience-header">
+            <div class="header-content">
+              <div class="company-info">
+                <h3 class="company-name">{{ experience.company }}</h3>
+                <h4 class="role-title">{{ experience.role }}</h4>
+              </div>
+              <div class="duration-badge" [class.current-badge]="isCurrentRole(experience)">
+                <mat-icon class="duration-icon">schedule</mat-icon>
+                <span>{{ experience.duration }}</span>
+                <mat-chip *ngIf="isCurrentRole(experience)" class="current-chip">
+                  Current
+                </mat-chip>
+              </div>
+            </div>
+          </mat-card-header>
+
+          <mat-card-content class="experience-content">
+            <div class="description-list">
+              <div class="description-item" 
+                   *ngFor="let desc of experience.description; let j = index"
+                   [attr.data-aos]="'fade-left'"
+                   [attr.data-aos-delay]="(i * 200) + (j * 100)">
+                <div class="bullet-point"></div>
+                <p class="description-text">{{ desc }}</p>
+              </div>
+            </div>
+          </mat-card-content>
+
+          <mat-card-actions class="experience-actions" *ngIf="isCurrentRole(experience)">
+            <button mat-stroked-button class="action-btn">
+              <mat-icon>visibility</mat-icon>
+              View Details
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+
+    <!-- Experience Summary -->
+    <div class="experience-summary" data-aos="fade-up" data-aos-delay="600">
+      <div class="summary-stats">
+        <div class="stat-item">
+          <div class="stat-number">{{ experiences.length }}+</div>
+          <div class="stat-label">Companies</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">3+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Projects Delivered</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

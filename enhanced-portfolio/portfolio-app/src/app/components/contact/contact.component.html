@@ -1,0 +1,166 @@
+<section id="contact" class="contact-section">
+  <div class="contact-container">
+    <!-- Header -->
+    <div class="contact-header" data-aos="fade-up">
+      <h2 class="contact-title">Get In Touch</h2>
+      <p class="contact-subtitle">Let's discuss your next project or collaboration</p>
+    </div>
+
+    <div class="contact-content">
+      <!-- Contact Information -->
+      <div class="contact-info" data-aos="fade-right" data-aos-delay="200">
+        <mat-card class="info-card">
+          <div class="info-header">
+            <mat-icon class="info-icon">connect_without_contact</mat-icon>
+            <h3>Let's Connect</h3>
+            <p>Ready to bring your ideas to life? I'm always open to discussing new opportunities and interesting projects.</p>
+          </div>
+
+          <!-- Personal Info -->
+          <div class="personal-info" *ngIf="personalInfo">
+            <div class="info-item">
+              <mat-icon>person</mat-icon>
+              <div class="info-details">
+                <span class="info-label">Name</span>
+                <span class="info-value">{{ personalInfo.name }}</span>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <mat-icon>email</mat-icon>
+              <div class="info-details">
+                <span class="info-label">Email</span>
+                <span class="info-value">{{ personalInfo.email }}</span>
+              </div>
+            </div>
+
+            <div class="info-item" *ngIf="personalInfo.phone">
+              <mat-icon>phone</mat-icon>
+              <div class="info-details">
+                <span class="info-label">Phone</span>
+                <span class="info-value">{{ personalInfo.phone }}</span>
+              </div>
+            </div>
+
+            <div class="info-item" *ngIf="personalInfo.location">
+              <mat-icon>location_on</mat-icon>
+              <div class="info-details">
+                <span class="info-label">Location</span>
+                <span class="info-value">{{ personalInfo.location }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Links -->
+          <div class="social-links">
+            <h4>Connect with me</h4>
+            <div class="social-buttons">
+              <button 
+                mat-fab 
+                *ngFor="let social of socialLinks"
+                (click)="openSocialLink(social.url)"
+                [style.background-color]="social.color"
+                [matTooltip]="social.name"
+                class="social-btn">
+                <mat-icon>{{ social.icon }}</mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <!-- Resume Download -->
+          <div class="resume-section" *ngIf="personalInfo?.resumeUrl">
+            <button mat-raised-button color="primary" (click)="downloadResume()" class="resume-btn">
+              <mat-icon>download</mat-icon>
+              Download Resume
+            </button>
+          </div>
+        </mat-card>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-section" data-aos="fade-left" data-aos-delay="400">
+        <mat-card class="form-card">
+          <div class="form-header">
+            <mat-icon class="form-icon">send</mat-icon>
+            <h3>Send a Message</h3>
+            <p>Have a project in mind? Let's discuss how we can work together.</p>
+          </div>
+
+          <form (ngSubmit)="onSubmit()" #contactFormRef="ngForm" class="contact-form">
+            <!-- Name Field -->
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label>Your Name</mat-label>
+              <input 
+                matInput 
+                [(ngModel)]="contactForm.name" 
+                name="name" 
+                required
+                placeholder="Enter your full name">
+              <mat-icon matSuffix>person</mat-icon>
+            </mat-form-field>
+
+            <!-- Email Field -->
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label>Email Address</mat-label>
+              <input 
+                matInput 
+                type="email"
+                [(ngModel)]="contactForm.email" 
+                name="email" 
+                required
+                placeholder="your.email@example.com">
+              <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+
+            <!-- Subject Field -->
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label>Subject</mat-label>
+              <input 
+                matInput 
+                [(ngModel)]="contactForm.subject" 
+                name="subject" 
+                required
+                placeholder="Brief subject of your message">
+              <mat-icon matSuffix>subject</mat-icon>
+            </mat-form-field>
+
+            <!-- Message Field -->
+            <mat-form-field appearance="outline" class="form-field message-field">
+              <mat-label>Message</mat-label>
+              <textarea 
+                matInput 
+                [(ngModel)]="contactForm.message" 
+                name="message" 
+                required
+                rows="6"
+                placeholder="Tell me about your project or how I can help you..."></textarea>
+              <mat-icon matSuffix>message</mat-icon>
+            </mat-form-field>
+
+            <!-- Submit Button -->
+            <div class="form-actions">
+              <button 
+                mat-raised-button 
+                color="primary" 
+                type="submit"
+                [disabled]="isSubmitting || !contactFormRef.form.valid"
+                class="submit-btn">
+                <mat-icon *ngIf="!isSubmitting">send</mat-icon>
+                <mat-icon *ngIf="isSubmitting" class="spinning">hourglass_empty</mat-icon>
+                {{ isSubmitting ? 'Sending...' : 'Send Message' }}
+              </button>
+            </div>
+          </form>
+        </mat-card>
+      </div>
+    </div>
+
+    <!-- Footer Note -->
+    <div class="contact-footer" data-aos="fade-up" data-aos-delay="600">
+      <p>
+        <mat-icon>schedule</mat-icon>
+        I typically respond within 24 hours. Looking forward to hearing from you!
+      </p>
+    </div>
+  </div>
+</section>

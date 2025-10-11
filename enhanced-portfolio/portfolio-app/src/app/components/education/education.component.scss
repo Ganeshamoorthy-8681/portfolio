@@ -1,0 +1,97 @@
+@use '@angular/material' as mat;
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.education-section {
+  padding: 2rem 0;
+  background: var(--bg-primary);
+
+  .education-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+}
+
+/* Header */
+.education-header {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  .education-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    
+    @media (max-width: 768px) {
+      font-size: 1.8rem;
+    }
+  }
+
+  .education-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    
+    @media (max-width: 768px) {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+/* Education List */
+.education-list {
+  max-width: 600px;
+  margin: 0 auto;
+  
+  .education-item {
+    background: var(--surface-primary);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+    transition: box-shadow 0.3s ease;
+    
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .education-degree {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+    
+    .education-institution {
+      font-size: 1rem;
+      color: var(--primary-color);
+      margin-bottom: 0.25rem;
+    }
+    
+    .education-duration {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    
+    @media (max-width: 768px) {
+      padding: 1rem;
+      
+      .education-degree {
+        font-size: 1.1rem;
+      }
+      
+      .education-institution {
+        font-size: 0.95rem;
+      }
+      
+      .education-duration {
+        font-size: 0.85rem;
+      }
+    }
+  }
+}
