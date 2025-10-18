@@ -1,33 +1,26 @@
-import { Directive, ElementRef, Input, OnInit, OnDestroy } from '@angular/core';
-import { AnimationService } from '../services/animation.service';
+import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
 
 @Directive({
-  selector: '[appScrollAnimate]',
-  standalone: true
+  selector: '[appScrollAnimate]'
 })
-export class ScrollAnimateDirective implements OnInit, OnDestroy {
-  @Input() animationType: 'fadeIn' | 'slideUp' | 'slideLeft' | 'slideRight' = 'fadeIn';
-  @Input() delay: number = 0;
+export class ScrollAnimateDirective implements OnInit {
+  @Input('appScrollAnimate') animationClass = 'animate-fade-in';
 
-  constructor(
-    private elementRef: ElementRef,
-    private animationService: AnimationService
-  ) {}
+  constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit(): void {
-    // Add initial animation classes
-    this.elementRef.nativeElement.classList.add('animate-element', this.animationType);
-    
-    // Add delay if specified
-    if (this.delay > 0) {
-      this.elementRef.nativeElement.style.animationDelay = `${this.delay}ms`;
-    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            this.renderer.addClass(this.el.nativeElement, this.animationClass);
+            observer.unobserve(this.el.nativeElement);
+          }
+        });
+      },
+      { threshold: 0.3 } // trigger when 10% visible
+    );
 
-    // Observe for intersection
-    this.animationService.observeElement(this.elementRef);
-  }
-
-  ngOnDestroy(): void {
-    this.animationService.unobserveElement(this.elementRef);
+    observer.observe(this.el.nativeElement);
   }
 }

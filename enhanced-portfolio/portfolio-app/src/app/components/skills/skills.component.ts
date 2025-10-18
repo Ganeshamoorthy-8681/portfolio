@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { PortfolioService } from '../../services/portfolio-data.service';
 import { Skill } from '../../models/portfolio.model';
+import { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';
 
 @Component({
   selector: 'app-skills',
@@ -12,15 +13,19 @@ import { Skill } from '../../models/portfolio.model';
     CommonModule,
     MatCardModule,
     MatChipsModule,
-    MatIconModule
+    MatIconModule,
+    ScrollAnimateDirective
   ],
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.css'
 })
-export class SkillsComponent implements OnInit {
+export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
   frontendSkills: Skill[] = [];
   backendSkills: Skill[] = [];
   toolsSkills: Skill[] = [];
+  
+  isVisible = false;
+  private observer!: IntersectionObserver;
   
   skillCategories = [
     {
@@ -46,7 +51,7 @@ export class SkillsComponent implements OnInit {
     }
   ];
 
-  constructor(private portfolioService: PortfolioService) {}
+  constructor(private portfolioService: PortfolioService, private elementRef: ElementRef) {}
 
   ngOnInit(): void {
     this.frontendSkills = this.portfolioService.getSkillsByCategory('frontend');
@@ -59,10 +64,13 @@ export class SkillsComponent implements OnInit {
     this.skillCategories[2].skills = this.toolsSkills;
   }
 
-  onSkillHover(skill: Skill, isEnter: boolean): void {
-    // Add hover animations or effects here if needed
-    if (isEnter) {
-      // console.log(`Hovering over ${skill.name}`);
+  ngAfterViewInit(): void {
+    // this.setupScrollAnimation();
+  }
+
+  ngOnDestroy(): void {
+    if (this.observer) {
+      this.observer.disconnect();
     }
   }
 }

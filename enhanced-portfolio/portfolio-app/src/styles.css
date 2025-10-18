@@ -2,13 +2,29 @@
 
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
+@plugin "daisyui";
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
-
-
-
 @theme {
+	
+  /* Portfolio Color System - Dark Theme (Default) */
   --color-primary-dark-bg: #10002B;
   --color-primary-bg: #F9FAFB;
+  --color-primary: #9D4EDD;
+  --color-primary-dark: #5A189A;
+  --color-accent: #C77DFF;
+  --color-secondary-bg: #240046;
+  --color-surface-bg: #3B0058;
+  --color-text-primary: #F8F4FF;
+  --color-text-secondary: #908E93;
+  
+  /* Light Theme Colors */
+  --color-light-bg: #FFFFFF;
+  --color-light-secondary-bg: #F8F9FA;
+  --color-light-surface-bg: #E9ECEF;
+  --color-light-text-primary: #212529;
+  --color-light-text-secondary: #6C757D;
+
+	
   --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
   --animate-fade-in-left: fadeInLeft 0.8s ease-out forwards;
   --animate-fade-in-right: fadeInRight 0.8s ease-out forwards;

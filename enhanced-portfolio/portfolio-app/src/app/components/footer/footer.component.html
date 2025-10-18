@@ -1,18 +1,127 @@
-<footer class="footer-section bg-primary-900 py-12">
-  <div class="container mx-auto px-4">
-    <div class="text-center">
-      <div class="flex justify-center gap-6 mb-6">
-        <a href="https://www.linkedin.com/in/ganesha-moorthy/" target="_blank" class="social-link">
-          <img src="assets/images/linkedin.png" alt="LinkedIn" class="w-6 h-6">
-          LinkedIn
-        </a>
-        <a href="mailto:ganeshamoorthy8681@gmail.com" class="social-link">
-          <img src="assets/images/mail.png" alt="Email" class="w-6 h-6">
-          Mail
-        </a>
+<footer class="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 transition-all duration-500 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    
+    <!-- Main Footer Content -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      
+      <!-- Brand Section -->
+      <div class="text-center md:text-left">
+        <div class="flex items-center justify-center md:justify-start mb-4">
+          <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-xl flex items-center justify-center shadow-lg">
+            <span class="text-white font-bold text-lg">GM</span>
+          </div>
+          <div class="ml-3">
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white">Ganesha Moorthy</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Full Stack Developer</p>
+          </div>
+        </div>
+        <p class="text-gray-600 dark:text-gray-400 italic text-sm max-w-xs mx-auto md:mx-0">
+          "Always push the boundaries. Explore new possibilities, embrace challenges, and create innovative solutions."
+        </p>
       </div>
-      <p class="text-gray-400 italic">"Always push the boundaries. Explore ... "</p>
-      <p class="text-sm text-gray-500 mt-4">© 2024 Ganesha Moorthy. All rights reserved.</p>
+
+      <!-- Quick Links -->
+      <div class="text-center">
+        <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Links</h4>
+        <nav class="space-y-2">
+          <a href="/#skills" class="block text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 text-sm">
+            Skills & Expertise
+          </a>
+          <a href="/#experience" class="block text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 text-sm">
+            Professional Experience
+          </a>
+          <a href="/#projects" class="block text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 text-sm">
+            Featured Projects
+          </a>
+          <a href="/blog" class="block text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 text-sm">
+            Blog & Articles
+          </a>
+          <a href="/#contact" class="block text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 text-sm">
+            Get In Touch
+          </a>
+        </nav>
+      </div>
+
+      <!-- Contact & Social -->
+      <div class="text-center md:text-right">
+        <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Connect With Me</h4>
+        
+        <!-- Social Links -->
+        <div class="flex justify-center md:justify-end gap-4 mb-4">
+          <a 
+            href="https://www.linkedin.com/in/ganesha-moorthy/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="group flex items-center gap-2 px-3 py-2 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-500 transition-all duration-200 hover:shadow-md"
+          >
+            <mat-icon class="text-blue-600 dark:text-blue-400 text-lg group-hover:scale-110 transition-transform duration-200">
+              link
+            </mat-icon>
+            <span class="text-sm text-gray-700 dark:text-gray-300 group-hover:text-purple-600 dark:group-hover:text-purple-400">
+              LinkedIn
+            </span>
+          </a>
+          
+          <a 
+            href="mailto:ganeshamoorthy8681@gmail.com"
+            class="group flex items-center gap-2 px-3 py-2 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-500 transition-all duration-200 hover:shadow-md"
+          >
+            <mat-icon class="text-red-500 dark:text-red-400 text-lg group-hover:scale-110 transition-transform duration-200">
+              email
+            </mat-icon>
+            <span class="text-sm text-gray-700 dark:text-gray-300 group-hover:text-purple-600 dark:group-hover:text-purple-400">
+              Email
+            </span>
+          </a>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="space-y-1 text-sm text-gray-600 dark:text-gray-400">
+          <p class="flex items-center justify-center md:justify-end gap-2">
+            <mat-icon class="text-xs">location_on</mat-icon>
+            <span>Available for Remote Work</span>
+          </p>
+          <p class="flex items-center justify-center md:justify-end gap-2">
+            <mat-icon class="text-xs">schedule</mat-icon>
+            <span>Open for Opportunities</span>
+          </p>
+        </div>
+      </div>
     </div>
+
+    <!-- Divider -->
+    <div class="border-t border-gray-200 dark:border-gray-700 pt-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        
+        <!-- Copyright -->
+        <div class="text-center md:text-left">
+          <p class="text-sm text-gray-500 dark:text-gray-500">
+            © {{ currentYear }} Ganesha Moorthy. All rights reserved.
+          </p>
+          <p class="text-xs text-gray-400 dark:text-gray-600 mt-1">
+            Built with Angular & Tailwind CSS
+          </p>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="flex items-center gap-2 text-xs text-gray-400 dark:text-gray-600">
+          <span>Crafted with</span>
+          <div class="flex items-center gap-1">
+            <mat-icon class="text-red-500 text-sm animate-pulse">favorite</mat-icon>
+            <span>& Angular</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background Decorations -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <!-- Gradient Decoration -->
+    <div class="absolute top-0 left-1/4 w-64 h-64 bg-purple-500/5 dark:bg-purple-400/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-1/4 w-48 h-48 bg-blue-500/5 dark:bg-blue-400/10 rounded-full blur-2xl"></div>
+    
+    <!-- Top Border Gradient -->
+    <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-500/30 dark:via-purple-400/40 to-transparent"></div>
   </div>
 </footer>
