@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { Experience } from '../../models/portfolio.model';
 import { PortfolioService } from '../../services/portfolio-data.service';
+import { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';
 
 @Component({
   selector: 'app-experience',
@@ -14,7 +15,8 @@ import { PortfolioService } from '../../services/portfolio-data.service';
     MatCardModule,
     MatChipsModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    ScrollAnimateDirective
   ],
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.css'
@@ -42,7 +44,7 @@ export class ExperienceComponent implements OnInit {
   getExperienceIcon(company: string): string {
     // Return appropriate icon based on company or role
     const icons: { [key: string]: string } = {
-      'Tech Solutions Inc.': 'business',
+      'Commvault(formely appranix)': 'business',
       'Digital Innovation Ltd.': 'code',
       'StartupCorp': 'rocket_launch'
     };

@@ -1,17 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
-// Angular Material imports
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
-import { MatTooltipModule } from '@angular/material/tooltip';
-
-// Models and Services
+import { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';
 import { PersonalInfo } from '../../models/portfolio.model';
 import { PortfolioService } from '../../services/portfolio-data.service';
 
@@ -28,13 +19,8 @@ interface ContactForm {
   imports: [
     CommonModule,
     FormsModule,
-    MatCardModule,
-    MatButtonModule,
     MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSnackBarModule,
-    MatTooltipModule
+    ScrollAnimateDirective
   ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
@@ -71,8 +57,7 @@ export class ContactComponent implements OnInit {
   ];
 
   constructor(
-    private portfolioService: PortfolioService,
-    private snackBar: MatSnackBar
+    private portfolioService: PortfolioService
   ) {}
 
   ngOnInit(): void {
@@ -109,13 +94,31 @@ export class ContactComponent implements OnInit {
     }
   }
 
-  private isFormValid(): boolean {
+  // Public method for template use
+  isFormValid(): boolean {
     return !!(
       this.contactForm.name.trim() &&
       this.contactForm.email.trim() &&
       this.contactForm.subject.trim() &&
       this.contactForm.message.trim()
     );
+  }
+
+  openEmailClient(email: string): void {
+    window.location.href = `mailto:${email}`;
+  }
+
+  getSocialIcon(platform: string): string {
+    const iconMap: { [key: string]: string } = {
+      'linkedin': 'business',
+      'github': 'code',
+      'twitter': 'alternate_email',
+      'instagram': 'photo_camera',
+      'facebook': 'people',
+      'youtube': 'play_circle',
+      'website': 'language'
+    };
+    return iconMap[platform.toLowerCase()] || 'link';
   }
 
   private resetForm(): void {
@@ -128,17 +131,15 @@ export class ContactComponent implements OnInit {
   }
 
   private showSuccessMessage(): void {
-    this.snackBar.open('Message sent successfully! I\'ll get back to you soon.', 'Close', {
-      duration: 5000,
-      panelClass: ['success-snackbar']
-    });
+    // Simple console log for now - can be replaced with toast notification
+    console.log('Message sent successfully! I\'ll get back to you soon.');
+    alert('Message sent successfully! I\'ll get back to you soon.');
   }
 
   private showErrorMessage(message: string): void {
-    this.snackBar.open(message, 'Close', {
-      duration: 3000,
-      panelClass: ['error-snackbar']
-    });
+    // Simple console log for now - can be replaced with toast notification
+    console.error('Error:', message);
+    alert(`Error: ${message}`);
   }
 
   openSocialLink(url: string): void {

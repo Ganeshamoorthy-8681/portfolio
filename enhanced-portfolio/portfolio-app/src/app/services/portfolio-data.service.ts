@@ -18,33 +18,33 @@ export class PortfolioService {
     },
     skills: [
       // Frontend Skills
-      { name: 'HTML', image: 'assets/images/html.png', level: 95, category: 'frontend' },
-      { name: 'CSS', image: 'assets/images/css.png', level: 90, category: 'frontend' },
-      { name: 'JAVASCRIPT', image: 'assets/images/js.png', level: 85, category: 'frontend' },
-      { name: 'SASS', image: 'assets/images/sass.png', level: 80, category: 'frontend' },
-      { name: 'TYPESCRIPT', image: 'assets/images/typescript.png', level: 85, category: 'frontend' },
-      { name: 'ANGULAR', image: 'assets/images/angular.png', level: 90, category: 'frontend' },
-      { name: 'REACT', image: 'assets/images/react.png', level: 75, category: 'frontend' },
-      
+      { name: 'HTML', image: 'assets/images/html.png', level: 95, category: 'frontend', useCase: 'Building semantic web page structures' },
+      { name: 'CSS', image: 'assets/images/css.png', level: 90, category: 'frontend', useCase: 'Styling responsive and modern interfaces' },
+      { name: 'JAVASCRIPT', image: 'assets/images/js.png', level: 85, category: 'frontend', useCase: 'Creating interactive web applications' },
+      { name: 'SASS', image: 'assets/images/sass.png', level: 80, category: 'frontend', useCase: 'Writing maintainable CSS with variables' },
+      { name: 'TYPESCRIPT', image: 'assets/images/typescript.png', level: 85, category: 'frontend', useCase: 'Type-safe JavaScript development' },
+      { name: 'ANGULAR', image: 'assets/images/angular.png', level: 90, category: 'frontend', useCase: 'Building enterprise-level web applications' },
+      { name: 'REACT', image: 'assets/images/react.png', level: 75, category: 'frontend', useCase: 'Developing component-based user interfaces' },
+
       // Backend Skills
-      { name: 'JAVA', image: 'assets/images/java.png', level: 80, category: 'backend' },
-      { name: 'SPRING', image: 'assets/images/spring.png', level: 75, category: 'backend' },
-      { name: 'SPRING BOOT', image: 'assets/images/Spring_Boot.png', level: 80, category: 'backend' },
-      { name: 'POSTGRESQL', image: 'assets/images/postrgressql.png', level: 70, category: 'backend' },
-      { name: 'MONGO DB', image: 'assets/images/mongo-db.png', level: 70, category: 'backend' },
-      
+      { name: 'JAVA', image: 'assets/images/java.png', level: 80, category: 'backend', useCase: 'Object-oriented backend development' },
+      { name: 'SPRING', image: 'assets/images/spring.png', level: 75, category: 'backend', useCase: 'Dependency injection and MVC architecture' },
+      { name: 'SPRING BOOT', image: 'assets/images/Spring_Boot.png', level: 80, category: 'backend', useCase: 'Rapid microservices development' },
+      { name: 'POSTGRESQL', image: 'assets/images/postrgressql.png', level: 70, category: 'backend', useCase: 'Relational database management' },
+      { name: 'MONGO DB', image: 'assets/images/mongo-db.png', level: 70, category: 'backend', useCase: 'NoSQL document-based data storage' },
+
       // Tools
-      { name: 'GIT', image: 'assets/images/git.png', level: 85, category: 'tools' },
-      { name: 'DOCKER', image: 'assets/images/docker.png', level: 70, category: 'tools' },
-      { name: 'AZURE', image: 'assets/images/azure.png', level: 75, category: 'tools' },
-      { name: 'VS CODE', image: 'assets/images/vscode.png', level: 90, category: 'tools' },
-      { name: 'INTELLIJ', image: 'assets/images/intellij.png', level: 80, category: 'tools' }
+      { name: 'GIT', image: 'assets/images/git.png', level: 85, category: 'tools', useCase: 'Version control and team collaboration' },
+      { name: 'DOCKER', image: 'assets/images/docker.png', level: 70, category: 'tools', useCase: 'Containerizing applications for deployment' },
+      { name: 'AZURE', image: 'assets/images/azure.png', level: 75, category: 'tools', useCase: 'Cloud hosting and DevOps solutions' },
+      { name: 'VS CODE', image: 'assets/images/vscode.png', level: 90, category: 'tools', useCase: 'Primary IDE for web development' },
+      { name: 'INTELLIJ', image: 'assets/images/intellij.png', level: 80, category: 'tools', useCase: 'Java development and debugging' }
     ],
     experience: [
       {
-        company: 'Tech Solutions Inc.',
-        role: 'Senior Full Stack Developer',
-        duration: 'Jan 2022 - Present',
+        company: 'Commvault',
+        role: 'Software Engineer',
+        duration: 'Sep 2023 - Present',
         description: [
           'Led development of enterprise web applications using Angular, React, and Spring Boot',
           'Architected microservices solutions handling 10M+ daily transactions',
@@ -52,38 +52,28 @@ export class PortfolioService {
           'Improved application performance by 40% through optimization and refactoring',
           'Collaborated with cross-functional teams to deliver high-quality software solutions'
         ],
-        current: true
+        current: true,
+        icon: "rocket"
       },
       {
-        company: 'Digital Innovation Ltd.',
+        company: 'Commvault',
         role: 'Full Stack Developer',
-        duration: 'Mar 2020 - Dec 2021',
+        duration: 'Aug 2022 - Aug 2023',
         description: [
           'Developed responsive web applications using Angular, TypeScript, and Node.js',
           'Implemented RESTful APIs and integrated with various third-party services',
           'Designed and optimized PostgreSQL databases for improved query performance',
           'Participated in Agile development processes and code review sessions',
           'Contributed to CI/CD pipeline setup using Jenkins and Docker'
-        ]
-      },
-      {
-        company: 'StartupCorp',
-        role: 'Junior Web Developer',
-        duration: 'Jun 2019 - Feb 2020',
-        description: [
-          'Built interactive user interfaces using HTML5, CSS3, and JavaScript',
-          'Assisted in developing e-commerce platforms with payment gateway integration',
-          'Worked on bug fixes and feature enhancements for existing applications',
-          'Learned and applied modern development frameworks and tools',
-          'Participated in daily standups and sprint planning meetings'
-        ]
+        ],
+        icon: "laptop"
       }
     ],
     projects: [
       {
         title: 'TaskFlow - Project Management System',
         description: 'A comprehensive project management application built with Angular and Spring Boot. Features include task tracking, team collaboration, real-time notifications, and advanced analytics dashboard.',
-        image: 'assets/taskflow.png',
+        image: 'assets/images/taskflow.png',
         technologies: ['Angular', 'TypeScript', 'Spring Boot', 'Java', 'PostgreSQL', 'WebSocket', 'JWT'],
         category: 'web',
         liveUrl: 'https://taskflow-demo.com',
@@ -93,7 +83,7 @@ export class PortfolioService {
       {
         title: 'Weather App',
         description: 'A responsive weather application that provides real-time weather data, forecasts, and location-based weather alerts. Built with modern web technologies and integrated with multiple weather APIs.',
-        image: 'assets/weatherApp.png',
+        image: 'assets/images/weatherApp.png',
         technologies: ['React', 'JavaScript', 'Node.js', 'Express', 'Weather API', 'CSS3'],
         category: 'web',
         liveUrl: 'https://weather-app-demo.com',
@@ -103,7 +93,7 @@ export class PortfolioService {
       {
         title: 'Amazon Clone - E-commerce Platform',
         description: 'A full-stack e-commerce platform replicating Amazon\'s core features including product catalog, shopping cart, user authentication, payment processing, and order management.',
-        image: 'assets/amazone-clone.png',
+        image: 'assets/images/amazone-clone.png',
         technologies: ['Angular', 'TypeScript', 'Spring Boot', 'MySQL', 'Stripe API', 'AWS S3'],
         category: 'web',
         liveUrl: 'https://amazon-clone-demo.com',
@@ -113,7 +103,7 @@ export class PortfolioService {
       {
         title: 'Unify - Team Collaboration Tool',
         description: 'A modern team collaboration platform with real-time messaging, file sharing, video conferencing, and project management capabilities. Designed for remote teams.',
-        image: 'assets/unify.png',
+        image: 'assets/images/unify.png',
         technologies: ['Angular', 'TypeScript', 'Socket.io', 'Node.js', 'MongoDB', 'WebRTC'],
         category: 'web',
         liveUrl: 'https://unify-demo.com',
@@ -123,7 +113,7 @@ export class PortfolioService {
       {
         title: 'DevFolio - Developer Portfolio',
         description: 'A modern, responsive portfolio template for developers. Features dark/light themes, animations, and responsive design. Built with clean code architecture.',
-        image: 'assets/devfolio.svg',
+        image: 'assets/images/devfolio.svg',
         technologies: ['HTML5', 'CSS3', 'JavaScript', 'SCSS', 'Bootstrap'],
         category: 'web',
         liveUrl: 'https://devfolio-demo.com',
@@ -133,7 +123,7 @@ export class PortfolioService {
       {
         title: 'REST API - Microservices Architecture',
         description: 'A scalable microservices-based REST API with authentication, rate limiting, caching, and comprehensive documentation. Built following industry best practices.',
-        image: 'assets/api-icon.png',
+        image: 'assets/images/api-icon.png',
         technologies: ['Spring Boot', 'Java', 'Docker', 'PostgreSQL', 'Redis', 'Swagger'],
         category: 'api',
         githubUrl: 'https://github.com/yourusername/microservices-api',
@@ -219,6 +209,7 @@ export class PortfolioService {
         id: '1',
         title: 'Building Modern Web Applications with Angular and Spring Boot',
         slug: 'building-modern-web-apps-angular-spring-boot',
+        contentType: 'markdown',
         excerpt: 'Learn how to create robust, scalable web applications by combining the power of Angular frontend with Spring Boot backend. This comprehensive guide covers everything from project setup to deployment.',
         content: `
 # Building Modern Web Applications with Angular and Spring Boot
@@ -245,7 +236,7 @@ Spring Boot simplifies Java application development with:
 
 Our application follows a clean architecture pattern:
 
-\`\`\`
+\`\`\`typescript
 Frontend (Angular)
 ├── Components
 ├── Services
@@ -262,8 +253,8 @@ Backend (Spring Boot)
 ## Setting Up the Development Environment
 
 ### Prerequisites
-- Node.js (v16 or higher)
-- Java 11 or higher
+- Node.js (v18 or higher)
+- Java 17 or higher
 - Maven or Gradle
 - Your favorite IDE (VS Code, IntelliJ IDEA)
 
@@ -344,148 +335,28 @@ export class UserService {
 }
 \`\`\`
 
-## Implementing Authentication
+## Best Practices and Deployment
 
-Security is crucial in modern web applications. Let's implement JWT-based authentication:
-
-### Backend JWT Configuration
-\`\`\`java
-@Component
-public class JwtTokenUtil {
-    private String secret = "mySecretKey";
-    private int jwtExpiration = 86400; // 24 hours
-
-    public String generateToken(UserDetails userDetails) {
-        Map<String, Object> claims = new HashMap<>();
-        return createToken(claims, userDetails.getUsername());
-    }
-    
-    private String createToken(Map<String, Object> claims, String subject) {
-        return Jwts.builder()
-                .setClaims(claims)
-                .setSubject(subject)
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + jwtExpiration * 1000))
-                .signWith(SignatureAlgorithm.HS512, secret)
-                .compact();
-    }
-}
-\`\`\`
-
-### Frontend Authentication Service
-\`\`\`typescript
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthService {
-  private tokenKey = 'auth-token';
-
-  constructor(private http: HttpClient) {}
-
-  login(credentials: LoginRequest): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>('/api/auth/login', credentials)
-      .pipe(
-        tap(response => {
-          localStorage.setItem(this.tokenKey, response.token);
-        })
-      );
-  }
-
-  logout(): void {
-    localStorage.removeItem(this.tokenKey);
-  }
-
-  isAuthenticated(): boolean {
-    return !!localStorage.getItem(this.tokenKey);
-  }
-}
-\`\`\`
-
-## Best Practices and Tips
-
-### 1. Error Handling
-Always implement proper error handling in both frontend and backend:
-
-\`\`\`typescript
-// Angular Error Interceptor
-@Injectable()
-export class ErrorInterceptor implements HttpInterceptor {
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return next.handle(req).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if (error.status === 401) {
-          // Handle unauthorized access
-        }
-        return throwError(error);
-      })
-    );
-  }
-}
-\`\`\`
-
-### 2. State Management
-For complex applications, consider using NgRx for state management:
-
-\`\`\`typescript
-// User Actions
-export const loadUsers = createAction('[User] Load Users');
-export const loadUsersSuccess = createAction(
-  '[User] Load Users Success',
-  props<{ users: User[] }>()
-);
-\`\`\`
-
-### 3. Performance Optimization
+### Performance Optimization
 - Use OnPush change detection strategy
 - Implement lazy loading for routes
 - Optimize bundle size with tree shaking
 - Use caching strategies for API calls
 
-## Deployment Strategies
-
-### Frontend Deployment
+### Deployment
 \`\`\`bash
 # Build for production
 ng build --configuration production
 
-# Deploy to various platforms
-# Netlify, Vercel, AWS S3, etc.
-\`\`\`
-
-### Backend Deployment
-\`\`\`bash
 # Create JAR file
 ./mvnw clean package
-
-# Deploy to cloud platforms
-# AWS, Heroku, Docker containers
 \`\`\`
 
 ## Conclusion
 
-Building modern web applications with Angular and Spring Boot provides a robust foundation for scalable, maintainable applications. The combination offers:
-
-- **Type safety** with TypeScript and Java
-- **Rich ecosystems** with extensive libraries
-- **Production-ready features** out of the box
-- **Strong community support**
-
-As you continue your development journey, remember to:
-- Follow best practices and design patterns
-- Implement proper testing strategies
-- Monitor application performance
-- Keep security as a top priority
-
-Happy coding! 🚀
-
-## Resources and Further Reading
-
-- [Angular Official Documentation](https://angular.io/docs)
-- [Spring Boot Reference Guide](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)
-- [Angular Best Practices](https://angular.io/guide/styleguide)
-- [Spring Boot Security](https://spring.io/guides/gs/securing-web/)
+Building modern web applications with Angular and Spring Boot provides a robust foundation for scalable, maintainable applications. Happy coding! 🚀
         `,
-        featuredImage: 'assets/angular.png',
+        featuredImage: 'assets/images/angular.png',
         author: 'Ganesha Moorthy',
         publishDate: '2024-01-15',
         readTime: 12,
@@ -494,6 +365,1022 @@ Happy coding! 🚀
         featured: true,
         likes: 234,
         views: 1520
+      },
+      {
+        id: '2',
+        title: 'Mastering TypeScript: Advanced Features for Modern Development',
+        slug: 'mastering-typescript-advanced-features',
+        contentType: 'markdown',
+        excerpt: 'Dive deep into TypeScript\'s advanced features including generics, decorators, and utility types. Learn how to write type-safe, maintainable code that scales with your applications.',
+        content: `
+# Mastering TypeScript: Advanced Features for Modern Development
+
+TypeScript has revolutionized JavaScript development by adding static type checking and modern language features. In this comprehensive guide, we'll explore advanced TypeScript features that will elevate your development skills.
+
+## Advanced Type System
+
+### Generic Types
+Generics allow you to create reusable components that work with multiple types:
+
+\`\`\`typescript
+interface Repository<T> {
+  findById(id: string): Promise<T | null>;
+  save(entity: T): Promise<T>;
+  delete(id: string): Promise<void>;
+}
+
+class UserRepository implements Repository<User> {
+  async findById(id: string): Promise<User | null> {
+    // Implementation
+    return null;
+  }
+  
+  async save(user: User): Promise<User> {
+    // Implementation
+    return user;
+  }
+  
+  async delete(id: string): Promise<void> {
+    // Implementation
+  }
+}
+\`\`\`
+
+### Utility Types
+TypeScript provides powerful utility types for common transformations:
+
+\`\`\`typescript
+interface User {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+}
+
+// Create a type without password
+type PublicUser = Omit<User, 'password'>;
+
+// Create a type with optional properties
+type PartialUser = Partial<User>;
+
+// Create a type with only specific properties
+type UserCredentials = Pick<User, 'email' | 'password'>;
+\`\`\`
+
+## Decorators and Metadata
+
+Decorators provide a way to add metadata and modify classes:
+
+\`\`\`typescript
+function Injectable(target: any) {
+  target.prototype.isInjectable = true;
+}
+
+function LogMethod(target: any, propertyName: string, descriptor: PropertyDescriptor) {
+  const method = descriptor.value;
+  
+  descriptor.value = function (...args: any[]) {
+    console.log(\`Calling \${propertyName} with args:\`, args);
+    const result = method.apply(this, args);
+    console.log(\`Method \${propertyName} returned:\`, result);
+    return result;
+  };
+}
+
+@Injectable
+class DataService {
+  @LogMethod
+  fetchData(id: string): string {
+    return \`Data for \${id}\`;
+  }
+}
+\`\`\`
+
+## Advanced Patterns
+
+### Builder Pattern with TypeScript
+\`\`\`typescript
+class QueryBuilder {
+  private query: string = '';
+  
+  select(fields: string[]): this {
+    this.query += \`SELECT \${fields.join(', ')} \`;
+    return this;
+  }
+  
+  from(table: string): this {
+    this.query += \`FROM \${table} \`;
+    return this;
+  }
+  
+  where(condition: string): this {
+    this.query += \`WHERE \${condition} \`;
+    return this;
+  }
+  
+  build(): string {
+    return this.query.trim();
+  }
+}
+
+const query = new QueryBuilder()
+  .select(['name', 'email'])
+  .from('users')
+  .where('active = true')
+  .build();
+\`\`\`
+
+## Conclusion
+
+These advanced TypeScript features provide powerful tools for building robust, maintainable applications. Continue practicing and exploring to master the full potential of TypeScript!
+        `,
+        featuredImage: 'assets/images/typescript.png',
+        author: 'Ganesha Moorthy',
+        publishDate: '2024-02-20',
+        readTime: 8,
+        tags: ['TypeScript', 'JavaScript', 'Programming', 'Web Development', 'Advanced'],
+        category: 'TypeScript',
+        featured: false,
+        likes: 189,
+        views: 1200
+      },
+      {
+        id: '3',
+        title: 'Cloud-Native Applications with Docker and Azure',
+        slug: 'cloud-native-docker-azure',
+        isExternal: true,
+        externalPlatform: 'Dev.to',
+        externalUrl: 'https://dev.to/ganeshamoorthy',
+        excerpt: 'Learn how to containerize applications with Docker and deploy them to Azure. This guide covers container best practices, Azure Container Instances, and deployment strategies.',
+        content: `
+# Cloud-Native Applications with Docker and Azure
+
+Modern applications are increasingly built with cloud-native principles in mind. This comprehensive guide will walk you through containerizing applications with Docker and deploying them to Microsoft Azure.
+
+## Understanding Containerization
+
+Containers provide a lightweight, portable way to package applications with their dependencies:
+
+\`\`\`dockerfile
+# Multi-stage build for Node.js application
+FROM node:18-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+
+FROM node:18-alpine AS runtime
+WORKDIR /app
+COPY --from=builder /app/node_modules ./node_modules
+COPY . .
+EXPOSE 3000
+CMD ["node", "server.js"]
+\`\`\`
+
+## Azure Container Services
+
+Azure offers multiple container hosting options:
+- **Azure Container Instances (ACI)**: Serverless containers
+- **Azure Kubernetes Service (AKS)**: Managed Kubernetes
+- **Azure App Service**: Platform-as-a-Service with container support
+
+## Deployment Pipeline
+
+\`\`\`yaml
+# Azure DevOps Pipeline
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: Docker@2
+  inputs:
+    command: 'build'
+    Dockerfile: '**/Dockerfile'
+    tags: '$(Build.BuildId)'
+
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'Azure-Subscription'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      az container create \\
+        --resource-group myResourceGroup \\
+        --name myapp \\
+        --image myregistry.azurecr.io/myapp:$(Build.BuildId)
+\`\`\`
+
+This approach ensures consistent, scalable deployments across environments.
+        `,
+        featuredImage: 'assets/images/azure.png',
+        author: 'Ganesha Moorthy',
+        publishDate: '2024-03-10',
+        readTime: 15,
+        tags: ['Docker', 'Azure', 'Cloud', 'DevOps', 'Containers'],
+        category: 'Cloud',
+        featured: false,
+        likes: 156,
+        views: 980
+      },
+      {
+        id: '4',
+        title: 'Reactive Programming with Java Spring WebFlux',
+        slug: 'reactive-programming-spring-webflux',
+        excerpt: 'Explore reactive programming concepts and learn how to build non-blocking, scalable applications using Spring WebFlux. Perfect for handling high-concurrency scenarios.',
+        content: `
+# Reactive Programming with Java Spring WebFlux
+
+Reactive programming is a paradigm that deals with asynchronous data streams and the propagation of changes. Spring WebFlux brings reactive programming to the Spring ecosystem.
+
+## Core Concepts
+
+### Mono and Flux
+\`\`\`java
+// Mono - 0 or 1 element
+@GetMapping("/user/{id}")
+public Mono<User> getUser(@PathVariable String id) {
+    return userRepository.findById(id);
+}
+
+// Flux - 0 to N elements
+@GetMapping("/users")
+public Flux<User> getAllUsers() {
+    return userRepository.findAll();
+}
+\`\`\`
+
+### Reactive Repository
+\`\`\`java
+@Repository
+public interface UserRepository extends ReactiveMongoRepository<User, String> {
+    
+    Flux<User> findByLastNameStartingWith(String lastName);
+    
+    @Query("{ 'age': { $gte: ?0, $lte: ?1 } }")
+    Flux<User> findByAgeBetween(int minAge, int maxAge);
+    
+    Mono<User> findByEmail(String email);
+}
+\`\`\`
+
+## Building Reactive REST APIs
+
+\`\`\`java
+@RestController
+@RequestMapping("/api/v1/users")
+public class UserController {
+    
+    private final UserService userService;
+    
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+    
+    @PostMapping
+    public Mono<ResponseEntity<User>> createUser(@RequestBody User user) {
+        return userService.createUser(user)
+            .map(savedUser -> ResponseEntity.ok(savedUser))
+            .defaultIfEmpty(ResponseEntity.badRequest().build());
+    }
+    
+    @GetMapping("/search")
+    public Flux<User> searchUsers(@RequestParam String term) {
+        return userService.searchUsers(term)
+            .take(50) // Limit results
+            .timeout(Duration.ofSeconds(5)); // Add timeout
+    }
+}
+\`\`\`
+
+## Error Handling and Resilience
+
+\`\`\`java
+@Service
+public class UserService {
+    
+    public Mono<User> getUserWithFallback(String id) {
+        return userRepository.findById(id)
+            .switchIfEmpty(Mono.error(new UserNotFoundException(id)))
+            .onErrorResume(ex -> {
+                log.error("Error fetching user: {}", ex.getMessage());
+                return Mono.just(createDefaultUser());
+            })
+            .retry(3)
+            .timeout(Duration.ofSeconds(2));
+    }
+    
+    public Flux<User> getAllUsersWithBackpressure() {
+        return userRepository.findAll()
+            .onBackpressureBuffer(1000)
+            .delayElements(Duration.ofMillis(100));
+    }
+}
+\`\`\`
+
+## Performance Benefits
+
+Reactive programming excels in:
+- **High-concurrency scenarios**
+- **I/O-intensive operations**
+- **Real-time data streaming**
+- **Resource-efficient applications**
+
+\`\`\`java
+// Traditional blocking approach
+@GetMapping("/blocking")
+public List<User> getBlockingUsers() {
+    // Blocks thread for each database call
+    return userRepository.findAll();
+}
+
+// Reactive non-blocking approach
+@GetMapping("/reactive")
+public Flux<User> getReactiveUsers() {
+    // Non-blocking, handles backpressure
+    return userRepository.findAll();
+}
+\`\`\`
+
+## Testing Reactive Code
+
+\`\`\`java
+@Test
+public void testUserCreation() {
+    User user = new User("John", "john@example.com");
+    
+    StepVerifier.create(userService.createUser(user))
+        .expectNextMatches(savedUser -> 
+            savedUser.getId() != null && 
+            savedUser.getName().equals("John")
+        )
+        .verifyComplete();
+}
+
+@Test
+public void testErrorHandling() {
+    StepVerifier.create(userService.getUserById("invalid-id"))
+        .expectError(UserNotFoundException.class)
+        .verify();
+}
+\`\`\`
+
+## Conclusion
+
+Spring WebFlux provides powerful tools for building reactive applications. While it requires a mindset shift from traditional blocking code, the benefits in scalability and resource utilization make it worth the investment for appropriate use cases.
+
+Start with simple reactive endpoints and gradually adopt more advanced patterns as your team becomes comfortable with reactive programming concepts.
+        `,
+        featuredImage: 'assets/images/spring.png',
+        author: 'Ganesha Moorthy',
+        publishDate: '2024-04-05',
+        readTime: 10,
+        tags: ['Java', 'Spring WebFlux', 'Reactive Programming', 'Backend', 'Performance'],
+        category: 'Java',
+        featured: false,
+        likes: 201,
+        views: 1350
+      },
+      {
+        id: '5',
+        title: 'Modern CSS Techniques: Grid, Flexbox, and Beyond',
+        slug: 'modern-css-techniques-grid-flexbox',
+        isExternal: true,
+        externalPlatform: 'CSS-Tricks',
+        externalUrl: 'https://css-tricks.com',
+        excerpt: 'Master modern CSS layout techniques including CSS Grid, Flexbox, and custom properties. Learn how to create responsive, maintainable designs with clean, semantic code.',
+        content: `
+# Modern CSS Techniques: Grid, Flexbox, and Beyond
+
+CSS has evolved tremendously in recent years. Modern layout techniques like CSS Grid and Flexbox have revolutionized how we approach web design. Let's explore these powerful tools.
+
+## CSS Grid: The Ultimate Layout Tool
+
+CSS Grid provides two-dimensional layout control:
+
+\`\`\`css
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 2rem;
+  padding: 2rem;
+}
+
+.grid-item {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 8px;
+  padding: 1.5rem;
+  color: white;
+}
+
+/* Named grid areas */
+.layout {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "sidebar main main"
+    "footer footer footer";
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.main { grid-area: main; }
+.footer { grid-area: footer; }
+\`\`\`
+
+## Flexbox: One-Dimensional Mastery
+
+Perfect for component-level layouts:
+
+\`\`\`css
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 300px;
+}
+
+.card-content {
+  flex: 1;
+}
+
+.card-actions {
+  margin-top: auto;
+  padding-top: 1rem;
+}
+\`\`\`
+
+## CSS Custom Properties (Variables)
+
+\`\`\`css
+:root {
+  --primary-color: #3b82f6;
+  --secondary-color: #8b5cf6;
+  --text-color: #1f2937;
+  --bg-color: #ffffff;
+  --border-radius: 8px;
+  --spacing-unit: 1rem;
+  
+  /* Dark mode */
+  --dark-bg: #1f2937;
+  --dark-text: #f9fafb;
+}
+
+[data-theme="dark"] {
+  --bg-color: var(--dark-bg);
+  --text-color: var(--dark-text);
+}
+
+.button {
+  background: var(--primary-color);
+  color: white;
+  border-radius: var(--border-radius);
+  padding: calc(var(--spacing-unit) * 0.5) var(--spacing-unit);
+  transition: transform 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+}
+\`\`\`
+
+## Advanced Responsive Design
+
+\`\`\`css
+/* Container queries (when supported) */
+.card-container {
+  container-type: inline-size;
+}
+
+@container (min-width: 400px) {
+  .card {
+    display: flex;
+    align-items: center;
+  }
+  
+  .card-image {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+/* Modern responsive typography */
+.responsive-text {
+  font-size: clamp(1rem, 4vw, 2.5rem);
+  line-height: 1.4;
+}
+
+/* Intrinsic web design */
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+}
+\`\`\`
+
+These modern CSS techniques provide powerful, efficient ways to create responsive, maintainable designs.
+        `,
+        featuredImage: 'assets/images/css.png',
+        author: 'Ganesha Moorthy',
+        publishDate: '2024-05-12',
+        readTime: 7,
+        tags: ['CSS', 'Grid', 'Flexbox', 'Responsive Design', 'Frontend'],
+        category: 'CSS',
+        featured: false,
+        likes: 143,
+        views: 890
+      },
+      {
+        id: '6',
+        title: 'Building RESTful APIs: Best Practices and Design Patterns',
+        slug: 'restful-apis-best-practices',
+        excerpt: 'Learn how to design and implement robust RESTful APIs following industry best practices. Covers HTTP methods, status codes, versioning, authentication, and error handling.',
+        content: `
+# Building RESTful APIs: Best Practices and Design Patterns
+
+RESTful APIs are the backbone of modern web applications. This guide covers essential best practices and design patterns for creating robust, scalable APIs.
+
+## REST Principles
+
+### Resource-Based URLs
+\`\`\`
+Good:
+GET /api/v1/users
+GET /api/v1/users/123
+POST /api/v1/users
+PUT /api/v1/users/123
+DELETE /api/v1/users/123
+
+Avoid:
+GET /api/v1/getUsers
+POST /api/v1/createUser
+GET /api/v1/user/delete/123
+\`\`\`
+
+### HTTP Status Codes
+\`\`\`java
+@RestController
+@RequestMapping("/api/v1/users")
+public class UserController {
+
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUser(@PathVariable Long id) {
+        return userService.findById(id)
+            .map(user -> ResponseEntity.ok(user))
+            .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping
+    public ResponseEntity<User> createUser(@Valid @RequestBody CreateUserRequest request) {
+        User user = userService.createUser(request);
+        return ResponseEntity.status(HttpStatus.CREATED)
+            .location(URI.create("/api/v1/users/" + user.getId()))
+            .body(user);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<User> updateUser(
+            @PathVariable Long id, 
+            @Valid @RequestBody UpdateUserRequest request) {
+        
+        return userService.updateUser(id, request)
+            .map(user -> ResponseEntity.ok(user))
+            .orElse(ResponseEntity.notFound().build());
+    }
+}
+\`\`\`
+
+## Error Handling
+
+\`\`\`java
+@ControllerAdvice
+public class ApiExceptionHandler {
+
+    @ExceptionHandler(ValidationException.class)
+    public ResponseEntity<ErrorResponse> handleValidation(ValidationException ex) {
+        ErrorResponse error = ErrorResponse.builder()
+            .status(HttpStatus.BAD_REQUEST.value())
+            .message("Validation failed")
+            .details(ex.getErrors())
+            .timestamp(Instant.now())
+            .build();
+            
+        return ResponseEntity.badRequest().body(error);
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleNotFound(ResourceNotFoundException ex) {
+        ErrorResponse error = ErrorResponse.builder()
+            .status(HttpStatus.NOT_FOUND.value())
+            .message(ex.getMessage())
+            .timestamp(Instant.now())
+            .build();
+            
+        return ResponseEntity.notFound().build();
+    }
+}
+
+@Data
+@Builder
+public class ErrorResponse {
+    private int status;
+    private String message;
+    private List<String> details;
+    private Instant timestamp;
+}
+\`\`\`
+
+## Pagination and Filtering
+
+\`\`\`java
+@GetMapping
+public ResponseEntity<PageResponse<User>> getUsers(
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(defaultValue = "20") int size,
+        @RequestParam(defaultValue = "id") String sortBy,
+        @RequestParam(defaultValue = "asc") String sortDir,
+        @RequestParam(required = false) String filter) {
+    
+    Pageable pageable = PageRequest.of(page, size, 
+        Sort.Direction.fromString(sortDir), sortBy);
+    
+    Page<User> users = userService.findUsers(filter, pageable);
+    
+    PageResponse<User> response = PageResponse.<User>builder()
+        .content(users.getContent())
+        .page(users.getNumber())
+        .size(users.getSize())
+        .totalElements(users.getTotalElements())
+        .totalPages(users.getTotalPages())
+        .first(users.isFirst())
+        .last(users.isLast())
+        .build();
+    
+    return ResponseEntity.ok(response);
+}
+\`\`\`
+
+## API Versioning
+
+\`\`\`java
+// URL versioning
+@RequestMapping("/api/v1/users")
+public class UserV1Controller { }
+
+@RequestMapping("/api/v2/users")
+public class UserV2Controller { }
+
+// Header versioning
+@RequestMapping("/api/users")
+public class UserController {
+    
+    @GetMapping(headers = "API-Version=1")
+    public ResponseEntity<UserV1> getUserV1(@PathVariable Long id) {
+        // V1 implementation
+    }
+    
+    @GetMapping(headers = "API-Version=2")
+    public ResponseEntity<UserV2> getUserV2(@PathVariable Long id) {
+        // V2 implementation
+    }
+}
+\`\`\`
+
+## Security and Authentication
+
+\`\`\`java
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        return http
+            .csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/api/v1/auth/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/v1/users").hasRole("USER")
+                .requestMatchers(HttpMethod.POST, "/api/v1/users").hasRole("ADMIN")
+                .anyRequest().authenticated()
+            )
+            .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
+            .build();
+    }
+}
+
+// Rate limiting
+@Component
+public class RateLimitingFilter implements Filter {
+    
+    private final RedisTemplate<String, String> redisTemplate;
+    
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, 
+                        FilterChain chain) throws IOException, ServletException {
+        
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
+        String clientId = getClientId(httpRequest);
+        
+        if (isRateLimited(clientId)) {
+            HttpServletResponse httpResponse = (HttpServletResponse) response;
+            httpResponse.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
+            return;
+        }
+        
+        chain.doFilter(request, response);
+    }
+}
+\`\`\`
+
+## API Documentation
+
+\`\`\`java
+@RestController
+@RequestMapping("/api/v1/users")
+@Tag(name = "User Management", description = "Operations related to user management")
+public class UserController {
+
+    @GetMapping("/{id}")
+    @Operation(summary = "Get user by ID", description = "Retrieve a specific user by their unique identifier")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "User found"),
+        @ApiResponse(responseCode = "404", description = "User not found"),
+        @ApiResponse(responseCode = "403", description = "Access denied")
+    })
+    public ResponseEntity<User> getUser(
+            @Parameter(description = "User ID", required = true)
+            @PathVariable Long id) {
+        // Implementation
+    }
+}
+\`\`\`
+
+## Testing
+
+\`\`\`java
+@WebMvcTest(UserController.class)
+class UserControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+    
+    @MockBean
+    private UserService userService;
+
+    @Test
+    void shouldReturnUser_WhenUserExists() throws Exception {
+        User user = new User(1L, "John Doe", "john@example.com");
+        when(userService.findById(1L)).thenReturn(Optional.of(user));
+
+        mockMvc.perform(get("/api/v1/users/1"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.id").value(1))
+            .andExpect(jsonPath("$.name").value("John Doe"))
+            .andExpect(jsonPath("$.email").value("john@example.com"));
+    }
+
+    @Test
+    void shouldReturn404_WhenUserNotFound() throws Exception {
+        when(userService.findById(999L)).thenReturn(Optional.empty());
+
+        mockMvc.perform(get("/api/v1/users/999"))
+            .andExpect(status().isNotFound());
+    }
+}
+\`\`\`
+
+## Performance Optimization
+
+\`\`\`java
+// Caching
+@Service
+public class UserService {
+    
+    @Cacheable(value = "users", key = "#id")
+    public Optional<User> findById(Long id) {
+        return userRepository.findById(id);
+    }
+    
+    @CacheEvict(value = "users", key = "#user.id")
+    public User updateUser(User user) {
+        return userRepository.save(user);
+    }
+}
+
+// Async processing
+@RestController
+public class AsyncController {
+    
+    @PostMapping("/api/v1/reports")
+    public ResponseEntity<String> generateReport(@RequestBody ReportRequest request) {
+        CompletableFuture.supplyAsync(() -> reportService.generateReport(request));
+        
+        return ResponseEntity.accepted()
+            .body("Report generation started. Check status at /api/v1/reports/status/" + request.getId());
+    }
+}
+\`\`\`
+
+Following these best practices ensures your APIs are robust, scalable, and maintainable. Remember to always consider security, performance, and developer experience when designing your APIs.
+        `,
+        featuredImage: 'assets/images/spring.png',
+        author: 'Ganesha Moorthy',
+        publishDate: '2024-06-18',
+        readTime: 14,
+        tags: ['REST API', 'Spring Boot', 'Backend', 'Architecture', 'Best Practices'],
+        category: 'Backend',
+        featured: true,
+        likes: 287,
+        views: 1890
+      },
+      {
+        id: '7',
+        title: 'Introduction to Web Development: HTML Structure and Semantics',
+        slug: 'introduction-web-development-html',
+        contentType: 'html',
+        excerpt: 'A beginner-friendly guide to HTML structure and semantic elements. Learn how to build accessible, well-structured web pages using modern HTML5 features.',
+        content: `
+<article class="html-content">
+  <header>
+    <h1>Introduction to Web Development: HTML Structure and Semantics</h1>
+    <p class="lead">HTML (HyperText Markup Language) is the foundation of web development. In this guide, we'll explore how to create well-structured, semantic HTML documents.</p>
+  </header>
+
+  <section>
+    <h2>What is Semantic HTML?</h2>
+    <p>Semantic HTML uses elements that have meaning and describe the content they contain. Instead of using generic <code>&lt;div&gt;</code> elements everywhere, we use specific elements like:</p>
+    
+    <ul>
+      <li><strong>&lt;header&gt;</strong> - For page or section headers</li>
+      <li><strong>&lt;nav&gt;</strong> - For navigation menus</li>
+      <li><strong>&lt;main&gt;</strong> - For the main content area</li>
+      <li><strong>&lt;article&gt;</strong> - For standalone content</li>
+      <li><strong>&lt;section&gt;</strong> - For thematic groupings</li>
+      <li><strong>&lt;aside&gt;</strong> - For sidebar content</li>
+      <li><strong>&lt;footer&gt;</strong> - For page or section footers</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>HTML Document Structure</h2>
+    <p>Every HTML document follows a standard structure:</p>
+    
+    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Page Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Site Title&lt;/h1&gt;
+    &lt;nav&gt;
+      &lt;!-- Navigation links --&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+  
+  &lt;main&gt;
+    &lt;article&gt;
+      &lt;!-- Main content --&gt;
+    &lt;/article&gt;
+  &lt;/main&gt;
+  
+  &lt;footer&gt;
+    &lt;!-- Footer content --&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  </section>
+
+  <section>
+    <h2>Accessibility Benefits</h2>
+    <blockquote>
+      <p>"Good HTML is the foundation of accessibility. When we use semantic elements correctly, we provide screen readers and other assistive technologies with the context they need to help users navigate our content."</p>
+    </blockquote>
+    
+    <p>Key accessibility practices include:</p>
+    <ol>
+      <li>Using proper heading hierarchy (h1, h2, h3, etc.)</li>
+      <li>Adding alt text to images</li>
+      <li>Using form labels correctly</li>
+      <li>Ensuring sufficient color contrast</li>
+      <li>Making interactive elements keyboard accessible</li>
+    </ol>
+  </section>
+
+  <footer>
+    <p><em>Remember: Good HTML structure is the foundation of great web development. Take time to plan your document structure before you start coding!</em></p>
+  </footer>
+</article>
+        `,
+        featuredImage: 'assets/images/html.png',
+        author: 'Ganesha Moorthy',
+        publishDate: '2024-07-22',
+        readTime: 6,
+        tags: ['HTML', 'Web Development', 'Accessibility', 'Semantics', 'Beginner'],
+        category: 'HTML',
+        featured: false,
+        likes: 134,
+        views: 756
+      },
+      {
+        id: '8',
+        title: 'Quick Guide: Setting Up Your Development Environment',
+        slug: 'quick-guide-dev-environment-setup',
+        contentType: 'text',
+        excerpt: 'A straightforward, no-nonsense guide to setting up a modern web development environment. Perfect for beginners who want to get started quickly.',
+        content: `Setting Up Your Development Environment
+
+Getting started with web development can feel overwhelming, but setting up your development environment doesn't have to be complicated. Here's a simple guide to get you up and running quickly.
+
+**Essential Tools You'll Need:**
+
+1. **Code Editor**
+   Visual Studio Code (VS Code) is the most popular choice among developers. It's free, lightweight, and has excellent extensions for web development.
+   Download from: https://code.visualstudio.com
+
+2. **Web Browser**
+   Chrome or Firefox with developer tools are essential for testing and debugging your applications.
+
+3. **Version Control**
+   Git is crucial for tracking changes in your code and collaborating with others.
+   Download from: https://git-scm.com
+
+4. **Package Manager**
+   Node.js comes with npm (Node Package Manager) which you'll need for managing JavaScript libraries.
+   Download from: https://nodejs.org
+
+**Quick Setup Steps:**
+
+Step 1: Install VS Code
+- Download and install VS Code
+- Install essential extensions:
+  * Live Server (for local development server)
+  * Prettier (code formatting)
+  * Auto Rename Tag
+  * Bracket Pair Colorizer
+
+Step 2: Install Git
+- Download and install Git
+- Set up your global configuration:
+  git config --global user.name "Your Name"
+  git config --global user.email "your.email@example.com"
+
+Step 3: Install Node.js
+- Download and install the LTS version
+- Verify installation by running: node --version
+
+Step 4: Create Your First Project
+- Create a new folder for your project
+- Open it in VS Code
+- Create an index.html file
+- Use Live Server extension to preview your work
+
+**Recommended VS Code Extensions:**
+
+* HTML CSS Support
+* JavaScript (ES6) code snippets
+* Path Intellisense
+* GitLens
+* Material Icon Theme
+* One Dark Pro (theme)
+
+**Pro Tips:**
+
+- Learn keyboard shortcuts early - they'll save you tons of time
+- Customize your VS Code settings to match your preferences
+- Set up a consistent folder structure for your projects
+- Use the integrated terminal in VS Code instead of switching between applications
+- Enable auto-save to avoid losing work
+
+**Next Steps:**
+
+Once you have your environment set up, start with basic HTML and CSS projects. Practice building simple web pages before moving on to JavaScript and frameworks.
+
+Remember: The best development environment is the one you're comfortable using. Don't feel pressured to use every tool available - start simple and add complexity as you grow.
+
+Happy coding!`,
+        featuredImage: 'assets/images/vscode.png',
+        author: 'Ganesha Moorthy',
+        publishDate: '2024-08-15',
+        readTime: 4,
+        tags: ['Development Environment', 'VS Code', 'Git', 'Beginner', 'Setup'],
+        category: 'Tools',
+        featured: false,
+        likes: 98,
+        views: 542
       }
     ]
   };

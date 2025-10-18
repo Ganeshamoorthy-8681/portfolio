@@ -1,72 +1,81 @@
-<section id="skills" class="skills-section">
+<section id="skills" class="relative bg-primary-bg dark:bg-primary-dark-bg">
   <div class="container mx-auto px-4">
     <!-- Section Header -->
-    <div class="section-header">
-      <div class="section-header-content">
-        <h2 class="section-title">
-          <span class="title-main">SKILLS</span>
-          <span class="title-accent">& EXPERTISE</span>
+    <div class="text-center mb-20 relative">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-5xl lg:text-6xl font-extrabold mb-4 leading-tight">
+          <span class="block text-gray-900 dark:text-white mb-2">SKILLS</span>
+          <span
+            class="block bg-gradient-to-r from-purple-500 to-purple-300 bg-clip-text text-transparent text-4xl lg:text-5xl">&
+            EXPERTISE</span>
         </h2>
-        <p class="section-description">
+        <p class="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
           Technologies and tools I use to bring ideas to life
         </p>
-        <div class="title-underline"></div>
+        <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-purple-300 mx-auto rounded-full">
+        </div>
       </div>
     </div>
 
     <!-- Skills Categories -->
-    <div class="skills-container">
-      <div class="skills-grid">
-        <div 
-          *ngFor="let category of skillCategories; let i = index" 
-          class="skill-category-card"
-          [class]="'category-' + i"
-        >
+    <div class="relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div appScrollAnimate="animate-fade-in-up-delay-200" *ngFor="let category of skillCategories; let i = index"
+          class="opacity-0 bg-[var(--color-light-secondary-bg)]
+           dark:bg-[var(--color-surface-bg)]/30 
+           backdrop-blur-lg border
+            border-[var(--color-primary)]/30 dark:border-[var(--color-primary)]/50 rounded-2xl p-8 
+            transition-all duration-500 ease-out
+             hover:-translate-y-5 hover:shadow-2xl
+              hover:shadow-gray-400/40 dark:hover:shadow-purple-500/40
+               hover:border-purple-500/60 dark:hover:border-purple-400/70 hover:bg-purple-50/80
+                dark:hover:bg-purple-500/10 relative group">
+
           <!-- Category Header -->
-          <div class="category-header">
-            <div class="category-icon-wrapper">
-              <mat-icon class="category-icon">{{ category.icon }}</mat-icon>
+          <div class="flex items-center gap-4 mb-6">
+            <div
+              class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-400 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <mat-icon class="text-white text-2xl">{{ category.icon }}</mat-icon>
             </div>
-            <div class="category-info">
-              <h3 class="category-title">{{ category.title }}</h3>
-              <p class="category-subtitle">{{ category.subtitle }}</p>
+            <div class="flex-1">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1 tracking-wide">
+                {{ category.title }}</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">{{
+                category.subtitle }}</p>
             </div>
           </div>
 
           <!-- Skills Grid -->
-          <div class="skills-list">
-            <div 
-              *ngFor="let skill of category.skills; let skillIndex = index" 
-              class="skill-item"
-              (mouseenter)="onSkillHover(skill, true)"
-              (mouseleave)="onSkillHover(skill, false)"
-              [style.animation-delay.ms]="skillIndex * 100"
-            >
-              <div class="skill-content">
-                <div class="skill-icon-wrapper">
-                  <img 
-                    [src]="skill.image" 
-                    [alt]="skill.name + ' logo'" 
-                    class="skill-icon"
-                    loading="lazy"
-                  />
+          <div class="grid gap-4 mb-6">
+            <div *ngFor="let skill of category.skills; let skillIndex = index"
+              class="relative rounded-xl p-4 bg-[var(--color-light-surface-bg)] dark:bg-[var(--color-secondary-bg)]/40 border border-[var(--color-primary)]/20 dark:border-[var(--color-primary)]/40 transition-all duration-300 cursor-pointer hover:bg-purple-500/10 hover:border-purple-500/30 dark:hover:border-purple-400/60 hover:scale-105 group/skill animate-[fadeInUp_0.6s_ease_forwards] opacity-0 translate-y-5"
+              [style.animation-delay.ms]="skillIndex * 100">
+              <div class="flex items-center gap-3">
+                <div
+                  class="w-12 h-12 rounded-lg overflow-hidden bg-[var(--color-light-bg)] dark:bg-[var(--color-surface-bg)]/50 p-2 group-hover/skill:scale-110 transition-transform duration-300 border border-gray-200/50 dark:border-[var(--color-primary)]/30">
+                  <img [src]="skill.image" [alt]="skill.name + ' logo'" class="w-full h-full object-contain"
+                    loading="lazy" />
                 </div>
-                <div class="skill-info">
-                  <span class="skill-name">{{ skill.name }}</span>
-                  <div class="skill-hover-effect">
-                    <div class="skill-dots">
-                      <span class="dot" *ngFor="let dot of [1,2,3,4,5]"></span>
+                <div class="flex-1">
+                  <span
+                    class="text-[var(--color-light-text-primary)] dark:text-[var(--color-text-primary)] font-medium group-hover/skill:text-purple-600 dark:group-hover/skill:text-purple-400 transition-colors duration-300">{{
+                    skill.name }}</span>
+                  <!-- Show description by default on mobile/tablet, hover on desktop -->
+                  <div class="lg:opacity-0 lg:group-hover/skill:opacity-100 transition-opacity duration-300 mt-1">
+                    <div class="text-xs text-purple-500 dark:text-purple-400 italic">{{ skill.useCase || 'Professional development tool' }}
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="skill-bg-glow"></div>
+              <div
+                class="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-500/15 dark:via-purple-500/25 to-purple-400/0 opacity-0 group-hover/skill:opacity-100 transition-opacity duration-300 rounded-xl">
+              </div>
             </div>
           </div>
 
           <!-- Category Footer -->
-          <div class="category-footer">
-            <div class="skill-count">
+          <div class="border-t border-purple-500/20 dark:border-purple-500/40 pt-4">
+            <div class="text-sm text-gray-600 dark:text-gray-400 text-center">
               {{ category.skills.length }} {{ category.skills.length === 1 ? 'Technology' : 'Technologies' }}
             </div>
           </div>
@@ -75,33 +84,45 @@
     </div>
 
     <!-- Skills Summary -->
-    <div class="skills-summary">
-      <div class="summary-stats">
-        <div class="stat-item">
-          <div class="stat-number">{{ frontendSkills.length + backendSkills.length + toolsSkills.length }}</div>
-          <div class="stat-label">Technologies</div>
+    <div class="mt-16 pb-8">
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-16">
+        <div class="text-center group">
+          <div
+            class="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2 group-hover:scale-110 transition-transform duration-300">
+            {{ frontendSkills.length + backendSkills.length + toolsSkills.length }}</div>
+          <div class="text-gray-600 dark:text-gray-400 uppercase tracking-wide text-sm">Technologies</div>
         </div>
-        <div class="stat-item">
-          <div class="stat-number">3</div>
-          <div class="stat-label">Categories</div>
+        <div class="text-center group">
+          <div
+            class="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2 group-hover:scale-110 transition-transform duration-300">
+            3</div>
+          <div class="text-gray-600 dark:text-gray-400 uppercase tracking-wide text-sm">Categories</div>
         </div>
-        <div class="stat-item">
-          <div class="stat-number">2+</div>
-          <div class="stat-label">Years Experience</div>
+        <div class="text-center group">
+          <div
+            class="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2 group-hover:scale-110 transition-transform duration-300">
+            2+</div>
+          <div class="text-gray-600 dark:text-gray-400 uppercase tracking-wide text-sm">Years Experience</div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Background Decorations -->
-  <div class="skills-bg-decoration">
-    <div class="floating-shape shape-1"></div>
-    <div class="floating-shape shape-2"></div>
-    <div class="floating-shape shape-3"></div>
-    <div class="code-pattern">
-      <div class="code-line"></div>
-      <div class="code-line"></div>
-      <div class="code-line"></div>
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-20 left-10 w-32 h-32 bg-[var(--color-primary)]/15 dark:bg-[var(--color-primary)]/25 rounded-full blur-2xl">
+    </div>
+    <div
+      class="absolute top-1/2 right-10 w-48 h-48 bg-[var(--color-accent)]/15 dark:bg-[var(--color-accent)]/25 rounded-full blur-3xl">
+    </div>
+    <div
+      class="absolute bottom-20 left-1/3 w-24 h-24 bg-[var(--color-primary-dark)]/15 dark:bg-[var(--color-primary-dark)]/25 rounded-full blur-xl">
+    </div>
+    <div
+      class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-purple-500/30 dark:via-purple-500/50 to-transparent">
+      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 dark:via-purple-300/10 to-transparent h-8 blur-sm"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 dark:via-purple-300/15 to-transparent h-4 blur-xs"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 dark:via-purple-300/25 to-transparent h-2"></div>
     </div>
   </div>
 </section>

@@ -3,6 +3,7 @@ export interface Skill {
   image: string;
   level?: number;
   category: 'frontend' | 'backend' | 'tools';
+  useCase?: string;
 }
 
 export interface Experience {
@@ -11,6 +12,7 @@ export interface Experience {
   duration: string;
   description: string[];
   current?: boolean;
+  icon?:string;
 }
 
 export interface Project {
@@ -60,6 +62,7 @@ export interface BlogPost {
   slug: string;
   excerpt: string;
   content: string;
+  contentType?: 'markdown' | 'html' | 'text'; // Default: 'markdown'
   featuredImage: string;
   author: string;
   publishDate: string;
@@ -69,6 +72,9 @@ export interface BlogPost {
   featured?: boolean;
   likes?: number;
   views?: number;
+  isExternal?: boolean;
+  externalUrl?: string;
+  externalPlatform?: string; // e.g., 'Medium', 'Dev.to', 'Personal Blog'
 }
 
 export interface BlogCategory {

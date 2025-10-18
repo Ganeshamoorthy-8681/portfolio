@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-// Angular Material imports
-import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { MatChipsModule } from '@angular/material/chips';
-
-// Models and Services
+import { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';
 import { Education } from '../../models/portfolio.model';
 import { PortfolioService } from '../../services/portfolio-data.service';
 
@@ -15,9 +10,8 @@ import { PortfolioService } from '../../services/portfolio-data.service';
   standalone: true,
   imports: [
     CommonModule,
-    MatCardModule,
     MatIconModule,
-    MatChipsModule
+    ScrollAnimateDirective
   ],
   templateUrl: './education.component.html',
   styleUrl: './education.component.css'

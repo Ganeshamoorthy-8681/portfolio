@@ -1,15 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MatCardModule } from '@angular/material/card';
-import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule, MatDialog } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';
 import { Certification } from '../../models/portfolio.model';
 import { PortfolioService } from '../../services/portfolio-data.service';
 
@@ -18,24 +11,19 @@ import { PortfolioService } from '../../services/portfolio-data.service';
   imports: [
     CommonModule,
     FormsModule,
-    MatCardModule,
-    MatChipsModule,
     MatIconModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatTooltipModule
+    ScrollAnimateDirective
   ],
   templateUrl: './certifications.component.html',
-  styleUrl: './certifications.component.css'
+  standalone: true
 })
 export class CertificationsComponent implements OnInit {
   allCertifications: Certification[] = [];
   filteredCertifications: Certification[] = [];
   selectedProvider: string = 'all';
   searchTerm: string = '';
+  selectedCertification: Certification | null = null;
+  isModalOpen: boolean = false;
   
   providers = [
     { value: 'all', label: 'All Providers', icon: 'school' },
@@ -48,8 +36,7 @@ export class CertificationsComponent implements OnInit {
   ];
 
   constructor(
-    private portfolioService: PortfolioService,
-    private dialog: MatDialog
+    private portfolioService: PortfolioService
   ) {}
 
   ngOnInit(): void {
@@ -101,8 +88,17 @@ export class CertificationsComponent implements OnInit {
   }
 
   openCertificationModal(certification: Certification): void {
-    // Implementation for opening certification modal with enlarged image
-    console.log('Opening certification modal for:', certification.name);
+    this.selectedCertification = certification;
+    this.isModalOpen = true;
+    // Add body class to prevent scrolling
+    document.body.classList.add('modal-open');
+  }
+
+  closeModal(): void {
+    this.isModalOpen = false;
+    this.selectedCertification = null;
+    // Remove body class to restore scrolling
+    document.body.classList.remove('modal-open');
   }
 
   downloadCertificate(certification: Certification): void {
@@ -134,6 +130,20 @@ export class CertificationsComponent implements OnInit {
     if (issuer.includes('coursera')) return 'coursera';
     if (issuer.includes('udemy')) return 'udemy';
     return 'general';
+  }
+
+  getProviderBorderClass(certification: Certification): string {
+    const provider = this.getCertificationProvider(certification);
+    const borderClasses: { [key: string]: string } = {
+      'microsoft': 'border-t-blue-500',
+      'oracle': 'border-t-red-500',
+      'angular': 'border-t-red-600',
+      'react': 'border-t-cyan-400',
+      'coursera': 'border-t-blue-600',
+      'udemy': 'border-t-purple-600',
+      'general': 'border-t-purple-500'
+    };
+    return borderClasses[provider] || 'border-t-purple-500';
   }
 
   getCertificationIcon(certification: Certification): string {
@@ -168,4 +178,5 @@ export class CertificationsComponent implements OnInit {
       return dateString;
     }
   }
+
 }

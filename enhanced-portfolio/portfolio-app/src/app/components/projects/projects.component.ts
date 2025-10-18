@@ -1,32 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MatCardModule } from '@angular/material/card';
-import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatDialogModule, MatDialog } from '@angular/material/dialog';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { Project } from '../../models/portfolio.model';
 import { PortfolioService } from '../../services/portfolio-data.service';
+import { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';
 
 @Component({
   selector: 'app-projects',
   imports: [
     CommonModule,
     FormsModule,
-    MatCardModule,
-    MatChipsModule,
     MatIconModule,
-    MatButtonModule,
-    MatTabsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatDialogModule,
-    MatTooltipModule
+    ScrollAnimateDirective
   ],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.css'
@@ -36,6 +22,8 @@ export class ProjectsComponent implements OnInit {
   filteredProjects: Project[] = [];
   selectedCategory: string = 'all';
   searchTerm: string = '';
+  selectedProject: Project | null = null;
+  isImageModalOpen: boolean = false;
   
   categories = [
     { value: 'all', label: 'All Projects', icon: 'apps' },
@@ -46,8 +34,7 @@ export class ProjectsComponent implements OnInit {
   ];
 
   constructor(
-    private portfolioService: PortfolioService,
-    private dialog: MatDialog
+    private portfolioService: PortfolioService
   ) {}
 
   ngOnInit(): void {
@@ -117,6 +104,20 @@ export class ProjectsComponent implements OnInit {
     }
   }
 
+  openImageModal(project: Project): void {
+    this.selectedProject = project;
+    this.isImageModalOpen = true;
+    // Add body class to prevent scrolling
+    document.body.classList.add('modal-open');
+  }
+
+  closeImageModal(): void {
+    this.isImageModalOpen = false;
+    this.selectedProject = null;
+    // Remove body class to restore scrolling
+    document.body.classList.remove('modal-open');
+  }
+
   getTechnologyColor(tech: string): string {
     const colors: { [key: string]: string } = {
       'Angular': '#dd1b16',
@@ -146,9 +147,7 @@ export class ProjectsComponent implements OnInit {
     return 'code';
   }
 
-  getSelectedTabIndex(): number {
-    return this.categories.findIndex(c => c.value === this.selectedCategory);
-  }
+
 
   onImageError(event: any): void {
     if (event.target) {

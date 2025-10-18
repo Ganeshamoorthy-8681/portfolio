@@ -2,19 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
-// Angular Material imports
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatChipsModule } from '@angular/material/chips';
 
 // Models and Services
 import { BlogPost } from '../../models/portfolio.model';
 import { PortfolioService } from '../../services/portfolio-data.service';
+import { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';
+import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-blog',
@@ -23,13 +18,10 @@ import { PortfolioService } from '../../services/portfolio-data.service';
     CommonModule,
     RouterModule,
     FormsModule,
-    MatCardModule,
-    MatButtonModule,
     MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatChipsModule
+    ScrollAnimateDirective,
+    HeaderComponent,
+    FooterComponent
   ],
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.css'
@@ -148,5 +140,34 @@ export class BlogComponent implements OnInit {
     }
     // Use a simple colored rectangle as fallback
     event.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjNjM2NjcxIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI1MCUiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0Ij5CbG9nIEltYWdlPC90ZXh0Pgo8L3N2Zz4K';
+  }
+
+  isExternalPost(post: BlogPost): boolean {
+    return post.isExternal || false;
+  }
+
+  getPostUrl(post: BlogPost): string {
+    return this.isExternalPost(post) ? post.externalUrl || '#' : `/blog/${post.slug}`;
+  }
+
+  getReadButtonText(post: BlogPost): string {
+    return this.isExternalPost(post) ? 'Read on ' + (post.externalPlatform || 'External Site') : 'Read Full Article';
+  }
+
+  getReadButtonIcon(post: BlogPost): string {
+    return this.isExternalPost(post) ? 'launch' : 'read_more';
+  }
+
+  handlePostClick(post: BlogPost, event?: Event): void {
+    if (this.isExternalPost(post)) {
+      if (post.externalUrl) {
+        window.open(post.externalUrl, '_blank', 'noopener,noreferrer');
+      }
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    }
+    // For internal posts, let the routerLink handle navigation
   }
 }
