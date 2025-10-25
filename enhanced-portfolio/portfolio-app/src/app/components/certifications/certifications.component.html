@@ -135,7 +135,9 @@
                 <mat-icon class="text-purple-600 dark:text-purple-400 text-lg">badge</mat-icon>
                 <span class="font-semibold text-gray-700 dark:text-gray-200 text-sm">Credential ID:</span>
                 <div class="flex items-center gap-2 flex-1">
-                  <span class="font-mono text-xs bg-gray-200/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-200 px-2 py-1 rounded flex-1 min-w-0 truncate">{{ certification.credentialId }}</span>
+                  <div class="tooltip flex-1 max-w-[160px]" [attr.data-tip]="certification.credentialId">
+                    <span class="font-mono text-xs bg-gray-200/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-200 px-2 py-1 rounded block w-full overflow-hidden text-ellipsis whitespace-nowrap" [attr.aria-label]="'Credential ID ' + certification.credentialId">{{ certification.credentialId }}</span>
+                  </div>
                   <button 
                     class="w-8 h-8 flex items-center justify-center text-purple-600 dark:text-purple-400 hover:bg-purple-100 dark:hover:bg-purple-900/20 rounded transition-colors duration-200"
                     (click)="copyCertificationLink(certification)"

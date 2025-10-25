@@ -28,9 +28,7 @@ export class CertificationsComponent implements OnInit {
   providers = [
     { value: 'all', label: 'All Providers', icon: 'school' },
     { value: 'microsoft', label: 'Microsoft', icon: 'business' },
-    { value: 'oracle', label: 'Oracle', icon: 'storage' },
-    { value: 'angular', label: 'Angular', icon: 'web' },
-    { value: 'react', label: 'React', icon: 'code' },
+    { value: 'HackerRank', label: 'HackerRank', icon: 'code' },
     { value: 'coursera', label: 'Coursera', icon: 'school' },
     { value: 'udemy', label: 'Udemy', icon: 'play_circle' }
   ];

@@ -47,160 +47,153 @@ export class PortfolioService {
         duration: 'Sep 2023 - Present',
         description: [
           'Led development of enterprise web applications using Angular, React, and Spring Boot',
-          'Architected microservices solutions handling 10M+ daily transactions',
           'Mentored junior developers and established coding standards and best practices',
           'Improved application performance by 40% through optimization and refactoring',
-          'Collaborated with cross-functional teams to deliver high-quality software solutions'
+          'Collaborated with cross-functional teams to deliver high-quality software solutions',
+          'Participated in Agile development processes and code review sessions',
         ],
         current: true,
         icon: "rocket"
       },
       {
         company: 'Commvault',
-        role: 'Full Stack Developer',
+        role: 'Software Engineer Intern',
         duration: 'Aug 2022 - Aug 2023',
         description: [
-          'Developed responsive web applications using Angular, TypeScript, and Node.js',
-          'Implemented RESTful APIs and integrated with various third-party services',
-          'Designed and optimized PostgreSQL databases for improved query performance',
-          'Participated in Agile development processes and code review sessions',
-          'Contributed to CI/CD pipeline setup using Jenkins and Docker'
+          'Built a strong foundation in full-stack development through hands-on experience',
+          'Gained proficiency in Angular, JavaScript, TypeScript, and Spring Boot',
+          'Contributed to team projects and collaborated with senior developers',
+          'Learned best practices for code quality, testing, and deployment',
         ],
         icon: "laptop"
       }
     ],
     projects: [
       {
-        title: 'TaskFlow - Project Management System',
-        description: 'A comprehensive project management application built with Angular and Spring Boot. Features include task tracking, team collaboration, real-time notifications, and advanced analytics dashboard.',
-        image: 'assets/images/taskflow.png',
-        technologies: ['Angular', 'TypeScript', 'Spring Boot', 'Java', 'PostgreSQL', 'WebSocket', 'JWT'],
+        title: 'IAM - Identity and Access Management System',
+        description: 'A full-stack application for managing users and permissions using role-based access control.',
+        image: 'assets/images/iam.png',
+        technologies: ['React', 'TypeScript', 'Spring Boot', 'PostgreSQL', 'JWT'],
         category: 'web',
-        liveUrl: 'https://taskflow-demo.com',
-        githubUrl: 'https://github.com/yourusername/taskflow',
+        liveUrl: 'https://ganesh-iam.netlify.app/',
+        githubUrl: 'https://github.com/Ganeshamoorthy-8681/spring-security-v2',
+        featured: false
+      },
+      {
+        title: 'TaskFlow - Project Management System',
+        description: 'A comprehensive project management application built with Angular and Spring Boot',
+        image: 'assets/images/taskflow.png',
+        technologies: ['Angular', 'TypeScript', 'Spring Boot', 'Java', 'PostgreSQL'],
+        category: 'web',
+        liveUrl: '',
+        githubUrl: 'https://github.com/Ganeshamoorthy-8681/todoapp-Backend',
+        featured: true
+      },
+      {
+        title: 'Cine Sphere',
+        description: 'Explore detailed information about movies and TV shows. From cast and crew to plot summaries.',
+        image: 'assets/images/cinesphere.png',
+        technologies: ['React', 'JavaScript', 'Movie API', 'Material-UI'],
+        category: 'web',
+        liveUrl: 'https://movie-app-topaz-nine.vercel.app/',
+        githubUrl: 'https://github.com/Ganeshamoorthy-8681/MovieApp',
         featured: true
       },
       {
         title: 'Weather App',
-        description: 'A responsive weather application that provides real-time weather data, forecasts, and location-based weather alerts. Built with modern web technologies and integrated with multiple weather APIs.',
+        description: 'A responsive weather application that provides real-time weather data, forecasts.',
         image: 'assets/images/weatherApp.png',
-        technologies: ['React', 'JavaScript', 'Node.js', 'Express', 'Weather API', 'CSS3'],
+        technologies: ['React', 'JavaScript', 'Weather API', 'Material-UI'],
         category: 'web',
         liveUrl: 'https://weather-app-demo.com',
-        githubUrl: 'https://github.com/yourusername/weather-app',
+        githubUrl: 'https://github.com/Ganeshamoorthy-8681/WeatherApp',
         featured: true
       },
-      {
-        title: 'Amazon Clone - E-commerce Platform',
-        description: 'A full-stack e-commerce platform replicating Amazon\'s core features including product catalog, shopping cart, user authentication, payment processing, and order management.',
-        image: 'assets/images/amazone-clone.png',
-        technologies: ['Angular', 'TypeScript', 'Spring Boot', 'MySQL', 'Stripe API', 'AWS S3'],
-        category: 'web',
-        liveUrl: 'https://amazon-clone-demo.com',
-        githubUrl: 'https://github.com/yourusername/amazon-clone',
-        featured: true
-      },
-      {
-        title: 'Unify - Team Collaboration Tool',
-        description: 'A modern team collaboration platform with real-time messaging, file sharing, video conferencing, and project management capabilities. Designed for remote teams.',
-        image: 'assets/images/unify.png',
-        technologies: ['Angular', 'TypeScript', 'Socket.io', 'Node.js', 'MongoDB', 'WebRTC'],
-        category: 'web',
-        liveUrl: 'https://unify-demo.com',
-        githubUrl: 'https://github.com/yourusername/unify',
-        featured: false
-      },
-      {
-        title: 'DevFolio - Developer Portfolio',
-        description: 'A modern, responsive portfolio template for developers. Features dark/light themes, animations, and responsive design. Built with clean code architecture.',
-        image: 'assets/images/devfolio.svg',
-        technologies: ['HTML5', 'CSS3', 'JavaScript', 'SCSS', 'Bootstrap'],
-        category: 'web',
-        liveUrl: 'https://devfolio-demo.com',
-        githubUrl: 'https://github.com/yourusername/devfolio',
-        featured: false
-      },
-      {
-        title: 'REST API - Microservices Architecture',
-        description: 'A scalable microservices-based REST API with authentication, rate limiting, caching, and comprehensive documentation. Built following industry best practices.',
-        image: 'assets/images/api-icon.png',
-        technologies: ['Spring Boot', 'Java', 'Docker', 'PostgreSQL', 'Redis', 'Swagger'],
-        category: 'api',
-        githubUrl: 'https://github.com/yourusername/microservices-api',
-        featured: false
-      }
+
+      // {
+      //   title: 'Amazon Clone',
+      //   description: 'Developed a clone of the Amazon e-commerce landing page to strengthen my HTML and CSS skills. This project involved replicating the layout, styling, and core elements, including product listings, navigation menus, and a search bar.',
+      //   image: 'assets/images/amazone-clone.png',
+      //   technologies: ['HTML5', 'CSS3', 'JavaScript'],
+      //   category: 'web',
+      //   liveUrl: 'https://ganeshamoorthy-8681.github.io/amazon-recreated/',
+      //   githubUrl: 'https://github.com/Ganeshamoorthy-8681/amazon-recreated',
+      //   featured: true
+      // },
+      // {
+      //   title: 'Unify',
+      //   description: 'Developed a responsive landing page based on a UX designer’s mockup, using the Unify template as a design reference.',
+      //   image: 'assets/images/unify.png',
+      //   technologies: ['HTML5', 'CSS3', 'Responsive Design'],
+      //   category: 'web',
+      //   liveUrl: 'https://ganeshamoorthy-8681.github.io/res-unify/',
+      //   githubUrl: 'https://github.com/Ganeshamoorthy-8681/res-unify',
+      //   featured: false
+      // }
     ],
     certifications: [
       {
-        name: 'Angular Basic Certification',
-        image: 'assets/angular-basic-certificate.png',
-        issuer: 'Angular',
-        date: '2023-06-15',
-        credentialId: 'ANG-BASIC-2023-001'
+        name: 'Microsoft Azure Fundamentals (AZ-900)',
+        image: 'assets/images/az900-certificate.png',
+        issuer: 'Microsoft',
+        date: '2025-01-11',
+        credentialId: 'CDB25032D79552C1'
+      },
+      {
+        name: 'Google Ai Essentials',
+        image: 'assets/images/google-ai-essentials_page-0001.jpg',
+        issuer: 'Coursera',
+        date: '2025-04-06',
+        credentialId: 'ZBZWQ2ZGT8EU'
       },
       {
         name: 'Angular Intermediate Certification',
-        image: 'assets/angular-intermediate-certificate.png',
-        issuer: 'Angular',
-        date: '2023-08-20',
-        credentialId: 'ANG-INT-2023-002'
-      },
-      {
-        name: 'Microsoft Azure Fundamentals (AZ-900)',
-        image: 'assets/az900-certificate.png',
-        issuer: 'Microsoft',
-        date: '2023-04-10',
-        credentialId: 'MS-AZ900-2023-001'
-      },
-      {
-        name: 'Java Basic Programming Certification',
-        image: 'assets/java-basic-certificate.png',
-        issuer: 'Oracle',
-        date: '2023-03-25',
-        credentialId: 'JAVA-BASIC-2023-001'
+        image: 'assets/images/angular-intermediate-certificate.png',
+        issuer: 'HackerRank',
+        date: '2024-10-01',
+        credentialId: '83343A4091B9'
       },
       {
         name: 'Java MongoDB Integration Certification',
-        image: 'assets/java-mongo-certificate.png',
-        issuer: 'MongoDB University',
-        date: '2023-07-12',
-        credentialId: 'MONGO-JAVA-2023-001'
+        image: 'assets/images/java-mongo-certificate.png',
+        issuer: 'Udemy',
+        date: '2024-09-08',
+        credentialId: 'UC-ecfeeee19-194d-47d0-bfd1-21a992e9e98f'
       },
       {
         name: 'React Development Certification',
-        image: 'assets/react-certificate.png',
-        issuer: 'Meta (Facebook)',
-        date: '2023-05-18',
-        credentialId: 'REACT-META-2023-001'
+        image: 'assets/images/react-certificate.png',
+        issuer: 'HackerRank',
+        date: '2024-02-22',
+        credentialId: '863F72ccE210'
       },
       {
         name: 'SQL Database Certification',
-        image: 'assets/sql-certificate.png',
-        issuer: 'Oracle',
-        date: '2023-02-28',
-        credentialId: 'SQL-ORA-2023-001'
+        image: 'assets/images/sql-certificate.png',
+        issuer: 'Udemy',
+        date: '2024-02-28',
+        credentialId: 'UC-6952a9c2-cf99-4bbc-b3c3-6014dfafb9ae'
       },
       {
         name: 'Full Stack Web Developer Certification',
-        image: 'assets/web-developer-certificate.png',
-        issuer: 'Coursera',
+        image: 'assets/images/web-developer-certificate.png',
+        issuer: 'Udemy',
         date: '2023-09-15',
-        credentialId: 'FSWD-COURSERA-2023-001'
+        credentialId: 'UC-320f6f46-0b06-44e3-c76037fd8ce4'
       }
     ],
     education: [
       {
-        institution: 'Bharathiar University',
-        degree: 'Bachelor of Science',
-        field: 'Computer Science',
-        duration: '2020 - 2023',
-        cgpa: '8.5',
-        description: 'Focused on software development, data structures, algorithms, and modern web technologies. Completed various projects in Java, JavaScript, and database management.',
+        institution: 'E.G.S. Pillay Engineering College, Nagapattinam',
+        degree: 'Bachelor of Engineering',
+        field: 'Electronics and Communication Engineering',
+        duration: '2019 - 2023',
+        cgpa: '8.81 / 10',
+        description: 'Completed a comprehensive curriculum covering core engineering principles, programming, and system design.',
         achievements: [
-          'Graduated with First Class Honours',
-          'Led college tech fest web development team',
-          'Winner of inter-college coding competition',
-          'Published research paper on modern web frameworks'
+          'Graduated with First Class Honors',
+          'Teach Web Development to Junior Students as Part of College Club',
+          'Completed a Project on IoT-based Smart Home Automation System.'
         ]
       }
     ],

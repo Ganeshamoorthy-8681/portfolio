@@ -1,9 +1,11 @@
-<section id="projects" class="py-16 lg:py-24 bg-white dark:bg-[var(--color-primary-dark-bg)] min-h-screen transition-all duration-500 relative">
+<section id="projects"
+  class="py-16 lg:py-24 bg-white dark:bg-[var(--color-primary-dark-bg)] min-h-screen transition-all duration-500 relative">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
     <div class="text-center mb-16 opacity-0" appScrollAnimate="animate-fade-in-up">
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-       <span class="dark:text-white"> Featured </span> <span class="bg-gradient-to-r from-purple-500 to-purple-300 bg-clip-text text-transparent">Projects</span>
+        <span class="dark:text-white"> Featured </span> <span
+          class="bg-gradient-to-r from-purple-500 to-purple-300 bg-clip-text text-transparent">Projects</span>
       </h2>
       <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
         Showcasing my technical expertise through innovative solutions
@@ -11,31 +13,74 @@
     </div>
 
     <!-- Filter Controls -->
-    <div class="mb-12 opacity-0" appScrollAnimate="animate-fade-in-up-delay-200">
-      <!-- Category Tabs -->
+    <div class="mb-12 opacity-0 relative z-10" appScrollAnimate="animate-fade-in-up-delay-200">
+      <!-- DaisyUI Category Tabs -->
       <div class="mb-8">
-        <div class="w-full max-w-4xl mx-auto bg-white dark:bg-gray-800/50 rounded-2xl shadow-lg shadow-gray-500/10 dark:shadow-gray-900/20 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 p-3">
-          <div class="flex flex-wrap justify-center gap-2">
-            <button 
-              *ngFor="let category of categories"
-              [class]="'relative px-5 py-2 rounded-xl font-semibold text-sm transition-all duration-500 flex items-center gap-2.5 min-w-0 ' + (selectedCategory === category.value ? 'bg-gradient-to-r from-purple-600 to-purple-500 text-white shadow-lg shadow-purple-500/25 transform scale-105' : 'hover:bg-purple-50 dark:hover:bg-purple-900/30 hover:scale-102 text-gray-600 dark:text-gray-300')"
+        <div class="w-full max-w-5xl mx-auto">
+          <!-- Desktop Tabs -->
+          <div class="tabs tabs-boxed bg-white dark:bg-gray-800/50
+             shadow-lg shadow-gray-500/10 
+             dark:shadow-gray-900/20 
+             border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-2 hidden sm:flex">
+            <button *ngFor="let category of categories"
+              [class]="'tab tab-lg font-semibold text-sm transition-all duration-500 flex items-center gap-3 flex-1 min-w-0 rounded-xl mx-1 ' + (selectedCategory === category.value ? 'tab-active !bg-gradient-to-r !from-purple-600 !to-purple-500 !text-white shadow-lg shadow-purple-500/25 transform scale-105' : 'text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/30')"
               (click)="onCategoryChange(category.value)">
-              <mat-icon 
-                class="text-base transition-all duration-300" 
-                [class.text-white]="selectedCategory === category.value" 
-                [class.text-purple-600]="selectedCategory !== category.value" 
+              <mat-icon class="text-lg transition-all duration-300"
+                [class.text-white]="selectedCategory === category.value"
+                [class.text-purple-600]="selectedCategory !== category.value"
                 [class.dark:text-purple-400]="selectedCategory !== category.value">
                 {{ category.icon }}
               </mat-icon>
               <span class="whitespace-nowrap">{{ category.label }}</span>
-              
-              <!-- Active indicator -->
-              <div 
-                *ngIf="selectedCategory === category.value"
-                class="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-600/10 to-purple-500/10 animate-pulse">
-              </div>
             </button>
           </div>
+
+          <!-- Mobile Dropdown -->
+          <div class="dropdown w-full sm:hidden relative" (click)="toggleMenu()" [class.dropdown-bottom]="isMenuOpen">
+            <!-- Dropdown Button -->
+            <button role="button"
+              class="btn btn-lg w-full bg-white dark:bg-gray-800/50 border border-gray-200/50 dark:border-gray-700/50 shadow-lg text-gray-700 dark:text-gray-300 hover:bg-purple-50 dark:hover:bg-purple-900/30 rounded-2xl flex items-center justify-between"
+              aria-expanded="{{ isMenuOpen }}">
+              <div class="flex items-center gap-3">
+                <mat-icon class="text-lg text-purple-600 dark:text-purple-400">
+                  {{ selectedCategoryData.icon }}
+                </mat-icon>
+                <span class="flex-1 text-left">{{ selectedCategoryData.label }}</span>
+              </div>
+
+              <mat-icon class="text-lg transition-transform duration-300" [class.rotate-180]="isMenuOpen">
+                expand_more
+              </mat-icon>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <ul *ngIf="isMenuOpen"
+              class="dropdown-content menu bg-white dark:bg-gray-800 rounded-2xl w-full p-2 shadow-xl border border-gray-200 dark:border-gray-700 mt-2">
+              <li *ngFor="let category of categories">
+                <button (click)="onCategoryChange(category.value)"
+                  class="flex items-center gap-3 p-3 rounded-xl transition-all duration-300 w-full" [ngClass]="{
+    'bg-gradient-to-r from-purple-600 to-purple-500 text-white': selectedCategory === category.value,
+    'text-gray-700 dark:text-gray-300 hover:bg-purple-50 dark:hover:bg-purple-900/30': selectedCategory !== category.value
+}">
+                  <mat-icon class="text-lg" [ngClass]="{
+      'text-white': selectedCategory === category.value,
+      'text-purple-600 dark:text-purple-400': selectedCategory !== category.value
+    }">
+                    {{ category.icon }}
+                  </mat-icon>
+
+                  <span class="font-medium">{{ category.label }}</span>
+
+                  <mat-icon *ngIf="selectedCategory === category.value" class="ml-auto text-white">
+                    check
+                  </mat-icon>
+                </button>
+
+              </li>
+            </ul>
+          </div>
+
+
         </div>
       </div>
 
@@ -56,8 +101,10 @@
     </div>
 
     <!-- Projects Count -->
-    <div class="text-center mb-8 opacity-0" *ngIf="filteredProjects.length > 0" appScrollAnimate="animate-fade-in-up-delay-500">
-      <span class="inline-flex items-center px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">
+    <div class="text-center mb-8 opacity-0" *ngIf="filteredProjects.length > 0"
+      appScrollAnimate="animate-fade-in-up-delay-500">
+      <span
+        class="inline-flex items-center px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">
         <mat-icon class="mr-2 text-sm">filter_list</mat-icon>
         Showing {{ filteredProjects.length }} of {{ allProjects.length }} projects
       </span>
@@ -65,26 +112,23 @@
 
     <!-- Projects Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-16">
-      <div 
-        class="opacity-0 transform transition-all duration-500" 
-        *ngFor="let project of filteredProjects; let i = index"
-        [appScrollAnimate]="'animate-zoom-in'"
+      <div class="opacity-0 transform transition-all duration-500"
+        *ngFor="let project of filteredProjects; let i = index" [appScrollAnimate]="'animate-zoom-in'"
         [style.animation-delay]="(i * 100) + 'ms'">
-        
-        <div class="group relative flex flex-col h-full bg-gray-50 dark:bg-gray-800/50 rounded-2xl transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-xl hover:shadow-gray-400/20 dark:hover:shadow-purple-500/20 border border-gray-200 dark:border-purple-500/20 hover:border-purple-500/40 overflow-hidden">
-          
+
+        <div
+          class="group relative flex flex-col h-full bg-gray-50 dark:bg-gray-800/50 rounded-2xl transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-xl hover:shadow-gray-400/20 dark:hover:shadow-purple-500/20 border border-gray-200 dark:border-purple-500/20 hover:border-purple-500/40 overflow-hidden">
+
           <!-- Project Image -->
-          <div class="relative overflow-hidden aspect-video bg-gray-100 dark:bg-gray-700 cursor-pointer" (click)="openImageModal(project)">
-            <img 
-              [src]="project.image" 
-              [alt]="project.title + ' screenshot'"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              (error)="onImageError($event)"
-            >
-            
+          <div class="relative overflow-hidden aspect-video bg-gray-100 dark:bg-gray-700 cursor-pointer"
+            (click)="openImageModal(project)">
+            <img [src]="project.image" [alt]="project.title + ' screenshot'"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
             <!-- Click to Enlarge Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
-              <div class="flex flex-col items-center gap-2 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
+              <div
+                class="flex flex-col items-center gap-2 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                 <mat-icon class="text-3xl">zoom_in</mat-icon>
                 <span class="text-sm font-medium">Click to enlarge</span>
               </div>
@@ -95,15 +139,18 @@
           <div class="p-6 pb-4 flex-shrink-0">
             <div class="flex items-start justify-between w-full">
               <div class="flex items-center gap-3 flex-1 min-w-0">
-                <div class="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg flex items-center justify-center">
+                <div
+                  class="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg flex items-center justify-center">
                   <mat-icon class="text-white text-lg">{{ getProjectIcon(project) }}</mat-icon>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300 line-clamp-2">
+                <h3
+                  class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300 line-clamp-2">
                   {{ project.title }}
                 </h3>
               </div>
               <div class="flex-shrink-0 ml-3" *ngIf="project.category">
-                <span class="inline-flex items-center px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 font-medium text-xs rounded-md">
+                <span
+                  class="inline-flex items-center px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 font-medium text-xs rounded-md">
                   {{ project.category | uppercase }}
                 </span>
               </div>
@@ -115,7 +162,7 @@
             <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 line-clamp-3 flex-shrink-0">
               {{ project.description }}
             </p>
-            
+
             <!-- Technologies -->
             <div class="space-y-3 flex-grow">
               <h4 class="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
@@ -123,8 +170,7 @@
                 Technologies Used
               </h4>
               <div class="flex flex-wrap gap-2 mb-6">
-                <span 
-                  *ngFor="let tech of project.technologies" 
+                <span *ngFor="let tech of project.technologies"
                   class="inline-flex items-center px-3 py-1.5 bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-gray-200 hover:bg-purple-200 dark:hover:bg-purple-700 hover:text-purple-800 dark:hover:text-purple-200 font-medium text-xs rounded-md transition-all duration-300 cursor-default border border-gray-300 dark:border-gray-500 hover:border-purple-400 dark:hover:border-purple-500">
                   {{ tech }}
                 </span>
@@ -134,25 +180,15 @@
             <!-- Project Actions -->
             <div class="mt-auto pt-4 border-t border-gray-200 dark:border-purple-400/60">
               <div class="flex flex-wrap gap-1.5">
-                <button 
-                  *ngIf="project.liveUrl"
-                  (click)="openLiveProject(project.liveUrl)"
+                <button *ngIf="project.liveUrl" (click)="openLiveProject(project.liveUrl)"
                   class="flex-1 min-w-0 px-2 py-1 text-xs font-medium border border-purple-300 dark:border-purple-500 text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:border-purple-400 dark:hover:border-purple-400 rounded transition-all duration-300 flex items-center justify-center gap-1">
                   <mat-icon class="text-sm">launch</mat-icon>
                   Live Demo
                 </button>
-                <button 
-                  *ngIf="project.githubUrl"
-                  (click)="openGithubRepo(project.githubUrl)"
+                <button *ngIf="project.githubUrl" (click)="openGithubRepo(project.githubUrl)"
                   class="flex-1 min-w-0 px-2 py-1 text-xs font-medium border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-gray-400 dark:hover:border-gray-500 rounded transition-all duration-300 flex items-center justify-center gap-1">
                   <mat-icon class="text-sm">code</mat-icon>
                   Source
-                </button>
-                <button 
-                  (click)="openProjectDetails(project)"
-                  class="flex-1 min-w-0 px-2 py-1 text-xs font-medium text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded transition-all duration-300 flex items-center justify-center gap-1">
-                  <mat-icon class="text-sm">info</mat-icon>
-                  Details
                 </button>
               </div>
             </div>
@@ -162,16 +198,17 @@
     </div>
 
     <!-- No Results -->
-    <div class="text-center py-16 opacity-0" *ngIf="filteredProjects.length === 0" appScrollAnimate="animate-fade-in-up">
-      <div class="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 rounded-full flex items-center justify-center">
+    <div class="text-center py-16 opacity-0" *ngIf="filteredProjects.length === 0"
+      appScrollAnimate="animate-fade-in-up">
+      <div
+        class="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 rounded-full flex items-center justify-center">
         <mat-icon class="text-4xl text-gray-400 dark:text-gray-500">search_off</mat-icon>
       </div>
       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">No Projects Found</h3>
       <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-md mx-auto">
         Try adjusting your search criteria or browse different categories
       </p>
-      <button 
-        (click)="resetFilters()"
+      <button (click)="resetFilters()"
         class="px-6 py-2 font-medium border border-purple-300 dark:border-purple-500 text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:border-purple-400 dark:hover:border-purple-400 rounded-lg transition-all duration-300 flex items-center gap-2">
         <mat-icon class="text-base">refresh</mat-icon>
         Reset Filters
@@ -179,8 +216,10 @@
     </div>
 
     <!-- Load More / View All (for future pagination) -->
-    <div class="text-center opacity-0" *ngIf="filteredProjects.length > 6" appScrollAnimate="animate-fade-in-up-delay-800">
-      <button class="px-8 py-3 font-medium bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 border-none rounded-lg shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/40 transition-all duration-300 flex items-center gap-2">
+    <div class="text-center opacity-0" *ngIf="filteredProjects.length > 6"
+      appScrollAnimate="animate-fade-in-up-delay-800">
+      <button
+        class="px-8 py-3 font-medium bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 border-none rounded-lg shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/40 transition-all duration-300 flex items-center gap-2">
         <mat-icon class="text-base">expand_more</mat-icon>
         View All Projects
       </button>
@@ -191,10 +230,13 @@
   <!-- Background Decorations -->
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
     <!-- Top Left Circle -->
-    <div class="absolute top-20 left-10 w-40 h-40 bg-purple-500/10 dark:bg-purple-400/15 rounded-full blur-3xl animate-pulse">
+    <div
+      class="absolute top-20 left-10 w-40 h-40 bg-purple-500/10 dark:bg-purple-400/15 rounded-full blur-3xl animate-pulse">
     </div>
     <!-- Top Right Circle -->
-    <div class="absolute top-32 right-16 w-32 h-32 bg-blue-500/10 dark:bg-blue-400/15 rounded-full blur-2xl animate-pulse" style="animation-delay: 1s;">
+    <div
+      class="absolute top-32 right-16 w-32 h-32 bg-blue-500/10 dark:bg-blue-400/15 rounded-full blur-2xl animate-pulse"
+      style="animation-delay: 1s;">
     </div>
     <!-- Middle Left Circle -->
     <div class="absolute top-1/2 left-20 w-56 h-56 bg-purple-600/8 dark:bg-purple-300/12 rounded-full blur-3xl">
@@ -208,55 +250,72 @@
     <!-- Bottom Right Circle -->
     <div class="absolute bottom-20 right-1/3 w-28 h-28 bg-purple-400/12 dark:bg-purple-300/18 rounded-full blur-xl">
     </div>
-    
+
     <!-- Gradient Lines -->
-    <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-500/20 dark:via-purple-400/30 to-transparent">
-      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 dark:via-purple-300/10 to-transparent h-8 blur-sm"></div>
-      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 dark:via-purple-300/15 to-transparent h-4 blur-xs"></div>
-      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 dark:via-purple-300/25 to-transparent h-2"></div>
+    <div
+      class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-500/20 dark:via-purple-400/30 to-transparent">
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 dark:via-purple-300/10 to-transparent h-8 blur-sm">
+      </div>
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 dark:via-purple-300/15 to-transparent h-4 blur-xs">
+      </div>
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 dark:via-purple-300/25 to-transparent h-2">
+      </div>
     </div>
-    
-    <div class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-purple-500/20 dark:via-purple-400/30 to-transparent">
-      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 dark:via-purple-300/10 to-transparent h-8 blur-sm"></div>
-      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 dark:via-purple-300/15 to-transparent h-4 blur-xs"></div>
-      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 dark:via-purple-300/25 to-transparent h-2"></div>
+
+    <div
+      class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-purple-500/20 dark:via-purple-400/30 to-transparent">
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 dark:via-purple-300/10 to-transparent h-8 blur-sm">
+      </div>
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 dark:via-purple-300/15 to-transparent h-4 blur-xs">
+      </div>
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 dark:via-purple-300/25 to-transparent h-2">
+      </div>
     </div>
 
     <!-- Floating Particles -->
-    <div class="absolute top-1/4 left-1/2 w-3 h-3 bg-purple-400/20 dark:bg-purple-300/30 rounded-full animate-bounce" style="animation-delay: 2s; animation-duration: 3s;"></div>
-    <div class="absolute top-3/4 left-1/4 w-2 h-2 bg-blue-400/20 dark:bg-blue-300/30 rounded-full animate-bounce" style="animation-delay: 4s; animation-duration: 4s;"></div>
-    <div class="absolute top-1/3 right-1/4 w-4 h-4 bg-indigo-400/20 dark:bg-indigo-300/30 rounded-full animate-bounce" style="animation-delay: 1s; animation-duration: 5s;"></div>
+    <div class="absolute top-1/4 left-1/2 w-3 h-3 bg-purple-400/20 dark:bg-purple-300/30 rounded-full animate-bounce"
+      style="animation-delay: 2s; animation-duration: 3s;"></div>
+    <div class="absolute top-3/4 left-1/4 w-2 h-2 bg-blue-400/20 dark:bg-blue-300/30 rounded-full animate-bounce"
+      style="animation-delay: 4s; animation-duration: 4s;"></div>
+    <div class="absolute top-1/3 right-1/4 w-4 h-4 bg-indigo-400/20 dark:bg-indigo-300/30 rounded-full animate-bounce"
+      style="animation-delay: 1s; animation-duration: 5s;"></div>
   </div>
 
   <!-- DaisyUI Modal for Project Image Enlargement -->
   <div *ngIf="isImageModalOpen && selectedProject" class="modal modal-open">
     <div class="modal-box max-w-6xl w-full bg-white dark:bg-gray-900 p-0 overflow-hidden">
       <!-- Modal Header -->
-      <div class="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+      <div
+        class="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <div class="flex items-center gap-3">
-          <div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg flex items-center justify-center">
+          <div
+            class="w-8 h-8 bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg flex items-center justify-center">
             <mat-icon class="text-white text-sm">{{ getProjectIcon(selectedProject) }}</mat-icon>
           </div>
           <div>
             <h3 class="text-xl font-bold text-gray-900 dark:text-white">{{ selectedProject.title }}</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400" *ngIf="selectedProject.category">{{ selectedProject.category | uppercase }} Project</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400" *ngIf="selectedProject.category">{{
+              selectedProject.category | uppercase }} Project</p>
           </div>
         </div>
-        <button 
-          (click)="closeImageModal()"
+        <button (click)="closeImageModal()"
           class="btn btn-sm btn-circle btn-ghost text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
           <mat-icon>close</mat-icon>
         </button>
       </div>
 
       <!-- Modal Content - Project Image -->
-      <div class="relative bg-gray-100 dark:bg-gray-800 flex items-center justify-center min-h-[500px] max-h-[70vh] overflow-hidden">
-        <img 
-          [src]="selectedProject.image" 
-          [alt]="selectedProject.title + ' screenshot'"
-          class="max-w-full max-h-full object-contain transition-transform duration-300 cursor-zoom-in hover:scale-105"
-        >
-        
+      <div
+        class="relative bg-gray-100 dark:bg-gray-800 flex items-center justify-center min-h-[500px] max-h-[70vh] overflow-hidden">
+        <img [src]="selectedProject.image" [alt]="selectedProject.title + ' screenshot'"
+          class="max-w-full max-h-full object-contain transition-transform duration-300 cursor-zoom-in hover:scale-105">
+
         <!-- Project Info -->
         <div class="absolute top-4 left-4 bg-black/70 text-white px-3 py-2 rounded-lg text-sm">
           <mat-icon class="text-sm mr-1">info</mat-icon>
@@ -265,16 +324,12 @@
 
         <!-- Action Buttons -->
         <div class="absolute top-4 right-4 flex gap-2">
-          <button 
-            *ngIf="selectedProject.liveUrl"
-            (click)="openLiveProject(selectedProject.liveUrl)"
+          <button *ngIf="selectedProject.liveUrl" (click)="openLiveProject(selectedProject.liveUrl)"
             class="btn btn-sm bg-white/90 dark:bg-gray-800/90 text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-700 border-none shadow-lg">
             <mat-icon class="text-sm">launch</mat-icon>
             Live Demo
           </button>
-          <button 
-            *ngIf="selectedProject.githubUrl"
-            (click)="openGithubRepo(selectedProject.githubUrl)"
+          <button *ngIf="selectedProject.githubUrl" (click)="openGithubRepo(selectedProject.githubUrl)"
             class="btn btn-sm bg-white/90 dark:bg-gray-800/90 text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-700 border-none shadow-lg">
             <mat-icon class="text-sm">code</mat-icon>
             Source
@@ -288,26 +343,18 @@
           <div class="flex-1">
             <h4 class="font-semibold text-gray-900 dark:text-white mb-2">{{ selectedProject.title }}</h4>
             <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">{{ selectedProject.description }}</p>
-            
+
             <!-- Technologies -->
             <div class="flex flex-wrap gap-2">
-              <span 
-                *ngFor="let tech of selectedProject.technologies" 
+              <span *ngFor="let tech of selectedProject.technologies"
                 class="inline-flex items-center px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 font-medium text-xs rounded-md">
                 {{ tech }}
               </span>
             </div>
           </div>
-          
+
           <div class="flex gap-2">
-            <button 
-              (click)="openProjectDetails(selectedProject)"
-              class="btn btn-sm btn-outline border-purple-600 text-purple-600 hover:bg-purple-50 dark:hover:bg-purple-900/20">
-              <mat-icon class="text-sm">info</mat-icon>
-              Details
-            </button>
-            <button 
-              (click)="closeImageModal()"
+            <button (click)="closeImageModal()"
               class="btn btn-primary bg-purple-600 hover:bg-purple-700 border-purple-600 text-white">
               Close
             </button>
@@ -315,7 +362,7 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Modal Backdrop -->
     <div class="modal-backdrop bg-black/50" (click)="closeImageModal()"></div>
   </div>

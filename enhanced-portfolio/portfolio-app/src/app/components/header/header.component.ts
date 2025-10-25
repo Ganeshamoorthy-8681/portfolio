@@ -40,8 +40,7 @@ export class HeaderComponent implements OnInit {
 
   constructor (
     private themeService: ThemeService,
-    private router: Router,
-    private elementRef: ElementRef
+    private router: Router
   ) {
     this.isDarkTheme$ = this.themeService.isDarkTheme();
   }
@@ -67,6 +66,7 @@ export class HeaderComponent implements OnInit {
   }
 
   private updateActiveSection(): void {
+
     // Check if we're on the blog page
     if (this.router.url.startsWith('/blog')) {
       this.activeSection = 'blog';
@@ -99,6 +99,7 @@ export class HeaderComponent implements OnInit {
   }
 
   handleNavigation(item: any): void {
+    
     if (item.isRoute) {
       // Navigate to route
       this.router.navigate([item.link]);

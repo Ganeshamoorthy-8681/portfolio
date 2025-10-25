@@ -3,11 +3,11 @@
     <!-- Section Header -->
     <div class="text-center mb-20 relative">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-5xl lg:text-6xl font-extrabold mb-4 leading-tight">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 leading-tight">
           <span class="block text-gray-900 dark:text-white mb-2">SKILLS</span>
           <span
-            class="block bg-gradient-to-r from-purple-500 to-purple-300 bg-clip-text text-transparent text-4xl lg:text-5xl">&
-            EXPERTISE</span>
+            class="block bg-gradient-to-r from-purple-500 to-purple-300 bg-clip-text text-transparent">
+            & EXPERTISE</span>
         </h2>
         <p class="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
           Technologies and tools I use to bring ideas to life
@@ -20,7 +20,7 @@
     <!-- Skills Categories -->
     <div class="relative z-10">
       <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 max-w-7xl mx-auto">
-        <div appScrollAnimate="animate-fade-in-up-delay-200" *ngFor="let category of skillCategories; let i = index"
+        <div appScrollAnimate="animate-fade-in-up" *ngFor="let category of skillCategories; let i = index"
           class="opacity-0 bg-[var(--color-light-secondary-bg)]
            dark:bg-[var(--color-surface-bg)]/30 
            backdrop-blur-lg border
@@ -101,7 +101,7 @@
         <div class="text-center group">
           <div
             class="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2 group-hover:scale-110 transition-transform duration-300">
-            2+</div>
+            3+</div>
           <div class="text-gray-600 dark:text-gray-400 uppercase tracking-wide text-sm">Years Experience</div>
         </div>
       </div>

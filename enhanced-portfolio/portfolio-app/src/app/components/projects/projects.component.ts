@@ -24,18 +24,19 @@ export class ProjectsComponent implements OnInit {
   searchTerm: string = '';
   selectedProject: Project | null = null;
   isImageModalOpen: boolean = false;
-  
+  isMenuOpen: boolean = false;
+
   categories = [
-    { value: 'all', label: 'All Projects', icon: 'apps' },
-    { value: 'web', label: 'Web Apps', icon: 'web' },
-    { value: 'mobile', label: 'Mobile Apps', icon: 'phone_android' },
+    { value: 'all', label: 'All', icon: 'apps' },
+    { value: 'web', label: 'Web', icon: 'web' },
+    // { value: 'mobile', label: 'Mobile', icon: 'phone_android' },
     { value: 'api', label: 'APIs', icon: 'api' },
-    { value: 'tools', label: 'Tools', icon: 'build' }
+    // { value: 'tools', label: 'Tools', icon: 'build' }
   ];
 
-  constructor(
+  constructor (
     private portfolioService: PortfolioService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loadProjects();
@@ -67,7 +68,7 @@ export class ProjectsComponent implements OnInit {
 
     // Apply category filter
     if (this.selectedCategory !== 'all') {
-      filtered = filtered.filter(project => 
+      filtered = filtered.filter(project =>
         project.category?.toLowerCase() === this.selectedCategory.toLowerCase()
       );
     }
@@ -78,18 +79,13 @@ export class ProjectsComponent implements OnInit {
       filtered = filtered.filter(project =>
         project.title.toLowerCase().includes(searchLower) ||
         project.description.toLowerCase().includes(searchLower) ||
-        project.technologies.some(tech => 
+        project.technologies.some(tech =>
           tech.toLowerCase().includes(searchLower)
         )
       );
     }
 
     this.filteredProjects = filtered;
-  }
-
-  openProjectDetails(project: Project): void {
-    // Implementation for opening project details modal
-    console.log('Opening project details for:', project.title);
   }
 
   openLiveProject(url: string): void {
@@ -119,7 +115,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   getTechnologyColor(tech: string): string {
-    const colors: { [key: string]: string } = {
+    const colors: { [key: string]: string; } = {
       'Angular': '#dd1b16',
       'React': '#61dafb',
       'TypeScript': '#3178c6',
@@ -159,5 +155,13 @@ export class ProjectsComponent implements OnInit {
     this.searchTerm = '';
     this.selectedCategory = 'all';
     this.applyFilters();
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  get selectedCategoryData() {
+    return this.categories.find(c => c.value === this.selectedCategory) || this.categories[0];
   }
 }
