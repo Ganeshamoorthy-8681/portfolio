@@ -3,8 +3,6 @@
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
 @plugin "daisyui";
-@import 'ngx-toastr/toastr';
-@import 'ngx-toastr/toastr-bs5-alert';
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 @theme {
 	
