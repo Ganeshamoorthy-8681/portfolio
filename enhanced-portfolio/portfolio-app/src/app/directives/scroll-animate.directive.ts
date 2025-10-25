@@ -18,7 +18,7 @@ export class ScrollAnimateDirective implements OnInit {
           }
         });
       },
-      { threshold: 0.3 } // trigger when 10% visible
+      { threshold: 0.3 } // trigger when 30% visible
     );
 
     observer.observe(this.el.nativeElement);

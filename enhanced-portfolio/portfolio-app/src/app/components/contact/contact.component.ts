@@ -5,6 +5,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';
 import { PersonalInfo } from '../../models/portfolio.model';
 import { PortfolioService } from '../../services/portfolio-data.service';
+import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+
 
 interface ContactForm {
   name: string;
@@ -56,9 +59,11 @@ export class ContactComponent implements OnInit {
     }
   ];
 
-  constructor(
-    private portfolioService: PortfolioService
-  ) {}
+  constructor (
+    private portfolioService: PortfolioService,
+    private http: HttpClient,
+    private toastr: ToastrService
+  ) { }
 
   ngOnInit(): void {
     this.loadPersonalInfo();
@@ -82,16 +87,33 @@ export class ContactComponent implements OnInit {
   onSubmit(): void {
     if (this.isFormValid()) {
       this.isSubmitting = true;
-      
-      // Simulate form submission
-      setTimeout(() => {
-        this.showSuccessMessage();
-        this.resetForm();
-        this.isSubmitting = false;
-      }, 2000);
+      this.handleFormSubmission();
     } else {
       this.showErrorMessage('Please fill in all required fields.');
     }
+  }
+
+  handleFormSubmission() {
+
+    const formData = new URLSearchParams();
+    formData.set('name', this.contactForm.name);
+    formData.set('email', this.contactForm.email);
+    formData.set('subject', this.contactForm.subject);
+    formData.set('message', this.contactForm.message);
+    formData.set("form-name", "contact");
+
+    this.http.post('/', formData.toString(), { headers: { "Content-Type": "application/x-www-form-urlencoded" } })
+      .subscribe({
+        next: () => {
+          this.showSuccessMessage();
+          this.resetForm();
+          this.isSubmitting = false;
+        },
+        error: (error) => {
+          this.showErrorMessage('Failed to send message. Please try again later.');
+          this.isSubmitting = false;
+        }
+      });
   }
 
   // Public method for template use
@@ -109,13 +131,9 @@ export class ContactComponent implements OnInit {
   }
 
   getSocialIcon(platform: string): string {
-    const iconMap: { [key: string]: string } = {
+    const iconMap: { [key: string]: string; } = {
       'linkedin': 'business',
       'github': 'code',
-      'twitter': 'alternate_email',
-      'instagram': 'photo_camera',
-      'facebook': 'people',
-      'youtube': 'play_circle',
       'website': 'language'
     };
     return iconMap[platform.toLowerCase()] || 'link';
@@ -131,15 +149,11 @@ export class ContactComponent implements OnInit {
   }
 
   private showSuccessMessage(): void {
-    // Simple console log for now - can be replaced with toast notification
-    console.log('Message sent successfully! I\'ll get back to you soon.');
-    alert('Message sent successfully! I\'ll get back to you soon.');
+    this.toastr.success('Message sent successfully! I\'ll get back to you soon.');
   }
 
   private showErrorMessage(message: string): void {
-    // Simple console log for now - can be replaced with toast notification
-    console.error('Error:', message);
-    alert(`Error: ${message}`);
+    this.toastr.error(message);
   }
 
   openSocialLink(url: string): void {
