@@ -112,7 +112,7 @@ export class ContactComponent implements OnInit {
       }
     });
 
-    this.http.post('/', entry.toString(), { headers: { "Content-Type": "application/x-www-form-urlencoded" } })
+    this.http.post('/', entry.toString(), { headers: { "Content-Type": "application/x-www-form-urlencoded" }, responseType: 'text' })
       .subscribe({
         next: () => {
           this.resetForm();
