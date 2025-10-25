@@ -122,7 +122,35 @@
           </div>
 
           <!-- Contact Form -->
-          <form (ngSubmit)="onSubmit()" data-netlify="true" name="contact" #contactFormRef="ngForm" class="space-y-6">
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6">
+
+            <!-- Success Alert -->
+            <div *ngIf="showSuccess" 
+                 class="alert alert-success bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4 flex items-start gap-3 transition-all duration-300">
+              <mat-icon class="text-green-600 dark:text-green-400 text-lg flex-shrink-0 mt-0.5">check_circle</mat-icon>
+              <div class="flex-1">
+                <p class="text-green-800 dark:text-green-200 font-medium text-sm">{{ successMessage }}</p>
+              </div>
+              <button type="button" 
+                      (click)="hideSuccess()" 
+                      class="text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-200 transition-colors duration-200 flex-shrink-0">
+                <mat-icon class="text-lg">close</mat-icon>
+              </button>
+            </div>
+
+            <!-- Error Alert -->
+            <div *ngIf="showError" 
+                 class="alert alert-error bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 flex items-start gap-3 transition-all duration-300">
+              <mat-icon class="text-red-600 dark:text-red-400 text-lg flex-shrink-0 mt-0.5">error</mat-icon>
+              <div class="flex-1">
+                <p class="text-red-800 dark:text-red-200 font-medium text-sm">{{ errorMessage }}</p>
+              </div>
+              <button type="button" 
+                      (click)="hideError()" 
+                      class="text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-200 transition-colors duration-200 flex-shrink-0">
+                <mat-icon class="text-lg">close</mat-icon>
+              </button>
+            </div>
 
             <!-- Name Field -->
             <div class="form-control w-full">
@@ -130,8 +158,16 @@
                 <span class="label-text text-gray-700 dark:text-gray-300 font-medium">Full Name</span>
               </label>
               <input type="text"
-                class="input input-bordered w-full bg-white dark:bg-gray-800/90 border-gray-200/80 dark:border-gray-700/80 text-gray-700 dark:text-gray-300 focus:border-purple-500 dark:focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500/20 dark:focus:ring-purple-400/30"
-                [(ngModel)]="contactForm.name" name="name" required placeholder="Enter your full name">
+                [class]="'input input-bordered w-full bg-white dark:bg-gray-800/90 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 transition-all duration-200 ' + 
+                (hasFieldError('name') ? 'border-red-500 dark:border-red-400 focus:border-red-500 dark:focus:border-red-400 focus:ring-red-500/20 dark:focus:ring-red-400/30' : 'border-gray-200/80 dark:border-gray-700/80 focus:border-purple-500 dark:focus:border-purple-400 focus:ring-purple-500/20 dark:focus:ring-purple-400/30')"
+                formControlName="name" 
+                placeholder="Enter your full name">
+              <div class="label" *ngIf="hasFieldError('name')">
+                <span class="label-text-alt text-red-600 dark:text-red-400 flex items-center gap-1">
+                  <mat-icon class="text-sm">error</mat-icon>
+                  {{ getFieldError('name') }}
+                </span>
+              </div>
             </div>
 
             <!-- Email Field -->
@@ -140,8 +176,16 @@
                 <span class="label-text text-gray-700 dark:text-gray-300 font-medium">Email Address</span>
               </label>
               <input type="email"
-                class="input input-bordered w-full bg-white dark:bg-gray-800/90 border-gray-200/80 dark:border-gray-700/80 text-gray-700 dark:text-gray-300 focus:border-purple-500 dark:focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500/20 dark:focus:ring-purple-400/30"
-                [(ngModel)]="contactForm.email" name="email" required placeholder="your.email@example.com">
+                [class]="'input input-bordered w-full bg-white dark:bg-gray-800/90 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 transition-all duration-200 ' + 
+                (hasFieldError('email') ? 'border-red-500 dark:border-red-400 focus:border-red-500 dark:focus:border-red-400 focus:ring-red-500/20 dark:focus:ring-red-400/30' : 'border-gray-200/80 dark:border-gray-700/80 focus:border-purple-500 dark:focus:border-purple-400 focus:ring-purple-500/20 dark:focus:ring-purple-400/30')"
+                formControlName="email" 
+                placeholder="your.email@example.com">
+              <div class="label" *ngIf="hasFieldError('email')">
+                <span class="label-text-alt text-red-600 dark:text-red-400 flex items-center gap-1">
+                  <mat-icon class="text-sm">error</mat-icon>
+                  {{ getFieldError('email') }}
+                </span>
+              </div>
             </div>
 
             <!-- Subject Field -->
@@ -150,8 +194,16 @@
                 <span class="label-text text-gray-700 dark:text-gray-300 font-medium">Subject</span>
               </label>
               <input type="text"
-                class="input input-bordered w-full bg-white dark:bg-gray-800/90 border-gray-200/80 dark:border-gray-700/80 text-gray-700 dark:text-gray-300 focus:border-purple-500 dark:focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500/20 dark:focus:ring-purple-400/30"
-                [(ngModel)]="contactForm.subject" name="subject" required placeholder="Brief subject of your message">
+                [class]="'input input-bordered w-full bg-white dark:bg-gray-800/90 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 transition-all duration-200 ' + 
+                (hasFieldError('subject') ? 'border-red-500 dark:border-red-400 focus:border-red-500 dark:focus:border-red-400 focus:ring-red-500/20 dark:focus:ring-red-400/30' : 'border-gray-200/80 dark:border-gray-700/80 focus:border-purple-500 dark:focus:border-purple-400 focus:ring-purple-500/20 dark:focus:ring-purple-400/30')"
+                formControlName="subject" 
+                placeholder="Brief subject of your message">
+              <div class="label" *ngIf="hasFieldError('subject')">
+                <span class="label-text-alt text-red-600 dark:text-red-400 flex items-center gap-1">
+                  <mat-icon class="text-sm">error</mat-icon>
+                  {{ getFieldError('subject') }}
+                </span>
+              </div>
             </div>
 
             <!-- Message Field -->
@@ -160,14 +212,21 @@
                 <span class="label-text text-gray-700 dark:text-gray-300 font-medium">Message</span>
               </label>
               <textarea
-                class="textarea textarea-bordered w-full h-32 bg-white dark:bg-gray-800/90 border-gray-200/80 dark:border-gray-700/80 text-gray-700 dark:text-gray-300 focus:border-purple-500 dark:focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500/20 dark:focus:ring-purple-400/30 resize-none"
-                [(ngModel)]="contactForm.message" name="message" required
+                [class]="'textarea textarea-bordered w-full h-32 bg-white dark:bg-gray-800/90 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 resize-none transition-all duration-200 ' + 
+                (hasFieldError('message') ? 'border-red-500 dark:border-red-400 focus:border-red-500 dark:focus:border-red-400 focus:ring-red-500/20 dark:focus:ring-red-400/30' : 'border-gray-200/80 dark:border-gray-700/80 focus:border-purple-500 dark:focus:border-purple-400 focus:ring-purple-500/20 dark:focus:ring-purple-400/30')"
+                formControlName="message" 
                 placeholder="Tell me about your project or how I can help you..."></textarea>
+              <div class="label" *ngIf="hasFieldError('message')">
+                <span class="label-text-alt text-red-600 dark:text-red-400 flex items-center gap-1">
+                  <mat-icon class="text-sm">error</mat-icon>
+                  {{ getFieldError('message') }}
+                </span>
+              </div>
             </div>
 
             <!-- Submit Button -->
             <div class="pt-4">
-              <button type="submit" [disabled]="isSubmitting || !isFormValid()"
+              <button type="submit" [disabled]="isSubmitting"
                 class="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-medium rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/40 disabled:shadow-none transform hover:scale-105 disabled:scale-100">
                 <mat-icon *ngIf="!isSubmitting" class="text-lg">send</mat-icon>
                 <div *ngIf="isSubmitting"

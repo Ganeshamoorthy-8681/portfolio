@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="utf-8">
   <title>Ganesha Moorthy - Full Stack Developer | Portfolio</title>
-  <meta name="description" content="Full Stack Developer specializing in Angular, React, Java, and modern web technologies. View my portfolio, projects, and experience.">
+  <meta name="description"
+    content="Full Stack Developer specializing in Angular, React, Java, and modern web technologies. View my portfolio, projects, and experience.">
   <meta name="keywords" content="Full Stack Developer, Angular, React, Java, TypeScript, Web Development, Portfolio">
   <meta name="author" content="Ganesha Moorthy">
 
@@ -44,6 +45,13 @@
 </head>
 
 <body>
+  <!-- Netlify form handling -->
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name" />
+    <input type="text" name="email" />
+    <input type="text" name="subject" />
+    <input type="text" name="message" />
+  </form>
   <app-root></app-root>
 </body>
 

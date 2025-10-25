@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';
 import { PersonalInfo } from '../../models/portfolio.model';
 import { PortfolioService } from '../../services/portfolio-data.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 
 
@@ -21,7 +21,7 @@ interface ContactForm {
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule,
+    ReactiveFormsModule,
     MatIconModule,
     ScrollAnimateDirective
   ],
@@ -29,14 +29,17 @@ interface ContactForm {
   styleUrl: './contact.component.css'
 })
 export class ContactComponent implements OnInit {
+  hideSuccess(): void {
+    this.showSuccess = false;
+    this.successMessage = '';
+  }
   personalInfo: PersonalInfo | null = null;
-  contactForm: ContactForm = {
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  };
+  contactForm: FormGroup;
   isSubmitting = false;
+  errorMessage: string = '';
+  showError: boolean = false;
+  successMessage: string = '';
+  showSuccess: boolean = false;
 
   socialLinks = [
     {
@@ -62,8 +65,14 @@ export class ContactComponent implements OnInit {
   constructor (
     private portfolioService: PortfolioService,
     private http: HttpClient,
-    private toastr: ToastrService
-  ) { }
+    private toastr: ToastrService,
+    private fb: FormBuilder
+  ) {
+    this.contactForm = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(2)]],
+      email: ['', [Validators.required, Validators.email]],
+    });
+  }
 
   ngOnInit(): void {
     this.loadPersonalInfo();
@@ -85,45 +94,44 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.isFormValid()) {
+    this.hideError();
+
+    if (this.contactForm.valid) {
       this.isSubmitting = true;
       this.handleFormSubmission();
     } else {
-      this.showErrorMessage('Please fill in all required fields.');
+      // Mark all fields as touched to show validation errors
+      this.contactForm.markAllAsTouched();
+      this.showErrorAlert('Please fix the errors below and try again.');
     }
   }
 
   handleFormSubmission() {
+    const entry = new HttpParams({
+      fromObject: {
+        'form-name': 'contact',
+        ...this.contactForm.value,
+      }
+    });
 
-    const formData = new URLSearchParams();
-    formData.set('name', this.contactForm.name);
-    formData.set('email', this.contactForm.email);
-    formData.set('subject', this.contactForm.subject);
-    formData.set('message', this.contactForm.message);
-    formData.set("form-name", "contact");
-
-    this.http.post('/', formData.toString(), { headers: { "Content-Type": "application/x-www-form-urlencoded" } })
+    this.http.post('/', entry.toString(), { headers: { "Content-Type": "application/x-www-form-urlencoded" } })
       .subscribe({
         next: () => {
-          this.showSuccessMessage();
           this.resetForm();
           this.isSubmitting = false;
+          this.showSuccess = true;
+          this.successMessage = 'Message sent successfully! I\'ll get back to you soon.';
         },
         error: (error) => {
-          this.showErrorMessage('Failed to send message. Please try again later.');
+          this.showErrorAlert('Failed to send message. Please try again later.');
           this.isSubmitting = false;
         }
       });
   }
 
-  // Public method for template use
+  // Public method for template use (keeping for backward compatibility if needed)
   isFormValid(): boolean {
-    return !!(
-      this.contactForm.name.trim() &&
-      this.contactForm.email.trim() &&
-      this.contactForm.subject.trim() &&
-      this.contactForm.message.trim()
-    );
+    return this.contactForm.valid;
   }
 
   openEmailClient(email: string): void {
@@ -140,20 +148,43 @@ export class ContactComponent implements OnInit {
   }
 
   private resetForm(): void {
-    this.contactForm = {
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    };
+    this.contactForm.reset();
+    this.hideError();
   }
 
-  private showSuccessMessage(): void {
-    this.toastr.success('Message sent successfully! I\'ll get back to you soon.');
+
+  // Simple alert methods for inline error display
+  showErrorAlert(message: string): void {
+    this.errorMessage = message;
+    this.showError = true;
   }
 
-  private showErrorMessage(message: string): void {
-    this.toastr.error(message);
+  hideError(): void {
+    this.showError = false;
+    this.errorMessage = '';
+  }
+
+  // Reactive form helper methods
+  hasFieldError(fieldName: string): boolean {
+    const control = this.contactForm.get(fieldName);
+    return !!(control && control.invalid && (control.dirty || control.touched));
+  }
+
+  getFieldError(fieldName: string): string {
+    const control = this.contactForm.get(fieldName);
+    if (control && control.errors && (control.dirty || control.touched)) {
+      if (control.errors['required']) {
+        return `${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} is required`;
+      }
+      if (control.errors['email']) {
+        return 'Please enter a valid email address';
+      }
+      if (control.errors['minlength']) {
+        const minLength = control.errors['minlength'].requiredLength;
+        return `${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} must be at least ${minLength} characters`;
+      }
+    }
+    return '';
   }
 
   openSocialLink(url: string): void {
