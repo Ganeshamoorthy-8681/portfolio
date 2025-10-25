@@ -6,7 +6,6 @@ import { ScrollAnimateDirective } from '../../directives/scroll-animate.directiv
 import { PersonalInfo } from '../../models/portfolio.model';
 import { PortfolioService } from '../../services/portfolio-data.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { ToastrService } from 'ngx-toastr';
 
 
 interface ContactForm {
@@ -65,7 +64,6 @@ export class ContactComponent implements OnInit {
   constructor (
     private portfolioService: PortfolioService,
     private http: HttpClient,
-    private toastr: ToastrService,
     private fb: FormBuilder
   ) {
     this.contactForm = this.fb.group({
