@@ -1,12 +1,14 @@
 <app-header></app-header>
 
-<section class="py-16 lg:py-24 mt-16 bg-white dark:bg-[var(--color-primary-dark-bg)] min-h-screen transition-all duration-500 relative">
+<section
+  class="py-16 lg:py-24 mt-16 bg-white dark:bg-[var(--color-primary-dark-bg)] min-h-screen transition-all duration-500 relative">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    
+
     <!-- Header -->
     <div class="text-center mb-16 opacity-0" appScrollAnimate="animate-fade-in-up">
       <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-        <span class="dark:text-white">My </span><span class="bg-gradient-to-r from-purple-500 to-purple-300 bg-clip-text text-transparent">Blog</span>
+        <span class="dark:text-white">My </span><span
+          class="bg-gradient-to-r from-purple-500 to-purple-300 bg-clip-text text-transparent">Blog</span>
       </h1>
       <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
         Insights, tutorials, and thoughts on web development
@@ -15,23 +17,23 @@
 
     <!-- Featured Post -->
     <div class="mb-16 opacity-0" appScrollAnimate="animate-fade-in-up" *ngIf="featuredPost">
-      <div class="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-3xl p-8 lg:p-12 border border-purple-200/50 dark:border-purple-500/30 shadow-xl shadow-purple-500/10 dark:shadow-purple-500/20">
+      <div
+        class="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-3xl p-8 lg:p-12 border border-purple-200/50 dark:border-purple-500/30 shadow-xl shadow-purple-500/10 dark:shadow-purple-500/20">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          
+
           <!-- Featured Image -->
           <div class="relative">
-            <div class="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
+            <div
+              class="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
               <mat-icon class="text-white text-sm">star</mat-icon>
             </div>
-            <div class="absolute top-4 left-4 bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg z-10">
+            <div
+              class="absolute top-4 left-4 bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg z-10">
               Featured
             </div>
             <div class="relative overflow-hidden rounded-2xl shadow-2xl shadow-purple-500/20 dark:shadow-purple-500/30">
-              <img 
-                [src]="featuredPost.featuredImage" 
-                [alt]="featuredPost.title" 
-                class="w-full h-64 lg:h-80 object-cover transition-transform duration-500 hover:scale-105"
-              >
+              <img [src]="featuredPost.featuredImage" [alt]="featuredPost.title"
+                class="w-full h-64 lg:h-80 object-cover transition-transform duration-500 hover:scale-105">
               <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
           </div>
@@ -39,13 +41,16 @@
           <!-- Featured Content -->
           <div class="space-y-6">
             <div class="flex flex-wrap gap-3 text-sm">
-              <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 rounded-full font-medium">
+              <span
+                class="px-3 py-1 bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 rounded-full font-medium">
                 {{ formatDate(featuredPost.publishDate) }}
               </span>
-              <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 rounded-full font-medium">
+              <span
+                class="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 rounded-full font-medium">
                 {{ getReadTimeText(featuredPost.readTime) }}
               </span>
-              <span class="px-3 py-1 bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-400 rounded-full font-medium">
+              <span
+                class="px-3 py-1 bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-400 rounded-full font-medium">
                 {{ featuredPost.category }}
               </span>
             </div>
@@ -59,10 +64,8 @@
             </p>
 
             <div class="flex flex-wrap gap-2">
-              <span 
-                *ngFor="let tag of featuredPost.tags" 
-                class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors duration-200"
-              >
+              <span *ngFor="let tag of featuredPost.tags"
+                class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors duration-200">
                 {{ tag }}
               </span>
             </div>
@@ -91,11 +94,8 @@
               </div>
               -->
               <div class="flex gap-3">
-                <button 
-                  *ngIf="featuredPost.externalUrl"
-                  (click)="handlePostClick(featuredPost, $event)"
-                  class="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-medium rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/40 transform hover:scale-105"
-                >
+                <button *ngIf="featuredPost.externalUrl" (click)="handlePostClick(featuredPost, $event)"
+                  class="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:cursor-pointer hover:to-blue-700 text-white font-medium rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/40 transform hover:scale-105">
                   <mat-icon class="text-lg">launch</mat-icon>
                   <span>Read</span>
                 </button>
@@ -109,34 +109,28 @@
     <!-- Filters -->
     <div class="mb-12 opacity-0" appScrollAnimate="animate-fade-in-up">
       <div class="bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-6 lg:p-8 border border-gray-200 dark:border-gray-700">
-        
+
         <!-- Search -->
         <div class="mb-6">
           <div class="relative">
-            <input 
-              type="text"
-              [(ngModel)]="searchTerm" 
-              (input)="onSearchChange()"
+            <input type="text" [(ngModel)]="searchTerm" (input)="onSearchChange()"
               placeholder="Search articles by title, content, or tags..."
-              class="w-full px-4 py-3 pl-12 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl text-gray-700 dark:text-gray-300 focus:border-purple-500 dark:focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500/20 dark:focus:ring-purple-400/30 transition-all duration-200"
-            >
-            <mat-icon class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500">search</mat-icon>
+              class="w-full px-4 py-3 pl-12 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl text-gray-700 dark:text-gray-300 focus:border-purple-500 dark:focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500/20 dark:focus:ring-purple-400/30 transition-all duration-200">
+            <mat-icon
+              class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500">search</mat-icon>
           </div>
         </div>
 
         <!-- Filter Controls -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-          
+
           <!-- Category Filter -->
           <div class="form-control w-full">
             <label class="label">
               <span class="label-text text-gray-700 dark:text-gray-300 font-medium">Category</span>
             </label>
-            <select 
-              [(ngModel)]="selectedCategory" 
-              (change)="onCategoryChange()"
-              class="select select-bordered w-full bg-white dark:bg-gray-800 border-gray-200/80 dark:border-gray-600/80 text-gray-700 dark:text-gray-300 focus:border-purple-500 dark:focus:border-purple-400"
-            >
+            <select [(ngModel)]="selectedCategory" (change)="onCategoryChange()"
+              class="select select-bordered w-full bg-white dark:bg-gray-800 border-gray-200/80 dark:border-gray-600/80 text-gray-700 dark:text-gray-300 focus:border-purple-500 dark:focus:border-purple-400">
               <option *ngFor="let category of categories" [value]="category.value">
                 {{ category.label }}
               </option>
@@ -148,11 +142,8 @@
             <label class="label">
               <span class="label-text text-gray-700 dark:text-gray-300 font-medium">Tags</span>
             </label>
-            <select 
-              [(ngModel)]="selectedTag" 
-              (change)="onTagChange()"
-              class="select select-bordered w-full bg-white dark:bg-gray-800 border-gray-200/80 dark:border-gray-600/80 text-gray-700 dark:text-gray-300 focus:border-purple-500 dark:focus:border-purple-400"
-            >
+            <select [(ngModel)]="selectedTag" (change)="onTagChange()"
+              class="select select-bordered w-full bg-white dark:bg-gray-800 border-gray-200/80 dark:border-gray-600/80 text-gray-700 dark:text-gray-300 focus:border-purple-500 dark:focus:border-purple-400">
               <option value="all">All Tags</option>
               <option *ngFor="let tag of allTags" [value]="tag">{{ tag }}</option>
             </select>
@@ -163,10 +154,8 @@
             <label class="label">
               <span class="label-text text-transparent">Reset</span>
             </label>
-            <button 
-              (click)="resetFilters()"
-              class="btn btn-outline border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-purple-50 dark:hover:bg-purple-900/30 hover:border-purple-300 dark:hover:border-purple-500 w-full"
-            >
+            <button (click)="resetFilters()"
+              class="btn btn-outline border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-purple-50 dark:hover:bg-purple-900/30 hover:border-purple-300 dark:hover:border-purple-500 w-full">
               <mat-icon class="text-lg">refresh</mat-icon>
               Reset
             </button>
@@ -184,19 +173,14 @@
 
     <!-- Blog Posts Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 opacity-0" appScrollAnimate="animate-fade-in-up">
-      <article 
-        *ngFor="let post of filteredPosts; let i = index" 
-        class="bg-white dark:bg-gray-800/50 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg shadow-gray-400/10 dark:shadow-purple-500/10 hover:shadow-xl hover:shadow-gray-400/20 dark:hover:shadow-purple-500/20 transition-all duration-500 hover:scale-105 group relative"
-      >
+      <article *ngFor="let post of filteredPosts; let i = index"
+        class="bg-white dark:bg-gray-800/50 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg shadow-gray-400/10 dark:shadow-purple-500/10 hover:shadow-xl hover:shadow-gray-400/20 dark:hover:shadow-purple-500/20 transition-all duration-500 hover:scale-105 group relative">
         <!-- Post Image -->
         <div class="relative overflow-hidden rounded-t-2xl">
-          <img 
-            [src]="post.featuredImage" 
-            [alt]="post.title" 
-            class="w-full h-48 object-cover"
-          >
+          <img [src]="post.featuredImage" [alt]="post.title" class="w-full h-48 object-cover">
           <!-- External Post Indicator -->
-          <div *ngIf="isExternalPost(post)" class="absolute top-3 right-3 bg-green-500 text-white text-xs px-2 py-1 rounded-md font-medium shadow-lg flex items-center gap-1">
+          <div *ngIf="isExternalPost(post)"
+            class="absolute top-3 right-3 bg-green-500 text-white text-xs px-2 py-1 rounded-md font-medium shadow-lg flex items-center gap-1">
             <mat-icon class="text-xs">public</mat-icon>
             <span>{{ post.externalPlatform }}</span>
           </div>
@@ -204,19 +188,22 @@
 
         <!-- Post Content -->
         <div class="p-6 space-y-4">
-          
+
           <!-- Post Meta -->
           <div class="flex flex-wrap gap-2 text-xs">
-            <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 rounded-md font-medium">
+            <span
+              class="px-2 py-1 bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 rounded-md font-medium">
               {{ formatDate(post.publishDate) }}
             </span>
-            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 rounded-md font-medium">
+            <span
+              class="px-2 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 rounded-md font-medium">
               {{ getReadTimeText(post.readTime) }}
             </span>
           </div>
 
           <!-- Post Title -->
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white line-clamp-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-200">
+          <h3
+            class="text-xl font-bold text-gray-900 dark:text-white line-clamp-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-200">
             {{ post.title }}
           </h3>
 
@@ -227,10 +214,8 @@
 
           <!-- Post Tags -->
           <div class="flex flex-wrap gap-1">
-            <span 
-              *ngFor="let tag of post.tags.slice(0, 3)" 
-              class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-md text-xs hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors duration-200"
-            >
+            <span *ngFor="let tag of post.tags.slice(0, 3)"
+              class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-md text-xs hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors duration-200">
               {{ tag }}
             </span>
             <span *ngIf="post.tags.length > 3" class="px-2 py-1 text-gray-500 dark:text-gray-500 text-xs">
@@ -269,14 +254,11 @@
             </div>
             -->
             <div class="flex gap-2">
-              <button 
-                *ngIf="post.externalUrl"
-                (click)="handlePostClick(post, $event)"
+              <button *ngIf="post.externalUrl" (click)="handlePostClick(post, $event)"
                 class="w-full inline-flex items-center justify-center gap-1 px-3 py-2 
                 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 
                 hover:to-blue-700 text-white font-medium rounded-lg transition-all 
-                duration-300 shadow-md shadow-purple-500/20 hover:shadow-lg hover:cursor-pointer hover:shadow-purple-500/30 transform hover:scale-105"
-              >
+                duration-300 shadow-md shadow-purple-500/20 hover:shadow-lg hover:cursor-pointer hover:shadow-purple-500/30 transform hover:scale-105">
                 <mat-icon class="text-sm">launch</mat-icon>
                 <span class="text-xs">Read</span>
               </button>
@@ -296,10 +278,8 @@
         <p class="text-gray-600 dark:text-gray-300 mb-6">
           Try adjusting your search criteria or browse different categories
         </p>
-        <button 
-          (click)="resetFilters()" 
-          class="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-medium rounded-lg transition-all duration-300 flex items-center gap-2 mx-auto shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/40 transform hover:scale-105"
-        >
+        <button (click)="resetFilters()"
+          class="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-medium rounded-lg transition-all duration-300 flex items-center gap-2 mx-auto shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/40 transform hover:scale-105">
           <mat-icon class="text-lg">refresh</mat-icon>
           <span>Reset Filters</span>
         </button>
@@ -308,7 +288,8 @@
 
     <!-- Load More (for future pagination) -->
     <div class="text-center mt-12 opacity-0" appScrollAnimate="animate-fade-in-up" *ngIf="filteredPosts.length > 6">
-      <button class="px-8 py-4 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-xl transition-all duration-300 flex items-center gap-2 mx-auto border border-gray-200 dark:border-gray-600 hover:border-purple-300 dark:hover:border-purple-500">
+      <button
+        class="px-8 py-4 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-xl transition-all duration-300 flex items-center gap-2 mx-auto border border-gray-200 dark:border-gray-600 hover:border-purple-300 dark:hover:border-purple-500">
         <mat-icon class="text-lg">expand_more</mat-icon>
         <span>Load More Articles</span>
       </button>
@@ -318,10 +299,13 @@
   <!-- Background Decorations -->
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
     <!-- Top Left Circle -->
-    <div class="absolute top-20 left-10 w-40 h-40 bg-purple-500/10 dark:bg-purple-400/15 rounded-full blur-3xl animate-pulse">
+    <div
+      class="absolute top-20 left-10 w-40 h-40 bg-purple-500/10 dark:bg-purple-400/15 rounded-full blur-3xl animate-pulse">
     </div>
     <!-- Top Right Circle -->
-    <div class="absolute top-32 right-16 w-32 h-32 bg-blue-500/10 dark:bg-blue-400/15 rounded-full blur-2xl animate-pulse" style="animation-delay: 1s;">
+    <div
+      class="absolute top-32 right-16 w-32 h-32 bg-blue-500/10 dark:bg-blue-400/15 rounded-full blur-2xl animate-pulse"
+      style="animation-delay: 1s;">
     </div>
     <!-- Middle Left Circle -->
     <div class="absolute top-1/2 left-20 w-56 h-56 bg-purple-600/8 dark:bg-purple-300/12 rounded-full blur-3xl">
