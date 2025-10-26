@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';
@@ -19,11 +19,10 @@ interface ContactForm {
   selector: 'app-contact',
   standalone: true,
   imports: [
-    CommonModule,
     ReactiveFormsModule,
     MatIconModule,
     ScrollAnimateDirective
-  ],
+],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })

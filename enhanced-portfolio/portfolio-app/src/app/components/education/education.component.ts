@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MatIconModule } from '@angular/material/icon';
 import { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';
 import { Education } from '../../models/portfolio.model';
@@ -9,10 +9,9 @@ import { PortfolioService } from '../../services/portfolio-data.service';
   selector: 'app-education',
   standalone: true,
   imports: [
-    CommonModule,
     MatIconModule,
     ScrollAnimateDirective
-  ],
+],
   templateUrl: './education.component.html',
   styleUrl: './education.component.css'
 })

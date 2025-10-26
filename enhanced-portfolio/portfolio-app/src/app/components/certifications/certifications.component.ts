@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';
@@ -9,11 +9,10 @@ import { PortfolioService } from '../../services/portfolio-data.service';
 @Component({
   selector: 'app-certifications',
   imports: [
-    CommonModule,
     FormsModule,
     MatIconModule,
     ScrollAnimateDirective
-  ],
+],
   templateUrl: './certifications.component.html',
   standalone: true
 })

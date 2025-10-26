@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,12 +10,11 @@ import { ScrollAnimateDirective } from '../../directives/scroll-animate.directiv
 @Component({
   selector: 'app-skills',
   imports: [
-    CommonModule,
     MatCardModule,
     MatChipsModule,
     MatIconModule,
     ScrollAnimateDirective
-  ],
+],
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.css'
 })

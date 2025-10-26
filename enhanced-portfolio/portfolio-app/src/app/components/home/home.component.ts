@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ThemeService } from '../../services/theme.service';
 import { HeaderComponent } from '../header/header.component';
@@ -16,7 +16,6 @@ import { FooterComponent } from '../footer/footer.component';
   selector: 'app-home',
   standalone: true,
   imports: [
-    CommonModule,
     HeaderComponent,
     HeroComponent,
     SkillsComponent,
@@ -26,7 +25,7 @@ import { FooterComponent } from '../footer/footer.component';
     EducationComponent,
     ContactComponent,
     FooterComponent
-  ],
+],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

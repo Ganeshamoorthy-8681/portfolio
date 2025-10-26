@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,14 +15,13 @@ import { FooterComponent } from '../footer/footer.component';
   selector: 'app-blog',
   standalone: true,
   imports: [
-    CommonModule,
     RouterModule,
     FormsModule,
     MatIconModule,
     ScrollAnimateDirective,
     HeaderComponent,
     FooterComponent
-  ],
+],
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.css'
 })

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,13 +11,12 @@ import { ScrollAnimateDirective } from '../../directives/scroll-animate.directiv
 @Component({
   selector: 'app-experience',
   imports: [
-    CommonModule,
     MatCardModule,
     MatChipsModule,
     MatIconModule,
     MatButtonModule,
     ScrollAnimateDirective
-  ],
+],
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.css'
 })

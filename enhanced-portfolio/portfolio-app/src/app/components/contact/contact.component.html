@@ -5,36 +5,36 @@
     <div class="text-center mb-16 opacity-0" appScrollAnimate="animate-fade-in-up">
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
         <span class="dark:text-white">Get In </span><span
-          class="bg-gradient-to-r from-purple-500 to-purple-300 bg-clip-text text-transparent">Touch</span>
-      </h2>
-      <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-        Let's discuss your next project or collaboration opportunity
-      </p>
-    </div>
+      class="bg-gradient-to-r from-purple-500 to-purple-300 bg-clip-text text-transparent">Touch</span>
+    </h2>
+    <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+      Let's discuss your next project or collaboration opportunity
+    </p>
+  </div>
 
-    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
 
-      <!-- Contact Information -->
-      <div class="opacity-0" appScrollAnimate="animate-fade-in-right">
-        <div
-          class="bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-8 transition-all duration-500 hover:shadow-xl hover:shadow-gray-400/20 dark:hover:shadow-purple-500/20 border border-gray-200 dark:border-purple-500/20 h-full">
+    <!-- Contact Information -->
+    <div class="opacity-0" appScrollAnimate="animate-fade-in-right">
+      <div
+        class="bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-8 transition-all duration-500 hover:shadow-xl hover:shadow-gray-400/20 dark:hover:shadow-purple-500/20 border border-gray-200 dark:border-purple-500/20 h-full">
 
-          <!-- Header -->
-          <div class="mb-8">
-            <div
-              class="w-16 h-16 bg-gradient-to-br from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center mb-4">
-              <mat-icon class="text-white text-2xl">connect_without_contact</mat-icon>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Let's Connect</h3>
-            <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-              Ready to bring your ideas to life? I'm always open to discussing new opportunities and interesting
-              projects.
-            </p>
+        <!-- Header -->
+        <div class="mb-8">
+          <div
+            class="w-16 h-16 bg-gradient-to-br from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center mb-4">
+            <mat-icon class="text-white text-2xl">connect_without_contact</mat-icon>
           </div>
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Let's Connect</h3>
+          <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+            Ready to bring your ideas to life? I'm always open to discussing new opportunities and interesting
+            projects.
+          </p>
+        </div>
 
-          <!-- Personal Information -->
-          <div class="space-y-6" *ngIf="personalInfo">
-
+        <!-- Personal Information -->
+        @if (personalInfo) {
+          <div class="space-y-6">
             <!-- Name -->
             <div
               class="flex items-center gap-4 p-4 bg-white dark:bg-gray-700/50 rounded-xl transition-all duration-300 hover:bg-purple-50 dark:hover:bg-purple-900/20">
@@ -47,7 +47,6 @@
                 <p class="text-lg font-semibold text-gray-900 dark:text-white truncate">{{ personalInfo.name }}</p>
               </div>
             </div>
-
             <!-- Email -->
             <div
               class="flex items-center gap-4 p-4 bg-white dark:bg-gray-700/50 rounded-xl transition-all duration-300 hover:bg-purple-50 dark:hover:bg-purple-900/20 cursor-pointer"
@@ -63,111 +62,122 @@
               </div>
               <mat-icon class="text-gray-400 dark:text-gray-500">launch</mat-icon>
             </div>
-
             <!-- Phone -->
-            <div
-              class="flex items-center gap-4 p-4 bg-white dark:bg-gray-700/50 rounded-xl transition-all duration-300 hover:bg-purple-50 dark:hover:bg-purple-900/20"
-              *ngIf="personalInfo.phone">
+            @if (personalInfo.phone) {
               <div
-                class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-400 rounded-lg flex items-center justify-center flex-shrink-0">
-                <mat-icon class="text-white">phone</mat-icon>
+                class="flex items-center gap-4 p-4 bg-white dark:bg-gray-700/50 rounded-xl transition-all duration-300 hover:bg-purple-50 dark:hover:bg-purple-900/20"
+                >
+                <div
+                  class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-400 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <mat-icon class="text-white">phone</mat-icon>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Phone</p>
+                  <p class="text-lg font-semibold text-gray-900 dark:text-white truncate">{{ personalInfo.phone }}</p>
+                </div>
               </div>
-              <div class="flex-1 min-w-0">
-                <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Phone</p>
-                <p class="text-lg font-semibold text-gray-900 dark:text-white truncate">{{ personalInfo.phone }}</p>
-              </div>
-            </div>
-
+            }
             <!-- Location -->
-            <div
-              class="flex items-center gap-4 p-4 bg-white dark:bg-gray-700/50 rounded-xl transition-all duration-300 hover:bg-purple-50 dark:hover:bg-purple-900/20"
-              *ngIf="personalInfo.location">
+            @if (personalInfo.location) {
               <div
-                class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-400 rounded-lg flex items-center justify-center flex-shrink-0">
-                <mat-icon class="text-white">location_on</mat-icon>
+                class="flex items-center gap-4 p-4 bg-white dark:bg-gray-700/50 rounded-xl transition-all duration-300 hover:bg-purple-50 dark:hover:bg-purple-900/20"
+                >
+                <div
+                  class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-400 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <mat-icon class="text-white">location_on</mat-icon>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Location</p>
+                  <p class="text-lg font-semibold text-gray-900 dark:text-white truncate">{{ personalInfo.location }}</p>
+                </div>
               </div>
-              <div class="flex-1 min-w-0">
-                <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Location</p>
-                <p class="text-lg font-semibold text-gray-900 dark:text-white truncate">{{ personalInfo.location }}</p>
-              </div>
-            </div>
+            }
           </div>
+        }
 
-          <!-- Resume Download -->
-          <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700" *ngIf="personalInfo?.resumeUrl">
+        <!-- Resume Download -->
+        @if (personalInfo?.resumeUrl) {
+          <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
             <button (click)="downloadResume()"
               class="w-full flex items-center justify-center gap-3 px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-medium rounded-lg transition-all duration-300 shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/40 transform hover:scale-105">
               <mat-icon class="text-lg">download</mat-icon>
               <span>Download Resume</span>
             </button>
           </div>
-        </div>
+        }
       </div>
+    </div>
 
-      <!-- Contact Form -->
-      <div class="opacity-0" appScrollAnimate="animate-fade-in-left">
-        <div
-          class="bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-8 transition-all duration-500 hover:shadow-xl hover:shadow-gray-400/20 dark:hover:shadow-purple-500/20 border border-gray-200 dark:border-purple-500/20 h-full">
+    <!-- Contact Form -->
+    <div class="opacity-0" appScrollAnimate="animate-fade-in-left">
+      <div
+        class="bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-8 transition-all duration-500 hover:shadow-xl hover:shadow-gray-400/20 dark:hover:shadow-purple-500/20 border border-gray-200 dark:border-purple-500/20 h-full">
 
-          <!-- Form Header -->
-          <div class="mb-8">
-            <div
-              class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center mb-4">
-              <mat-icon class="text-white text-2xl">send</mat-icon>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Send a Message</h3>
-            <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-              Have a project in mind? Fill out the form below and I'll get back to you as soon as possible.
-            </p>
+        <!-- Form Header -->
+        <div class="mb-8">
+          <div
+            class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center mb-4">
+            <mat-icon class="text-white text-2xl">send</mat-icon>
           </div>
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Send a Message</h3>
+          <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+            Have a project in mind? Fill out the form below and I'll get back to you as soon as possible.
+          </p>
+        </div>
 
-          <!-- Contact Form -->
-          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6">
+        <!-- Contact Form -->
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6">
 
-            <!-- Success Alert -->
-            <div *ngIf="showSuccess" 
-                 class="alert alert-success bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4 flex items-start gap-3 transition-all duration-300">
+          <!-- Success Alert -->
+          @if (showSuccess) {
+            <div
+              class="alert alert-success bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4 flex items-start gap-3 transition-all duration-300">
               <mat-icon class="text-green-600 dark:text-green-400 text-lg flex-shrink-0 mt-0.5">check_circle</mat-icon>
               <div class="flex-1">
                 <p class="text-green-800 dark:text-green-200 font-medium text-sm">{{ successMessage }}</p>
               </div>
-              <button type="button" 
-                      (click)="hideSuccess()" 
-                      class="text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-200 transition-colors duration-200 flex-shrink-0">
+              <button type="button"
+                (click)="hideSuccess()"
+                class="text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-200 transition-colors duration-200 flex-shrink-0">
                 <mat-icon class="text-lg">close</mat-icon>
               </button>
             </div>
+          }
 
-            <!-- Error Alert -->
-            <div *ngIf="showError" 
-                 class="alert alert-error bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 flex items-start gap-3 transition-all duration-300">
+          <!-- Error Alert -->
+          @if (showError) {
+            <div
+              class="alert alert-error bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 flex items-start gap-3 transition-all duration-300">
               <mat-icon class="text-red-600 dark:text-red-400 text-lg flex-shrink-0 mt-0.5">error</mat-icon>
               <div class="flex-1">
                 <p class="text-red-800 dark:text-red-200 font-medium text-sm">{{ errorMessage }}</p>
               </div>
-              <button type="button" 
-                      (click)="hideError()" 
-                      class="text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-200 transition-colors duration-200 flex-shrink-0">
+              <button type="button"
+                (click)="hideError()"
+                class="text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-200 transition-colors duration-200 flex-shrink-0">
                 <mat-icon class="text-lg">close</mat-icon>
               </button>
             </div>
+          }
 
-            <!-- Name Field -->
-            <div class="form-control w-full">
-              <label class="label">
-                <span class="label-text text-gray-700 dark:text-gray-300 font-medium">Full Name</span>
-              </label>
-              <input type="text"
+          <!-- Name Field -->
+          <div class="form-control w-full">
+            <label class="label">
+              <span class="label-text text-gray-700 dark:text-gray-300 font-medium">Full Name</span>
+            </label>
+            <input type="text"
                 [class]="'input input-bordered w-full bg-white dark:bg-gray-800/90 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 transition-all duration-200 ' + 
                 (hasFieldError('name') ? 'border-red-500 dark:border-red-400 focus:border-red-500 dark:focus:border-red-400 focus:ring-red-500/20 dark:focus:ring-red-400/30' : 'border-gray-200/80 dark:border-gray-700/80 focus:border-purple-500 dark:focus:border-purple-400 focus:ring-purple-500/20 dark:focus:ring-purple-400/30')"
-                formControlName="name" 
-                placeholder="Enter your full name">
-              <div class="label" *ngIf="hasFieldError('name')">
-                <span class="label-text-alt text-red-600 dark:text-red-400 flex items-center gap-1">
-                  <mat-icon class="text-sm">error</mat-icon>
-                  {{ getFieldError('name') }}
-                </span>
-              </div>
+              formControlName="name"
+              placeholder="Enter your full name">
+              @if (hasFieldError('name')) {
+                <div class="label">
+                  <span class="label-text-alt text-red-600 dark:text-red-400 flex items-center gap-1">
+                    <mat-icon class="text-sm">error</mat-icon>
+                    {{ getFieldError('name') }}
+                  </span>
+                </div>
+              }
             </div>
 
             <!-- Email Field -->
@@ -178,139 +188,149 @@
               <input type="email"
                 [class]="'input input-bordered w-full bg-white dark:bg-gray-800/90 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 transition-all duration-200 ' + 
                 (hasFieldError('email') ? 'border-red-500 dark:border-red-400 focus:border-red-500 dark:focus:border-red-400 focus:ring-red-500/20 dark:focus:ring-red-400/30' : 'border-gray-200/80 dark:border-gray-700/80 focus:border-purple-500 dark:focus:border-purple-400 focus:ring-purple-500/20 dark:focus:ring-purple-400/30')"
-                formControlName="email" 
+                formControlName="email"
                 placeholder="your.email@example.com">
-              <div class="label" *ngIf="hasFieldError('email')">
-                <span class="label-text-alt text-red-600 dark:text-red-400 flex items-center gap-1">
-                  <mat-icon class="text-sm">error</mat-icon>
-                  {{ getFieldError('email') }}
-                </span>
+                @if (hasFieldError('email')) {
+                  <div class="label">
+                    <span class="label-text-alt text-red-600 dark:text-red-400 flex items-center gap-1">
+                      <mat-icon class="text-sm">error</mat-icon>
+                      {{ getFieldError('email') }}
+                    </span>
+                  </div>
+                }
               </div>
-            </div>
 
-            <!-- Subject Field -->
-            <div class="form-control w-full">
-              <label class="label">
-                <span class="label-text text-gray-700 dark:text-gray-300 font-medium">Subject</span>
-              </label>
-              <input type="text"
+              <!-- Subject Field -->
+              <div class="form-control w-full">
+                <label class="label">
+                  <span class="label-text text-gray-700 dark:text-gray-300 font-medium">Subject</span>
+                </label>
+                <input type="text"
                 [class]="'input input-bordered w-full bg-white dark:bg-gray-800/90 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 transition-all duration-200 ' + 
                 (hasFieldError('subject') ? 'border-red-500 dark:border-red-400 focus:border-red-500 dark:focus:border-red-400 focus:ring-red-500/20 dark:focus:ring-red-400/30' : 'border-gray-200/80 dark:border-gray-700/80 focus:border-purple-500 dark:focus:border-purple-400 focus:ring-purple-500/20 dark:focus:ring-purple-400/30')"
-                formControlName="subject" 
-                placeholder="Brief subject of your message">
-              <div class="label" *ngIf="hasFieldError('subject')">
-                <span class="label-text-alt text-red-600 dark:text-red-400 flex items-center gap-1">
-                  <mat-icon class="text-sm">error</mat-icon>
-                  {{ getFieldError('subject') }}
-                </span>
-              </div>
-            </div>
+                  formControlName="subject"
+                  placeholder="Brief subject of your message">
+                  @if (hasFieldError('subject')) {
+                    <div class="label">
+                      <span class="label-text-alt text-red-600 dark:text-red-400 flex items-center gap-1">
+                        <mat-icon class="text-sm">error</mat-icon>
+                        {{ getFieldError('subject') }}
+                      </span>
+                    </div>
+                  }
+                </div>
 
-            <!-- Message Field -->
-            <div class="form-control w-full">
-              <label class="label">
-                <span class="label-text text-gray-700 dark:text-gray-300 font-medium">Message</span>
-              </label>
-              <textarea
+                <!-- Message Field -->
+                <div class="form-control w-full">
+                  <label class="label">
+                    <span class="label-text text-gray-700 dark:text-gray-300 font-medium">Message</span>
+                  </label>
+                  <textarea
                 [class]="'textarea textarea-bordered w-full h-32 bg-white dark:bg-gray-800/90 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 resize-none transition-all duration-200 ' + 
                 (hasFieldError('message') ? 'border-red-500 dark:border-red-400 focus:border-red-500 dark:focus:border-red-400 focus:ring-red-500/20 dark:focus:ring-red-400/30' : 'border-gray-200/80 dark:border-gray-700/80 focus:border-purple-500 dark:focus:border-purple-400 focus:ring-purple-500/20 dark:focus:ring-purple-400/30')"
-                formControlName="message" 
-                placeholder="Tell me about your project or how I can help you..."></textarea>
-              <div class="label" *ngIf="hasFieldError('message')">
-                <span class="label-text-alt text-red-600 dark:text-red-400 flex items-center gap-1">
-                  <mat-icon class="text-sm">error</mat-icon>
-                  {{ getFieldError('message') }}
-                </span>
-              </div>
-            </div>
+                    formControlName="message"
+                  placeholder="Tell me about your project or how I can help you..."></textarea>
+                  @if (hasFieldError('message')) {
+                    <div class="label">
+                      <span class="label-text-alt text-red-600 dark:text-red-400 flex items-center gap-1">
+                        <mat-icon class="text-sm">error</mat-icon>
+                        {{ getFieldError('message') }}
+                      </span>
+                    </div>
+                  }
+                </div>
 
-            <!-- Submit Button -->
-            <div class="pt-4">
-              <button type="submit" [disabled]="isSubmitting"
-                class="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-medium rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/40 disabled:shadow-none transform hover:scale-105 disabled:scale-100">
-                <mat-icon *ngIf="!isSubmitting" class="text-lg">send</mat-icon>
-                <div *ngIf="isSubmitting"
-                  class="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent"></div>
-                <span>{{ isSubmitting ? 'Sending...' : 'Send Message' }}</span>
-              </button>
+                <!-- Submit Button -->
+                <div class="pt-4">
+                  <button type="submit" [disabled]="isSubmitting"
+                    class="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-medium rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/40 disabled:shadow-none transform hover:scale-105 disabled:scale-100">
+                    @if (!isSubmitting) {
+                      <mat-icon class="text-lg">send</mat-icon>
+                    }
+                    @if (isSubmitting) {
+                      <div
+                      class="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent"></div>
+                    }
+                    <span>{{ isSubmitting ? 'Sending...' : 'Send Message' }}</span>
+                  </button>
+                </div>
+              </form>
             </div>
-          </form>
+          </div>
+        </div>
+
+        <!-- Footer Note -->
+        <div class="text-center mt-16 opacity-0" appScrollAnimate="animate-fade-in-up-delay-600">
+          <div
+            class="max-w-md mx-auto p-6 bg-purple-50/50 dark:bg-purple-900/20 rounded-xl border border-purple-200/50 dark:border-purple-500/30">
+            <div class="flex items-center justify-center gap-2 text-purple-600 dark:text-purple-400 mb-2">
+              <mat-icon class="text-lg">schedule</mat-icon>
+              <span class="font-medium">Quick Response</span>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              I typically respond within 24 hours. Looking forward to hear from you!
+            </p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Footer Note -->
-    <div class="text-center mt-16 opacity-0" appScrollAnimate="animate-fade-in-up-delay-600">
-      <div
-        class="max-w-md mx-auto p-6 bg-purple-50/50 dark:bg-purple-900/20 rounded-xl border border-purple-200/50 dark:border-purple-500/30">
-        <div class="flex items-center justify-center gap-2 text-purple-600 dark:text-purple-400 mb-2">
-          <mat-icon class="text-lg">schedule</mat-icon>
-          <span class="font-medium">Quick Response</span>
+      <!-- Background Decorations -->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <!-- Top Left Circle -->
+        <div
+          class="absolute top-20 left-10 w-40 h-40 bg-purple-500/10 dark:bg-purple-400/15 rounded-full blur-3xl animate-pulse">
         </div>
-        <p class="text-sm text-gray-600 dark:text-gray-400">
-          I typically respond within 24 hours. Looking forward to hear from you!
-        </p>
-      </div>
-    </div>
-  </div>
+        <!-- Top Right Circle -->
+        <div
+          class="absolute top-32 right-16 w-32 h-32 bg-blue-500/10 dark:bg-blue-400/15 rounded-full blur-2xl animate-pulse"
+          style="animation-delay: 1s;">
+        </div>
+        <!-- Middle Left Circle -->
+        <div class="absolute top-1/2 left-20 w-56 h-56 bg-purple-600/8 dark:bg-purple-300/12 rounded-full blur-3xl">
+        </div>
+        <!-- Middle Right Circle -->
+        <div class="absolute top-1/2 right-10 w-48 h-48 bg-indigo-500/10 dark:bg-indigo-400/15 rounded-full blur-3xl">
+        </div>
+        <!-- Bottom Left Circle -->
+        <div class="absolute bottom-32 left-1/4 w-36 h-36 bg-violet-500/10 dark:bg-violet-400/15 rounded-full blur-2xl">
+        </div>
+        <!-- Bottom Right Circle -->
+        <div class="absolute bottom-20 right-1/3 w-28 h-28 bg-purple-400/12 dark:bg-purple-300/18 rounded-full blur-xl">
+        </div>
 
-  <!-- Background Decorations -->
-  <div class="absolute inset-0 overflow-hidden pointer-events-none">
-    <!-- Top Left Circle -->
-    <div
-      class="absolute top-20 left-10 w-40 h-40 bg-purple-500/10 dark:bg-purple-400/15 rounded-full blur-3xl animate-pulse">
-    </div>
-    <!-- Top Right Circle -->
-    <div
-      class="absolute top-32 right-16 w-32 h-32 bg-blue-500/10 dark:bg-blue-400/15 rounded-full blur-2xl animate-pulse"
-      style="animation-delay: 1s;">
-    </div>
-    <!-- Middle Left Circle -->
-    <div class="absolute top-1/2 left-20 w-56 h-56 bg-purple-600/8 dark:bg-purple-300/12 rounded-full blur-3xl">
-    </div>
-    <!-- Middle Right Circle -->
-    <div class="absolute top-1/2 right-10 w-48 h-48 bg-indigo-500/10 dark:bg-indigo-400/15 rounded-full blur-3xl">
-    </div>
-    <!-- Bottom Left Circle -->
-    <div class="absolute bottom-32 left-1/4 w-36 h-36 bg-violet-500/10 dark:bg-violet-400/15 rounded-full blur-2xl">
-    </div>
-    <!-- Bottom Right Circle -->
-    <div class="absolute bottom-20 right-1/3 w-28 h-28 bg-purple-400/12 dark:bg-purple-300/18 rounded-full blur-xl">
-    </div>
+        <!-- Gradient Lines -->
+        <div
+          class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-500/20 dark:via-purple-400/30 to-transparent">
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 dark:via-purple-300/10 to-transparent h-8 blur-sm">
+          </div>
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 dark:via-purple-300/15 to-transparent h-4 blur-xs">
+          </div>
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 dark:via-purple-300/25 to-transparent h-2">
+          </div>
+        </div>
 
-    <!-- Gradient Lines -->
-    <div
-      class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-500/20 dark:via-purple-400/30 to-transparent">
-      <div
-        class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 dark:via-purple-300/10 to-transparent h-8 blur-sm">
-      </div>
-      <div
-        class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 dark:via-purple-300/15 to-transparent h-4 blur-xs">
-      </div>
-      <div
-        class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 dark:via-purple-300/25 to-transparent h-2">
-      </div>
-    </div>
+        <div
+          class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-purple-500/20 dark:via-purple-400/30 to-transparent">
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 dark:via-purple-300/10 to-transparent h-8 blur-sm">
+          </div>
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 dark:via-purple-300/15 to-transparent h-4 blur-xs">
+          </div>
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 dark:via-purple-300/25 to-transparent h-2">
+          </div>
+        </div>
 
-    <div
-      class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-purple-500/20 dark:via-purple-400/30 to-transparent">
-      <div
-        class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 dark:via-purple-300/10 to-transparent h-8 blur-sm">
+        <!-- Floating Particles -->
+        <div class="absolute top-1/4 left-1/2 w-3 h-3 bg-purple-400/20 dark:bg-purple-300/30 rounded-full animate-bounce"
+        style="animation-delay: 2s; animation-duration: 3s;"></div>
+        <div class="absolute top-3/4 left-1/4 w-2 h-2 bg-blue-400/20 dark:bg-blue-300/30 rounded-full animate-bounce"
+        style="animation-delay: 4s; animation-duration: 4s;"></div>
+        <div class="absolute top-1/3 right-1/4 w-4 h-4 bg-indigo-400/20 dark:bg-indigo-300/30 rounded-full animate-bounce"
+        style="animation-delay: 1s; animation-duration: 5s;"></div>
       </div>
-      <div
-        class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 dark:via-purple-300/15 to-transparent h-4 blur-xs">
-      </div>
-      <div
-        class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 dark:via-purple-300/25 to-transparent h-2">
-      </div>
-    </div>
-
-    <!-- Floating Particles -->
-    <div class="absolute top-1/4 left-1/2 w-3 h-3 bg-purple-400/20 dark:bg-purple-300/30 rounded-full animate-bounce"
-      style="animation-delay: 2s; animation-duration: 3s;"></div>
-    <div class="absolute top-3/4 left-1/4 w-2 h-2 bg-blue-400/20 dark:bg-blue-300/30 rounded-full animate-bounce"
-      style="animation-delay: 4s; animation-duration: 4s;"></div>
-    <div class="absolute top-1/3 right-1/4 w-4 h-4 bg-indigo-400/20 dark:bg-indigo-300/30 rounded-full animate-bounce"
-      style="animation-delay: 1s; animation-duration: 5s;"></div>
-  </div>
-</section>
+    </section>

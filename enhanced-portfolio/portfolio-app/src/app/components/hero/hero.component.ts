@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { Observable } from 'rxjs';
 import { PortfolioService } from '../../services/portfolio-data.service';
 import { ThemeService } from '../../services/theme.service';
@@ -7,9 +7,7 @@ import { PersonalInfo } from '../../models/portfolio.model';
 
 @Component({
   selector: 'app-hero',
-  imports: [
-    CommonModule
-  ],
+  imports: [],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.css'
 })
