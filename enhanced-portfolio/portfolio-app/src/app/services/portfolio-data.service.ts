@@ -105,7 +105,7 @@ export class PortfolioService {
         image: 'assets/images/weatherApp.png',
         technologies: ['React', 'JavaScript', 'Weather API', 'Material-UI'],
         category: 'web',
-        liveUrl: 'https://weather-app-demo.com',
+        liveUrl: 'https://ganeshamoorthy-weather-app.netlify.app/',
         githubUrl: 'https://github.com/Ganeshamoorthy-8681/WeatherApp',
         featured: true
       },
