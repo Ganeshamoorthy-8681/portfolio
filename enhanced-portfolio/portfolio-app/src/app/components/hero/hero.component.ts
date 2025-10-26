@@ -83,13 +83,6 @@ export class HeroComponent implements OnInit, OnDestroy {
     }
   }
 
-  scrollToContact(): void {
-    const element = document.querySelector('#contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
-
   toggleTheme(): void {
     this.themeService.toggleTheme();
   }
