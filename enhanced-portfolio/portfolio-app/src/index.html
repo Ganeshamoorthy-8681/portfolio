@@ -52,7 +52,41 @@
     <input type="text" name="subject" />
     <input type="text" name="message" />
   </form>
-  <app-root></app-root>
+  <app-root>
+    <!-- Animated vertical bars loader -->
+    <div id="global-loader"
+      style="position:fixed;top:0;left:0;width:100vw;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(255,255,255,0.96);z-index:9999;">
+
+      <div style="display:flex;gap:16px;align-items:flex-end;height:48px;">
+        <div class="bar"
+          style="width:10px;height:32px;background:#7c3aed;border-radius:6px;animation:barPulse 0.8s infinite alternate;">
+        </div>
+        <div class="bar"
+          style="width:10px;height:20px;background:#a78bfa;border-radius:6px;animation:barPulse 0.8s infinite alternate 0.2s;">
+        </div>
+        <div class="bar"
+          style="width:10px;height:40px;background:#c4b5fd;border-radius:6px;animation:barPulse 0.8s infinite alternate 0.4s;">
+        </div>
+      </div>
+      <div style="font-size:1.5rem;font-weight:500;color:#7c3aed;margin-bottom:24px;letter-spacing:1px;">Loading ...
+      </div>
+      <style>
+        @keyframes barPulse {
+          0% {
+            height: 16px;
+          }
+
+          50% {
+            height: 48px;
+          }
+
+          100% {
+            height: 16px;
+          }
+        }
+      </style>
+    </div>
+  </app-root>
 </body>
 
 </html>

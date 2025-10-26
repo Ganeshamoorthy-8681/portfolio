@@ -133,15 +133,6 @@ export class BlogComponent implements OnInit {
     return `${minutes} min read`;
   }
 
-  handleImageError(event: any): void {
-    // Prevent infinite loop by checking if we're already using the fallback
-    if (event.target.src.includes('data:image')) {
-      return;
-    }
-    // Use a simple colored rectangle as fallback
-    event.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjNjM2NjcxIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI1MCUiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0Ij5CbG9nIEltYWdlPC90ZXh0Pgo8L3N2Zz4K';
-  }
-
   isExternalPost(post: BlogPost): boolean {
     return post.isExternal || false;
   }
@@ -162,10 +153,6 @@ export class BlogComponent implements OnInit {
     if (this.isExternalPost(post)) {
       if (post.externalUrl) {
         window.open(post.externalUrl, '_blank', 'noopener,noreferrer');
-      }
-      if (event) {
-        event.preventDefault();
-        event.stopPropagation();
       }
     }
     // For internal posts, let the routerLink handle navigation

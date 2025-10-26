@@ -30,7 +30,6 @@
               <img 
                 [src]="featuredPost.featuredImage" 
                 [alt]="featuredPost.title" 
-                (error)="handleImageError($event)"
                 class="w-full h-64 lg:h-80 object-cover transition-transform duration-500 hover:scale-105"
               >
               <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -70,7 +69,7 @@
 
             <div class="space-y-4 pt-4">
               <!-- Stats -->
-              <div class="flex items-center gap-4 text-gray-500 dark:text-gray-400">
+              <!-- <div class="flex items-center gap-4 text-gray-500 dark:text-gray-400">
                 <div class="flex items-center gap-1">
                   <mat-icon class="text-sm">visibility</mat-icon>
                   <span class="text-sm">{{ featuredPost.views }}</span>
@@ -83,30 +82,22 @@
                   <mat-icon class="text-sm">public</mat-icon>
                   <span class="text-sm font-medium">External Article</span>
                 </div>
-              </div>
+              </div> -->
 
               <!-- Action Buttons -->
+              <!--
               <div class="flex gap-3">
-                <!-- Read Here Button (Always shown) -->
+                ...existing code for Read Here and External Link buttons...
+              </div>
+              -->
+              <div class="flex gap-3">
                 <button 
-                  [routerLink]="['/blog', featuredPost.slug]"
-                  class="flex-1 px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-medium rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/40 transform hover:scale-105"
-                >
-                  <mat-icon class="text-lg">read_more</mat-icon>
-                  <span>Read Here</span>
-                </button>
-
-                <!-- External Link Button (Always shown, disabled if no external URL) -->
-                <button 
-                  (click)="handlePostClick(featuredPost)"
-                  [disabled]="!isExternalPost(featuredPost)"
-                  class="flex-1 px-6 py-3 font-medium rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg transform"
-                  [class]="isExternalPost(featuredPost) 
-                    ? 'bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white shadow-green-500/30 hover:shadow-xl hover:shadow-green-500/40 hover:scale-105 cursor-pointer'
-                    : 'bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-400 cursor-not-allowed shadow-gray-300/30'"
+                  *ngIf="featuredPost.externalUrl"
+                  (click)="handlePostClick(featuredPost, $event)"
+                  class="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-medium rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-purple-500/40 transform hover:scale-105"
                 >
                   <mat-icon class="text-lg">launch</mat-icon>
-                  <span>External Link</span>
+                  <span>Read</span>
                 </button>
               </div>
             </div>
@@ -202,34 +193,8 @@
           <img 
             [src]="post.featuredImage" 
             [alt]="post.title" 
-            (error)="handleImageError($event)"
-            class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+            class="w-full h-48 object-cover"
           >
-          <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div class="flex gap-4">
-              <!-- Read Here Hover Icon -->
-              <div class="w-12 h-12 bg-purple-500/80 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg">
-                <mat-icon class="text-white">read_more</mat-icon>
-              </div>
-              
-              <!-- External Link Hover Icon -->
-              <div 
-                class="w-12 h-12 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg"
-                [class]="isExternalPost(post) 
-                  ? 'bg-green-500/80 cursor-pointer'
-                  : 'bg-gray-500/60 cursor-not-allowed'"
-              >
-                <mat-icon 
-                  class="text-white"
-                  [class.opacity-50]="!isExternalPost(post)"
-                >
-                  launch
-                </mat-icon>
-              </div>
-            </div>
-          </div>
-          
           <!-- External Post Indicator -->
           <div *ngIf="isExternalPost(post)" class="absolute top-3 right-3 bg-green-500 text-white text-xs px-2 py-1 rounded-md font-medium shadow-lg flex items-center gap-1">
             <mat-icon class="text-xs">public</mat-icon>
@@ -276,7 +241,7 @@
           <!-- Post Footer -->
           <div class="pt-4 border-t border-gray-100 dark:border-gray-700 space-y-3">
             <!-- Stats and Category -->
-            <div class="flex items-center justify-between">
+            <!-- <div class="flex items-center justify-between">
               <div class="flex items-center gap-3 text-gray-500 dark:text-gray-400 text-sm">
                 <div class="flex items-center gap-1">
                   <mat-icon class="text-xs">visibility</mat-icon>
@@ -295,30 +260,25 @@
               >
                 {{ post.category }}
               </span>
-            </div>
+            </div> -->
 
             <!-- Action Buttons -->
+            <!--
             <div class="flex gap-2">
-              <!-- Read Here Button (Always shown) -->
+              ...existing code for Read Here and External Link buttons...
+            </div>
+            -->
+            <div class="flex gap-2">
               <button 
-                [routerLink]="['/blog', post.slug]"
-                class="flex-1 inline-flex items-center justify-center gap-1 px-3 py-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-medium rounded-lg transition-all duration-300 shadow-md shadow-purple-500/20 hover:shadow-lg hover:shadow-purple-500/30 transform hover:scale-105"
-              >
-                <mat-icon class="text-sm">read_more</mat-icon>
-                <span class="text-xs">Read Here</span>
-              </button>
-
-              <!-- External Link Button (Always shown, disabled if no external URL) -->
-              <button 
+                *ngIf="post.externalUrl"
                 (click)="handlePostClick(post, $event)"
-                [disabled]="!isExternalPost(post)"
-                class="flex-1 inline-flex items-center justify-center gap-1 px-3 py-2 font-medium rounded-lg transition-all duration-300 shadow-md transform"
-                [class]="isExternalPost(post) 
-                  ? 'bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white shadow-green-500/20 hover:shadow-lg hover:shadow-green-500/30 hover:scale-105 cursor-pointer'
-                  : 'bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-400 cursor-not-allowed shadow-gray-300/20'"
+                class="w-full inline-flex items-center justify-center gap-1 px-3 py-2 
+                bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 
+                hover:to-blue-700 text-white font-medium rounded-lg transition-all 
+                duration-300 shadow-md shadow-purple-500/20 hover:shadow-lg hover:cursor-pointer hover:shadow-purple-500/30 transform hover:scale-105"
               >
                 <mat-icon class="text-sm">launch</mat-icon>
-                <span class="text-xs">External</span>
+                <span class="text-xs">Read</span>
               </button>
             </div>
           </div>

@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
     { label: 'Skills', link: '#skills', icon: 'code', isRoute: false, section: 'skills' },
     { label: 'Experience', link: '#experience', icon: 'work', isRoute: false, section: 'experience' },
     { label: 'Projects', link: '#projects', icon: 'folder', isRoute: false, section: 'projects' },
-    // { label: 'Blog', link: '/blog', icon: 'article', isRoute: true, section: 'blog' },
+    { label: 'Blog', link: '/blog', icon: 'article', isRoute: true, section: 'blog' },
     { label: 'Certifications', link: '#certifications', icon: 'verified', isRoute: false, section: 'certifications' },
     { label: 'Education', link: '#education', icon: 'school', isRoute: false, section: 'education' },
     { label: 'Contact', link: '#contact', icon: 'mail', isRoute: false, section: 'contact' }
