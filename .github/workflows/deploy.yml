@@ -22,18 +22,18 @@ jobs:
 
       # Step 3️⃣ — Move into Angular project folder
       - name: Change working directory 📂
-        run: cd enhanceportfolio/portfolio
+        run: cd enhanced-portfolio/portfolio-app
 
       # Step 4️⃣ — Install dependencies
       - name: Install dependencies 📦
         run: |
-          cd enhanceportfolio/portfolio
+          cd enhanced-portfolio/portfolio-app
           npm install
 
       # Step 5️⃣ — Build Angular app
       - name: Build Angular app 🏗️
         run: |
-          cd enhanceportfolio/portfolio
+          cd enhanced-portfolio/portfolio-app
           npm run build -- --configuration production --base-href "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
 
       # Step 6️⃣ — Deploy to GitHub Pages
@@ -41,4 +41,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: enhanceportfolio/portfolio/dist/portfolio-app  # 👈 replace with actual dist folder name
+          folder: enhanced-portfolio/portfolio-app/dist/portfolio-app/browser  # 👈 replace with actual dist folder name
