@@ -14,7 +14,7 @@ export class PortfolioService {
       email: 'ganeshamoorthy8681@gmail.com',
       linkedin: 'https://www.linkedin.com/in/ganesha-moorthy/',
       github: 'https://github.com/Ganeshamoorthy-8681',
-      resumeUrl: '/ganeshamoorthy-resume.pdf' 
+      resumeUrl: '/ganeshamoorthy-resume.pdf'
     },
     skills: [
       // Frontend Skills
@@ -358,7 +358,7 @@ Building modern web applications with Angular and Spring Boot provides a robust 
         category: 'Web Development',
         featured: true,
         isExternal: true,
-        externalUrl: 'https://medium.com/p/breaking-monoliths-micro-frontends-in-angular-with-native-federation',
+        externalUrl: 'https://medium.com/@ganeshamoorthy8681/breaking-monoliths-micro-frontends-in-angular-with-native-federation-962acf6c3f99',
         externalPlatform: 'Medium',
         likes: 0,
         views: 0
