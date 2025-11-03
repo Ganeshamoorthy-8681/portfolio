@@ -1,35 +1,39 @@
-name: Deploy Angular App to GitHub Pages
+name: Deploy Angular App (from subfolder) to GitHub Pages
 
 on:
   push:
     branches:
-      - main  # 👈 Change to 'master' if your default branch is named master
+      - main  # 👈 Change if your default branch is named differently
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1️⃣ — Checkout your repo
       - name: Checkout 🛎️
         uses: actions/checkout@v4
 
-      - name: Change to working directory 📂
-        run: cd enhanced-portfolio/portfolio-app
-        shell: bash
-
+      # Step 2️⃣ — Setup Node.js
       - name: Setup Node.js 🧩
         uses: actions/setup-node@v4
         with:
           node-version: 18
+        working-directory: enhanceportfolio/portfolio
 
+      # Step 3️⃣ — Install dependencies
       - name: Install dependencies 📦
         run: npm install
+        working-directory: enhanceportfolio/portfolio
 
+      # Step 4️⃣ — Build Angular app
       - name: Build Angular app 🏗️
         run: npm run build -- --configuration production --base-href "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+        working-directory: enhanceportfolio/portfolio
 
+      # Step 5️⃣ — Deploy built app to GitHub Pages
       - name: Deploy to GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: dist/portfolio-app
+          folder: enhanceportfolio/portfolio/dist/portfolio-app
