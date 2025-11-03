@@ -6,6 +6,7 @@ import { ScrollAnimateDirective } from '../../directives/scroll-animate.directiv
 import { PersonalInfo } from '../../models/portfolio.model';
 import { PortfolioService } from '../../services/portfolio-data.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import emailjs from 'emailjs-com';
 
 
 interface ContactForm {
@@ -22,7 +23,7 @@ interface ContactForm {
     ReactiveFormsModule,
     MatIconModule,
     ScrollAnimateDirective
-],
+  ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })
@@ -113,18 +114,17 @@ export class ContactComponent implements OnInit {
       }
     });
 
-    this.http.post('/', entry.toString(), { headers: { "Content-Type": "application/x-www-form-urlencoded" }, responseType: 'text' })
-      .subscribe({
-        next: () => {
-          this.resetForm();
-          this.isSubmitting = false;
-          this.showSuccess = true;
-          this.successMessage = 'Message sent successfully! I\'ll get back to you soon.';
-        },
-        error: (error) => {
-          this.showErrorAlert('Failed to send message. Please try again later.');
-          this.isSubmitting = false;
-        }
+    // Using EmailJS to send the email
+    emailjs.send('service_m1gf8i7', 'template_55d7qd1', this.contactForm.value, 'sFGzu2iWF2kRQONXk')
+      .then(() => {
+        this.resetForm();
+        this.isSubmitting = false;
+        this.showSuccess = true;
+        this.successMessage = 'Message sent successfully! I\'ll get back to you soon.';
+      })
+      .catch((error) => {
+        this.showErrorAlert('Failed to send message. Please try again later.');
+        this.isSubmitting = false;
       });
   }
 
