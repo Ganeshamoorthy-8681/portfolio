@@ -102,30 +102,10 @@ export class HeaderComponent implements OnInit {
 
     if (item.isRoute) {
       // Navigate to route
-      this.router.navigate([], { fragment: item.link });
+      this.router.navigate([""], { fragment: item.link });
     } else {
-      // Special handling for hero section
-      if (item.section === 'hero') {
-        if (this.router.url !== '/') {
-          // If not on home page, navigate to home
-          this.router.navigate([], { fragment: item.link });
-        } else {
-          // If already on home page, scroll to top
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
-        }
-      } else {
-        // For other sections, check if we're on the home page first
-        if (this.router.url !== '/') {
-          this.router.navigate(['/']).then(() => {
-            setTimeout(() => this.scrollToSection(item.link), 100);
-          });
-        } else {
-          this.scrollToSection(item.link);
-        }
-      }
+      // For other sections, check if we're on the home page first
+      this.scrollToSection(item.link);
     }
     // Close mobile menu after navigation
     this.isMenuOpen = false;
@@ -149,6 +129,6 @@ export class HeaderComponent implements OnInit {
   }
 
   navigateHome(): void {
-    this.router.navigate(['/']);
+    this.router.navigate([""]);
   }
 }
