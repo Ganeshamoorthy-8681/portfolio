@@ -47,7 +47,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateActiveSection();
-    
+
     // Listen for route changes
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
@@ -99,16 +99,16 @@ export class HeaderComponent implements OnInit {
   }
 
   handleNavigation(item: any): void {
-    
+
     if (item.isRoute) {
       // Navigate to route
-      this.router.navigate([item.link]);
+      this.router.navigate([], { fragment: item.link });
     } else {
       // Special handling for hero section
       if (item.section === 'hero') {
         if (this.router.url !== '/') {
           // If not on home page, navigate to home
-          this.router.navigate(['/']);
+          this.router.navigate([], { fragment: item.link });
         } else {
           // If already on home page, scroll to top
           window.scrollTo({
