@@ -3,11 +3,14 @@
 
 <head>
   <script>
-    // Redirect to the base URL (index.html)
-    window.location.replace(window.location.origin);
+    // Get the current path
+    var path = window.location.pathname;
+    // Redirect to the Angular app's root with the path as a query parameter
+    window.location.replace(window.location.origin + window.location.pathname);
   </script>
 </head>
 
-<body></body>
+<body>
+</body>
 
 </html>
