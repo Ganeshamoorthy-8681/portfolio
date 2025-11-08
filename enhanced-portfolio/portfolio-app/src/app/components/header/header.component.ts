@@ -47,7 +47,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateActiveSection();
-    
     // Listen for route changes
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
@@ -56,7 +55,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  @HostListener('window:scroll', ['$event'])
+  @HostListener('window:scroll')
   onScroll(): void {
     // Update scroll state for header styling
     this.isScrolled = window.scrollY > 50;
@@ -99,7 +98,7 @@ export class HeaderComponent implements OnInit {
   }
 
   handleNavigation(item: any): void {
-    
+
     if (item.isRoute) {
       // Navigate to route
       this.router.navigate([item.link]);

@@ -13,8 +13,9 @@ export class PortfolioService {
       description: "I’m a passionate software developer skilled in crafting engaging, user-focused interfaces and building robust backend systems. With a strong eye for design and a solid foundation in server-side development, I bring a full-stack perspective to every project — ensuring seamless, high-performing, and visually appealing user experiences from end to end.",
       email: 'ganeshamoorthy8681@gmail.com',
       linkedin: 'https://www.linkedin.com/in/ganesha-moorthy/',
-      github: 'https://github.com/Ganeshamoorthy-8681',
-      resumeUrl: '/ganeshamoorthy-resume.pdf'
+      github: 'https://github.com/Ganeshamoorthy-dev',
+      // resumeUrl: '/assets/Ganeshamoorthy-software-engineer.pdf' //commented for deployment
+      resumeUrl: ""
     },
     skills: [
       // Frontend Skills
@@ -76,7 +77,7 @@ export class PortfolioService {
         technologies: ['React', 'TypeScript', 'Spring Boot', 'PostgreSQL', 'JWT'],
         category: 'web',
         liveUrl: 'https://ganesh-iam.netlify.app/',
-        githubUrl: 'https://github.com/Ganeshamoorthy-8681/spring-security-v2',
+        githubUrl: 'https://github.com/Ganeshamoorthy-dev/spring-security-v2',
         featured: false
       },
       {
@@ -86,7 +87,7 @@ export class PortfolioService {
         technologies: ['Angular', 'TypeScript', 'Spring Boot', 'Java', 'PostgreSQL'],
         category: 'web',
         liveUrl: '',
-        githubUrl: 'https://github.com/Ganeshamoorthy-8681/todoapp-Backend',
+        githubUrl: 'https://github.com/Ganeshamoorthy-dev/todoapp-Backend',
         featured: true
       },
       {
@@ -96,17 +97,17 @@ export class PortfolioService {
         technologies: ['React', 'JavaScript', 'Movie API', 'Material-UI'],
         category: 'web',
         liveUrl: 'https://movie-app-topaz-nine.vercel.app/',
-        githubUrl: 'https://github.com/Ganeshamoorthy-8681/MovieApp',
+        githubUrl: 'https://github.com/Ganeshamoorthy-dev/MovieApp',
         featured: true
       },
       {
         title: 'Weather App',
         description: 'A responsive weather application that provides real-time weather data, forecasts.',
-        image: 'assets/images/weatherApp.png',
+        image: 'assets/images/weatherApp.jpg',
         technologies: ['React', 'JavaScript', 'Weather API', 'Material-UI'],
         category: 'web',
         liveUrl: 'https://ganeshamoorthy-weather-app.netlify.app/',
-        githubUrl: 'https://github.com/Ganeshamoorthy-8681/WeatherApp',
+        githubUrl: 'https://github.com/Ganeshamoorthy-dev/WeatherApp',
         featured: true
       },
 
@@ -116,8 +117,8 @@ export class PortfolioService {
       //   image: 'assets/images/amazone-clone.png',
       //   technologies: ['HTML5', 'CSS3', 'JavaScript'],
       //   category: 'web',
-      //   liveUrl: 'https://ganeshamoorthy-8681.github.io/amazon-recreated/',
-      //   githubUrl: 'https://github.com/Ganeshamoorthy-8681/amazon-recreated',
+      //   liveUrl: 'https://ganeshamoorthy-dev.github.io/amazon-recreated/',
+      //   githubUrl: 'https://github.com/Ganeshamoorthy-dev/amazon-recreated',
       //   featured: true
       // },
       // {
@@ -126,8 +127,8 @@ export class PortfolioService {
       //   image: 'assets/images/unify.png',
       //   technologies: ['HTML5', 'CSS3', 'Responsive Design'],
       //   category: 'web',
-      //   liveUrl: 'https://ganeshamoorthy-8681.github.io/res-unify/',
-      //   githubUrl: 'https://github.com/Ganeshamoorthy-8681/res-unify',
+      //   liveUrl: 'https://ganeshamoorthy-dev.github.io/res-unify/',
+      //   githubUrl: 'https://github.com/Ganeshamoorthy-dev/res-unify',
       //   featured: false
       // }
     ],
